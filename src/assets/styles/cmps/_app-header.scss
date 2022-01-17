@@ -1,38 +1,42 @@
 .app-header {
-    background-color: $clr4;
-    padding: 10px;
-
-    .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        color: $clr1;
-        .score {
-            background-color: $clr2;
-            color:$clr6;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
+    width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    font-size: 1rem;
+    margin: 0 auto;
+    @media screen and (max-width: 1200px) {
+        width: 1000px;
+    }
+    .img-container {
+        width: 165px;
+        height: 30px ;
+        img {
+            width: 165px;
+            height: 30px ;
         }
     }
-    .user-info .btn-link{
-        color: $clr2;
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        a {
+            color: #6e807a;
+        }
+        a.active {
+            color: #00d9a5;
+        }
     }
-    nav {
-        font-size: .8em;
-        background-color: $clr5;
-        padding: 5px;
-        
+    .login-btn {
+        color: white;
+        background-color: #00d9a5;
+        width: 150px;
+        height: 40px;
+        transition: 0.3s;
+        font-size: 1em;
+        &:hover {
+            background-color: #03a882;
+        }
     }
-    nav a:first-child {
-        margin-right: 30px;
-    }
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
-    nav .active {
-        color: $clr1;
-    }
-    
 }
