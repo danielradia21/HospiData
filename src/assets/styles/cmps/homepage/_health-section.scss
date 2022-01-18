@@ -1,0 +1,28 @@
+.health-section-container {
+    height: 550px;
+    width: 100%;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    .section-content {
+        width: 570px;
+        h1 {
+            font-size: 40px;
+            font-family: sans-serif;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #343531;
+        }
+        p{
+            color: #6e807a;
+        }
+        .main-btn {
+            margin: 0;
+        }
+    }
+    .img-container {
+        width: 570px;
+    }
+}
