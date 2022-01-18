@@ -1,4 +1,4 @@
-import healthDoctor from '../../assets/img/health-section-doctor.png'
+import healthDoctor from '../../assets/img/health-section-doctor.png';
 
 export function HealthSection() {
     return (
@@ -7,13 +7,11 @@ export function HealthSection() {
                 <h1>Welcome to Your Health</h1>
                 <h1>Center</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                    aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Accusantium aperiam earum
-                    ipsa eius, inventore nemo labore eaque porro consequatur ex
-                    aspernatur. Explicabo, excepturi accusantium! Placeat
-                    voluptates esse ut optio facilis!
+                    The Hospi Data Health System has dozens of locations in
+                    several states. Thousands of patients from around the world
+                    travel to Hospi Data locations, and Hospi Data's
+                    International Patient Offices help ensure that distance and
+                    language are not obstacles to receiving world-class care.
                 </p>
                 <button className="main-btn">Learn More</button>
             </div>

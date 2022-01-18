@@ -1,176 +1,172 @@
 [
-  {
-      "_id":"u101",
-      "fullName":"Orly Amadi",
-      "userName":"orlyAma@gmail.com",
-      "password":"tinkerbell",
-      "imgUrl":"https://randomuser.me/api/portraits/women/39.jpg",
-      "isAdmin":false,
-      "type":"doctor",
-      "patience":[
-          {
-              "_id":"u103",
-              "fullname":"Tino Blom",
-              "imgUrl":"https://randomuser.me/api/portraits/women/0.jpg"
-          }
-      ],
-      "meetings":[
-          {
-              "_id":"m-101",
-              "fullname":"Tino Blom",
-              "date":"1642507155660"
-          }
-      ]
-  },
-  {
-    "_id":"u102",
-    "fullName":"Tino Blom",
-    "userName":"Tinoblom@gmail.com",
-    "password":"1234Password",
-    "imgUrl":"https://randomuser.me/api/portraits/women/0.jpg",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a101",
-            "title":"Nose Pain",
-            "description":"Nose bled twice for no reason",
-            "date":"1642506255660",
-            "status":"cancelled",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://randomuser.me/api/portraits/women/39.jpg"
-
+    {
+        "_id": "u101",
+        "fullName": "Orly Amadi",
+        "username": "orlyAma@gmail.com",
+        "password": "tinkerbell",
+        "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg",
+        "isAdmin": false,
+        "type": "doctor",
+        "patience": [
+            {
+                "_id": "u103",
+                "fullname": "Tino Blom",
+                "imgUrl": "https://randomuser.me/api/portraits/women/0.jpg"
             }
-        },
-        {
-            "_id":"a103",
-            "title":"Back pain",
-            "description":"Back hurts after falling from a bike",
-            "date":"1642507155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://randomuser.me/api/portraits/women/39.jpg"
-
-            },
-            "drugs":["acamol","decsamol"],
-            "medical references":[
-                {
-                    "_id":"r-101",
-                    "title":"Ultrasound",
-                    "date":"1642508955660"
-                }
-            ]
-        },
-        {
-            "_id":"a104",
-            "title":"headache",
-            "description":"Head hurts alot, feels like i may faint",
-            "date":"1642508155660",
-            "status":"pending",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://randomuser.me/api/portraits/women/39.jpg"
-
+        ],
+        "meetings": [
+            {
+                "_id": "m-101",
+                "fullname": "Tino Blom",
+                "date": "1642507155660"
             }
-        }
-    ]
-},
-{
-    "_id":"u103",
-    "fullName":"David Davidov",
-    "userName":"DavidDav@gmail.com",
-    "password":"iamtheking",
-    "imgUrl":"https://randomuser.me/api/portraits/men/29.jpg",
-    "isAdmin":false,
-    "type":"doctor",
-    "patience":[
-        {
-            "_id":"u103",
-            "fullname":"Gal Dror",
-            "imgUrl":"https://randomuser.me/api/portraits/women/3.jpg"
-        }
-    ],
-    "meetings":[
-        {
-            "_id":"m110",
-            "fullname":"Gal Dror",
-            "date":"1642508155660"
-        },
-        {
-            "_id":"m111",
-            "fullname":"Ronit Pushkin",
-            "date":"1642509155660"
-        }
-    ]
-},
-{
-    "_id":"u109",
-    "fullName":"Gal Dror",
-    "userName":"DroriG@gmail.com",
-    "password":"123123",
-    "imgUrl":"https://randomuser.me/api/portraits/women/3.jpg",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a110",
-            "title":"fevor",
-            "description":"had 39C last night",
-            "date":"1642508155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u103",
-                "fullname":"David Davidov",
-                "imgUrl":"https://randomuser.me/api/portraits/men/29.jpg"
-
-            },
-            "drugs":["decsamol"]
-        }
-    ]
-},
-{
-    "_id":"u120",
-    "fullName":"Ronit Pushkin",
-    "userName":"RontPush@gmail.com",
-    "password":"111111",
-    "imgUrl":"https://randomuser.me/api/portraits/women/31.jpg",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a125",
-            "title":"leg hurts",
-            "description":"fell on my leg and it started hurting",
-            "date":"1642509155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u103",
-                "fullname":"David Davidov",
-                "imgUrl":"https://randomuser.me/api/portraits/men/29.jpg"
-            },
-            "drugs":["acamol"],
-            "medical references":[
-                {
-                    "_id":"r-105",
-                    "title":"Rentgen",
-                    "date":"1642510155660"
+        ]
+    },
+    {
+        "_id": "u102",
+        "fullName": "Tino Blom",
+        "username": "Tinoblom@gmail.com",
+        "password": "1234Password",
+        "imgUrl": "https://randomuser.me/api/portraits/women/0.jpg",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a101",
+                "title": "Nose Pain",
+                "description": "Nose bled twice for no reason",
+                "date": "1642506255660",
+                "status": "cancelled",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
                 }
-            ]
-        }
-    ]
-},
-{
-    "_id":"u105",
-    "fullName":"Admin Adminovich",
-    "userName":"Admin@Admin.com",
-    "password":"Admin",
-    "imgUrl":"https://randomuser.me/api/portraits/men/72.jpg",
-    "isAdmin":true,
-    "type":"admin"
-}
-  ]
+            },
+            {
+                "_id": "a103",
+                "title": "Back pain",
+                "description": "Back hurts after falling from a bike",
+                "date": "1642507155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
+                },
+                "drugs": ["acamol", "decsamol"],
+                "medical references": [
+                    {
+                        "_id": "r-101",
+                        "title": "Ultrasound",
+                        "date": "1642508955660"
+                    }
+                ]
+            },
+            {
+                "_id": "a104",
+                "title": "headache",
+                "description": "Head hurts alot, feels like i may faint",
+                "date": "1642508155660",
+                "status": "pending",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
+                }
+            }
+        ]
+    },
+    {
+        "_id": "u103",
+        "fullName": "David Davidov",
+        "username": "DavidDav@gmail.com",
+        "password": "iamtheking",
+        "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg",
+        "isAdmin": false,
+        "type": "doctor",
+        "patience": [
+            {
+                "_id": "u103",
+                "fullname": "Gal Dror",
+                "imgUrl": "https://randomuser.me/api/portraits/women/3.jpg"
+            }
+        ],
+        "meetings": [
+            {
+                "_id": "m110",
+                "fullname": "Gal Dror",
+                "date": "1642508155660"
+            },
+            {
+                "_id": "m111",
+                "fullname": "Ronit Pushkin",
+                "date": "1642509155660"
+            }
+        ]
+    },
+    {
+        "_id": "u109",
+        "fullName": "Gal Dror",
+        "username": "DroriG@gmail.com",
+        "password": "123123",
+        "imgUrl": "https://randomuser.me/api/portraits/women/3.jpg",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a110",
+                "title": "fevor",
+                "description": "had 39C last night",
+                "date": "1642508155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u103",
+                    "fullname": "David Davidov",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg"
+                },
+                "drugs": ["decsamol"]
+            }
+        ]
+    },
+    {
+        "_id": "u120",
+        "fullName": "Ronit Pushkin",
+        "username": "RontPush@gmail.com",
+        "password": "111111",
+        "imgUrl": "https://randomuser.me/api/portraits/women/31.jpg",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a125",
+                "title": "leg hurts",
+                "description": "fell on my leg and it started hurting",
+                "date": "1642509155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u103",
+                    "fullname": "David Davidov",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg"
+                },
+                "drugs": ["acamol"],
+                "medical references": [
+                    {
+                        "_id": "r-105",
+                        "title": "Rentgen",
+                        "date": "1642510155660"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "u105",
+        "fullName": "Admin Adminovich",
+        "username": "Admin@Admin.com",
+        "password": "Admin",
+        "imgUrl": "https://randomuser.me/api/portraits/men/72.jpg",
+        "isAdmin": true,
+        "type": "admin"
+    }
+]
