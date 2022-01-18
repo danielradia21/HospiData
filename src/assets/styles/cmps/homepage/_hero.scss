@@ -28,16 +28,8 @@
             margin-bottom: 32px;
             font-size: rem(56px);
         }
-        .reg-btn {
-            color: white;
-            background-color: #00d9a5;
-            width: 170px;
-            height: 50px;
-            transition: 0.3s;
+        .main-btn {
             font-size: 1em;
-            &:hover {
-                background-color: #03a882;
-            }
         }
     }
 }

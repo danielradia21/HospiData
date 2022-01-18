@@ -11,10 +11,10 @@
     }
     .img-container {
         width: 165px;
-        height: 30px ;
+        height: 30px;
         img {
             width: 165px;
-            height: 30px ;
+            height: 30px;
         }
     }
     .nav-links {
@@ -28,15 +28,9 @@
             color: #00d9a5;
         }
     }
-    .login-btn {
-        color: white;
-        background-color: #00d9a5;
+    .main-btn {
         width: 150px;
         height: 40px;
-        transition: 0.3s;
         font-size: 1em;
-        &:hover {
-            background-color: #03a882;
-        }
     }
 }

@@ -6,15 +6,13 @@ html {
     font-family: sans-serif;
     line-height: 1.6;
     color: $clr2;
-
-}
-main{
-    height: 100vh;
 }
 
 body {
     font-size: rem(18px);
     margin: 0;
+    height: 100vh;
+    font-family: ssp-reg;
 }
 
 h1,
@@ -27,8 +25,6 @@ h6 {
     margin: 0 0 0.6em;
     line-height: 1;
 }
-
-
 
 img {
     width: 100%;

@@ -16,7 +16,7 @@ export function AppHeader() {
                         </NavLink>
                     ))}
                     <div>
-                        <button className="login-btn">Login</button>
+                        <button className="main-btn">Login</button>
                     </div>
                 </nav>
             </div>

@@ -7,7 +7,7 @@ export function Hero() {
             <div className="main-content">
                 <p>let's make your life happier</p>
                 <h1>Healthy Living</h1>
-                <button className="reg-btn">Register Today</button>
+                <button className="main-btn">Register Today</button>
             </div>
         </div>
     );

@@ -38,3 +38,15 @@
 .portrait-ratio {
     @include aspect-ratio(9, 16);
 }
+
+
+.main-btn{
+    color: white;
+    background-color: #00d9a5;
+    width: 170px;
+    height: 50px;
+    transition: 0.3s;
+    &:hover {
+        background-color: #03a882;
+    }
+}
