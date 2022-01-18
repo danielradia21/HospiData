@@ -10,6 +10,7 @@ export function AppHeader() {
                 </Link>
             </div>
             <nav>
+                <NavLink exact to={'/'}>Home</NavLink>
                 {routes.map((route) => (
                     <NavLink exact key={route.path} to={route.path}>
                         {route.label}

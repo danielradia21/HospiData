@@ -7,6 +7,8 @@ import routes from './routes';
 
 import { AppHeader } from './cmps/app-header';
 import { AppFooter } from './cmps/app-footer';
+import { AdminPage } from './pages/admin-page';
+import { HomePage } from './pages/home-page';
 
 export class RootCmp extends React.Component {
     render() {
@@ -15,14 +17,18 @@ export class RootCmp extends React.Component {
                 <AppHeader />
                 <main>
                     <Switch>
+                    <Route component={HomePage} exact path={'/'} />
                         {routes.map((route) => (
                             <Route
                                 key={route.path}
-                                exact
                                 component={route.component}
                                 path={route.path}
                             />
                         ))}
+                              <Route
+                                component={AdminPage}
+                                path={'/admin'}
+                            />
                     </Switch>
                 </main>
                 <AppFooter />
