@@ -1,10 +1,9 @@
 import { HomePage } from './pages/home-page.jsx';
 import { AboutUs } from './pages/about-us.jsx';
-import { DoctorPage } from './pages/doctor-page.jsx';
 import { PatientPage } from './pages/patient-page.jsx';
 import { Lab } from './cmps/patient/lab.jsx';
 import { AppointmentList } from './cmps/patient/appointment-list.jsx';
-import { DoctorPage } from './pages/doctor-page';
+import { DoctorPage } from './pages/doctor-page.jsx';
 
 
 // Routes accesible from the main navigation (in AppHeader)

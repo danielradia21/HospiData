@@ -1,54 +1,10 @@
 .main-wrapper {
     width: 100%;
-<<<<<<< HEAD
-    height: 85vh;
-=======
     height: 91vh;
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
     margin-bottom: 8px;
     display: flex;
     justify-content: center;
     .main-contents {
-<<<<<<< HEAD
-        width: 1100px;
-        height: 84vh;
-        padding: 30px;
-        background-color: #33cb74a8;
-        color: #454545;
-        border-radius: 5px;
-        display: flex;
-        .profile-section {
-            width: 300px;
-            height: 95%;
-        
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            .img-wrapper {
-                width: 250px;
-                height: 250px;
-                margin-top: 25px;
-                img {
-                    border-radius: 5px;
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-            .name-section {
-                width: 250px;
-                .details {
-                    width: 250px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    p {
-                        margin: 0;
-                        &.title {
-                            font-size: 22px;
-                            text-transform: uppercase;
-=======
         width: 100%;
         height: 100%;
         padding: 30px;
@@ -113,28 +69,12 @@
                             color: gray;
                             padding-right: 0;
                             margin-right: 0;
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
                         }
                     }
                 }
             }
             .details-wrapper {
                 width: 250px;
-<<<<<<< HEAD
-                height: 45%;
-                margin-bottom: 25px;
-                display: flex;
-                justify-content: flex-start;
-                align-items: flex-start;
-                flex-direction: column;
-                .details {
-                    width: 200px;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: 10px;
-                    padding: 5px;
-=======
                 height: 30%;
                 margin-bottom: 25px;
                 display: flex;
@@ -147,19 +87,10 @@
                     display: flex;
                     text-align: center;
                     margin: 5px;
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
                     p {
                         margin: 0;
                     }
                 }
-<<<<<<< HEAD
-            }
-        }
-        .main-content-section {
-            width: 720px;
-            height: 60%;
-            border: 1px solid #495961;
-=======
                 a {
                     height: 45px;
                     width: 100%;
@@ -175,30 +106,12 @@
         .main-content-section {
             width: 800px;
             height: 92%;
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
             margin-top: 25px;
             display: flex;
             justify-content: space-around;
             align-items: center;
             border-radius: 5px;
             .main-content {
-<<<<<<< HEAD
-                width: 685px;
-                height: 90%;
-
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                .contents {
-                    width: 685px;
-                    width: 635px;
-                    height: 50px;
-                    border: 1px solid #495961;
-                    border-radius: 5px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-=======
                 width: 100%;
                 height: 100%;
                 display: flex;
@@ -214,7 +127,6 @@
                     justify-content: space-between;
                     align-items: center;
                     background: #04477b;
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
                     .btns-wrapper {
                         padding-right: 4px;
                         .main-btn {
@@ -238,26 +150,4 @@
             }
         }
     }
-<<<<<<< HEAD
-    .others-section {
-        width: 720px;
-        height: 35%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .first-other {
-            border: 1px solid #495961;
-            border-radius: 5px;
-            width: 350px;
-            height: 85%;
-        }
-        .sec-other {
-            border: 1px solid #495961;
-            border-radius: 5px;
-            width: 350px;
-            height: 85%;
-        }
-    }
-=======
->>>>>>> a85f4b83e8699cb4a2067777077a350834b103e2
 }
