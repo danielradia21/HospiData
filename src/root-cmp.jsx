@@ -22,7 +22,7 @@ export class RootCmp extends React.Component {
                                 path={route.path}
                             />
                         ))}
-                        <Route component={DoctorPage} path={'/doctor-page'} />
+                        <Route component={DoctorPage} path={'/doctor'} />
                     </Switch>
                 </main>
                 <AppFooter />

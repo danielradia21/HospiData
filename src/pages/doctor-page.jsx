@@ -10,15 +10,15 @@ import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
 
 const nestedRoutes = [
     {
-        path: '/doctor-page/meetings',
+        path: '/doctor/meetings',
         component: Meetings,
     },
     {
-        path: '/doctor-page/patiences',
+        path: '/doctor/patiences',
         component: Patients,
     },
     {
-        path: '/doctor-page/history',
+        path: '/doctor/history',
         component: History,
     },
 ];
@@ -66,17 +66,13 @@ export function DoctorPage() {
 
                     <div className="details-wrapper">
                         <div className="details">
-                            <NavLink to="/doctor-page/meetings">
-                                Meetings
-                            </NavLink>
+                            <NavLink to="/doctor/meetings">Meetings</NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor-page/patiences">
-                                Patiences
-                            </NavLink>
+                            <NavLink to="/doctor/patiences">Patiences</NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor-page/history">History</NavLink>
+                            <NavLink to="/doctor/history">History</NavLink>
                         </div>
                     </div>
                 </div>
