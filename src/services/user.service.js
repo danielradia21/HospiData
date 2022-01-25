@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 import defaultUsers from '../assets/data/users.json';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
+const STORAGE_KEY = 'user';
 
 export const userService = {
     login,
@@ -10,14 +11,16 @@ export const userService = {
     getLoggedinUser,
     getUsers,
     getById,
+    getByUID,
     update,
+
 };
 
 async function getUsers() {
     try {
         let users = await storageService.query('user');
         if (!users || !users.length)
-            return await storageService.postMany('user', defaultUsers);
+            return await storageService.postMany(STORAGE_KEY, defaultUsers);
         return users;
         //   return httpService.get(`user`)
     } catch (err) {
@@ -27,18 +30,31 @@ async function getUsers() {
 
 async function getById(userId) {
     try {
-        return await storageService.get('user', userId);
+        return await storageService.get(STORAGE_KEY, userId);
         //   return await httpService.get(`user/${userId}`)
     } catch (err) {
         console.log('Had error on userService: GETUSERBYID', err);
     }
 }
 
+
+async function getByUID(UID) {
+    try {
+        let users = await storageService.query('user');
+        return users.filter(user=>user.UID===UID)
+        //   return await httpService.get(`user/${userId}`)
+    } catch (err) {
+        console.log('Had error on userService: GETUSERBYID', err);
+    }
+}
+
+
+
 async function update(user) {
     try {
         if (!getLoggedinUser().isAdmin)
             throw Error('Cant update when you are not admin');
-        await storageService.put('user', user);
+        await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
         return _saveLocalUser(user);
     } catch (err) {
@@ -68,10 +84,10 @@ async function login(userCred) {
 async function signup(userCred) {
     try {
         // Might need to change up the userCred here
-        const users = await storageService.query('user');
+        const users = await storageService.query(STORAGE_KEY);
         if (users.find((user) => user.username === userCred.username))
             throw Error('Username already taken');
-        const user = await storageService.post('user', userCred);
+        const user = await storageService.post(STORAGE_KEY, userCred);
         return _saveLocalUser(user);
         //   const user = await httpService.post('auth/signup', userCred)
     } catch (err) {

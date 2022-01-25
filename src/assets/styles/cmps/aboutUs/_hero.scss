@@ -1,0 +1,27 @@
+.about-us-section {
+  &.main-hero {
+    height: 300px;
+  }
+  .link-chain {
+    text-align: center;
+    display: flex;
+    a {
+      color: #00d9a5;
+      text-decoration: none;
+
+      &:hover {
+        color: #2a997f;
+      }
+    }
+    p {
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 18px;
+    }
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: sans-serif;
+  }
+}

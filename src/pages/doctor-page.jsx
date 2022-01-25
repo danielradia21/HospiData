@@ -66,10 +66,21 @@ export function DoctorPage() {
 
                     <div className="details-wrapper">
                         <div className="details">
+<<<<<<< HEAD
                             <NavLink to="/doctor/meetings">Meetings</NavLink>
                         </div>
                         <div className="details">
                             <NavLink to="/doctor/patiences">Patiences</NavLink>
+=======
+                            <NavLink to="/doctor/meetings">
+                                Meetings
+                            </NavLink>
+                        </div>
+                        <div className="details">
+                            <NavLink to="/doctor/patiences">
+                                Patiences
+                            </NavLink>
+>>>>>>> 8453f2116d08eb8dcefd10bbe55b88976ee83b76
                         </div>
                         <div className="details">
                             <NavLink to="/doctor/history">History</NavLink>

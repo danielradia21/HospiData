@@ -1,0 +1,26 @@
+.member-card {
+  .meta {
+    left: 22%;
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &.linkedin-icon {
+        a {
+          color: #0a66c2;
+        }
+      }
+      &.email-icon {
+        a {
+          color: #d93025;
+        }
+      }
+    }
+    a {
+      display: flex;
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+}

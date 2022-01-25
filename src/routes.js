@@ -1,12 +1,18 @@
 import { HomePage } from './pages/home-page.jsx';
-import { DoctorPage } from './pages/doctor-page';
+import { AboutUs } from './pages/about-us.jsx';
+import { PatientPage } from './pages/patient-page.jsx';
+import { Lab } from './cmps/patient/lab.jsx';
+import { AppointmentList } from './cmps/patient/appointment-list.jsx';
+import { DoctorPage } from './pages/doctor-page.jsx';
+
 
 // Routes accesible from the main navigation (in AppHeader)
-const routes = [
+export const routes = [
+// Routes accesible from the main navigation (in AppHeader)
 
     {
         path: '/about',
-        component: HomePage,
+        component: AboutUs,
         label: 'About',
     },
     {
@@ -22,4 +28,15 @@ const routes = [
 
 ]
 
-export default routes;
+export const patientNestedRoutes=[
+    {
+      path: `/patient/appointments`,
+      component: AppointmentList,
+      label: 'Appointments',
+    },
+    {
+      path: '/patient/lab',
+      component: Lab,
+      label: 'Labs',
+    },
+  ]

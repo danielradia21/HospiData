@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import routes from '../routes';
+import {routes} from '../routes';
 import logo from '../assets/img/logo.png';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -30,22 +30,19 @@ export function AppHeader() {
             </Link>
             <div className="nav-links-container">
                 <nav className="nav-links">
-                    <NavLink exact to="/">
-                        Home
+                <NavLink exact to={'/'}>Home</NavLink>
+                {routes.map((route) => (
+                    <NavLink exact key={route.path} to={route.path}>
+                        {route.label}
                     </NavLink>
-                    {routes.map((route) => (
-                        <NavLink exact key={route.path} to={route.path}>
-                            {route.label}
-                        </NavLink>
-                    ))}
-                    <div>
+                ))}
+                 <div>
                         <button onClick={handleOpen} className="main-btn">
                             Login
                         </button>
                     </div>
-                </nav>
+            </nav>
             </div>
-
             <Modal
                 open={open}
                 onClose={handleClose}
