@@ -12,9 +12,10 @@
 @import 'basics/forms';
 
 // Views
-
 @import 'views/home-page';
 @import 'views/doctor-page';
+@import 'views/admin-page';
+
 @import 'views/about-us';
 
 // Components
@@ -24,6 +25,11 @@
 @import 'cmps/homepage/card-list';
 @import 'cmps/homepage/card-prev';
 @import 'cmps/homepage/health-section';
+@import 'cmps/usersTamplate';
+
+
+
+
 @import 'cmps/homepage/carousel';
 @import 'cmps/homepage/carousel-card';
 @import 'cmps/aboutUs/health-section';
@@ -36,6 +42,3 @@
 // @import 'cmps/usersTamplate';
 
 
-.spacer {
-    height: 80px;
-}

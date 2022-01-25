@@ -7,8 +7,9 @@ import {routes} from './routes';
 
 import { AppHeader } from './cmps/app-header';
 import { AppFooter } from './cmps/app-footer';
-import { PatientPage } from './pages/patient-page';
+import { AdminPage } from './pages/admin-page';
 import { HomePage } from './pages/home-page';
+import { PatientPage } from './pages/patient-page';
 import { DoctorPage } from './pages/doctor-page';
 
 export class RootCmp extends React.Component {
@@ -21,7 +22,7 @@ export class RootCmp extends React.Component {
                 <AppHeader />
                 <main>
                     <Switch>
-                        <Route component={HomePage} exact path={'/'}/>
+                    <Route component={HomePage} exact path={'/'} />
                         {routes.map((route) => (
                             <Route
                                 key={route.path}
@@ -29,6 +30,7 @@ export class RootCmp extends React.Component {
                                 path={route.path}
                             />
                         ))}
+                        <Route component={AdminPage} path={'/admin'}/>
                         <Route component={PatientPage} path={'/patient'}/>
                         <Route component={DoctorPage} path={'/doctor'}/>
                         
