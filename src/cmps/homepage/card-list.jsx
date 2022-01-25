@@ -22,7 +22,7 @@ export function CardList() {
         },
     ];
     return (
-        <div className='main-card-container'>
+        <div className="main-card-container">
             <div className="cards-container flex">
                 {contents.map((content, idx) => (
                     <CardPrev

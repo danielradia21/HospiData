@@ -65,8 +65,8 @@
             },
             {
                 "_id": "a104",
-                "title": "headache",
-                "description": "Head hurts alot, feels like i may faint",
+                "title": "",
+                "description": "",
                 "date": "1642508155660",
                 "status": "pending",
                 "doctor": {
@@ -174,4 +174,8 @@
         "isAdmin": true,
         "type": "admin"
     }
+
+
+
+    
 ]

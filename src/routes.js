@@ -4,10 +4,13 @@ import { DoctorPage } from './pages/doctor-page.jsx';
 import { PatientPage } from './pages/patient-page.jsx';
 import { Lab } from './cmps/patient/lab.jsx';
 import { AppointmentList } from './cmps/patient/appointment-list.jsx';
+import { DoctorPage } from './pages/doctor-page';
 
 
 // Routes accesible from the main navigation (in AppHeader)
 export const routes = [
+// Routes accesible from the main navigation (in AppHeader)
+
     {
         path: '/about',
         component: AboutUs,
@@ -24,7 +27,7 @@ export const routes = [
         label: 'Contact',
     },
 
-];
+]
 
 export const patientNestedRoutes=[
     {
