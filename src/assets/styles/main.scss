@@ -1,112 +1,33 @@
 // Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/mixins";
-@import "setup/typography";
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+@import 'setup/typography';
 
 // Basics
-@import "basics/helpers";
-@import "basics/layout";
-@import "basics/base";
-@import "basics/links";
-@import "basics/forms";
-
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/base';
+@import 'basics/links';
+@import 'basics/forms';
 
 // Views
-@import "views/about-us";
-@import "views/home-page";
-@import "views/car-app";
-@import "views/review-app";
+@import 'views/home-page';
+@import 'views/doctor-page';
+@import 'views/admin-page';
+
 
 // Components
-@import "cmps/app-header";
-@import "cmps/app-footer";
-@import "cmps/user-msg";
+@import 'cmps/app-header';
+@import 'cmps/app-footer';
+@import 'cmps/homepage/hero';
+@import 'cmps/homepage/card-list';
+@import 'cmps/homepage/card-prev';
+@import 'cmps/homepage/health-section';
+@import 'cmps/usersTamplate';
 
 
-.admin-side{
-    background-color:#00D9A5 ;
-    padding: 30px;
-}
-
-.admin-profile{
-    h1{
-        text-transform: capitalize;
-        font-size: rem(26px);
-        margin-bottom: 10px;
-    }
-    p{
-        text-transform: capitalize;
-        font-size: rem(16px);
-        text-align: center;
-    }  
-}
-
-.admin-profile-img-continer{
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
-    img{
-        height: 100%;
-        border-radius: 50%;
-    }
-
-}
-
-.admin-side-nav{
-    width: 100%;
-    gap: 10px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    a.active{
-        color: blue;
-    }
-}
 
 
-.admin-main-contect-continer{
-    margin-left: 20px;
-    padding: 10px;
-    width: 100%;
-}
 
-.dashbord-analitics-continer{
-    width: 100%;
-    gap: 20px;
-}
 
-.card-list{
-    gap: 20px;
-}
-.card{
-    width: 260px;
-    height: 120px;
-    border: 1px solid black;
-    font-size: rem(20px);
-}
-
-.dashbord-analitics-continer{
-    margin-left: 40px;
-}
-
-.admin-spce{
-    height: 40px;
-}
-
-.updateBtn{
-    border-radius: 10px;
-    background-color:#2196f3 ;
-    transition: 0.4s;
-    &:hover{
-        background-color:#2195f39a ;
-    }
-}
-
-.deleteBtn{
-    border-radius: 10px;
-    background-color: #fe0000ab;
-    transition: 0.4s;
-    &:hover{
-        background-color:#fe000070 ;
-    }
-}

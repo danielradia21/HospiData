@@ -9,11 +9,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { TablePagination } from '@mui/material';
 
 
-export default function StickyHeadTable({items}) {
+export default function StickyHeadTable({items,updateFunc}) {
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+ 
   const columns = [
     { id: 'id', label: 'Id', minWidth: 100 },
     { id: 'name', label: 'Full Name', minWidth: 100 },
@@ -43,20 +47,25 @@ export default function StickyHeadTable({items}) {
     },
   ];
   
-  function createData(id, name, img, isAdmin) {
-    const update = <button className='updateBtn'><CreateIcon/></button>
-    const remove = <button className='deleteBtn'><DeleteIcon/></button>
-    const image = <img src={img} alt='img.png' style={{width:'80px',height:'80px',objectFit:'cover',objectPosition: 'top'}}/>
+  function createData(id, name, img, isAdmin,item) {
+    const update = <button key={id} className='updateBtn' onClick={()=>updateFunc(item)}><CreateIcon titleAccess='Edit'/></button>
+    const remove = <button key={id} className='deleteBtn'><DeleteIcon titleAccess='Delete'/></button>
+    const image = <img key={id}  src={img} alt='img.png' style={{width:'80px',height:'80px',objectFit:'cover',objectPosition: 'top'}}/>
     const admin = isAdmin ? 'true' : 'false' 
     return { id, name, image, admin,update, remove};
   }
   
-  const rows = items.map(item => createData(item._id,item.fullName,item.imgUrl,item.isAdmin ) );
+  const rows = items.map(item =>createData(item._id,item.fullName,item.imgUrl,item.isAdmin,item));
 
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-
-
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -96,6 +105,16 @@ export default function StickyHeadTable({items}) {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+        className="table-pagination"
+      />
     </Paper>
   );
 }

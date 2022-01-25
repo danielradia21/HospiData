@@ -32,5 +32,5 @@ export const data = {
 };
 
 export function PieChart() {
-  return <Pie data={data} />;
+  return <div className='pie-continer'><div className='pie'> <Pie data={data} /> </div></div>;
 }
