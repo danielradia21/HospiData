@@ -62,7 +62,7 @@ export function AppointmentList() {
         </div>
       </div>
       {appointments.map((appointment) => (
-        <AppointmentPrev appointment={appointment} />
+        <AppointmentPrev appointment={appointment} key={appointment._id} />
       ))}
     </div>
   )

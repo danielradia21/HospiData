@@ -11,7 +11,9 @@ export const userService = {
     getLoggedinUser,
     getUsers,
     getById,
+    getByUID,
     update,
+
 };
 
 async function getUsers() {
@@ -34,6 +36,19 @@ async function getById(userId) {
         console.log('Had error on userService: GETUSERBYID', err);
     }
 }
+
+
+async function getByUID(UID) {
+    try {
+        let users = await storageService.query('user');
+        return users.filter(user=>user.UID===UID)
+        //   return await httpService.get(`user/${userId}`)
+    } catch (err) {
+        console.log('Had error on userService: GETUSERBYID', err);
+    }
+}
+
+
 
 async function update(user) {
     try {

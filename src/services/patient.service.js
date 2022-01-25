@@ -32,6 +32,7 @@ async function getById(id){
   }
 }
 
+
 async function add(patient){
   try{
     return await storageService.post(STORAGE_KEY,patient)
