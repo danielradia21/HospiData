@@ -16,6 +16,7 @@
 @import 'views/doctor-page';
 @import 'views/admin-page';
 
+@import 'views/about-us';
 
 // Components
 @import 'cmps/app-header';
@@ -29,5 +30,15 @@
 
 
 
+@import 'cmps/homepage/carousel';
+@import 'cmps/homepage/carousel-card';
+@import 'cmps/aboutUs/health-section';
+@import 'cmps/aboutUs/hero';
+@import 'cmps/aboutUs/carousel';
+@import 'cmps/aboutUs/carousel-card';
+@import 'cmps/patient/appointment-list';
+@import 'cmps/patient/appointment-prev';
+@import 'cmps/patients';
+// @import 'cmps/usersTamplate';
 
 

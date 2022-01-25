@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
-import routes from '../routes';
+import {routes} from '../routes';
 import logo from '../assets/img/logo.png';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -49,7 +49,7 @@ export function AppHeader() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} className='check'>
+                <Box sx={style} className="check">
                     <SignIn onClose={handleClose} />
                 </Box>
             </Modal>

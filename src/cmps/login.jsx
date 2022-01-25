@@ -15,10 +15,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Formik, Field, Form } from 'formik';
 import { userService } from '../services/user.service';
 import { SignUp } from './signup';
+import { onLogin } from '../store/actions/user.actions'
+import { useDispatch } from 'react-redux';
 
 const theme = createTheme();
 
 export function SignIn({ onClose }) {
+    const dispatch = useDispatch()
     const [toggleForm, setToggleForm] = React.useState(false);
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));
@@ -58,7 +61,7 @@ export function SignIn({ onClose }) {
                                 }}
                                 onSubmit={async (values) => {
                                     onClose();
-                                    await userService.login(values);
+                                    await dispatch(onLogin(values));
                                     values.username = '';
                                     values.password = '';
                                 }}
@@ -81,9 +84,7 @@ export function SignIn({ onClose }) {
                                         type="password"
                                         label="Password"
                                     />
-                                    <div className='spacer'>
-
-                                    </div>
+                                    <div className="spacer"></div>
                                     <Button
                                         type="submit"
                                         fullWidth

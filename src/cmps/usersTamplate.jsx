@@ -1,42 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/img/logo.png';
 import { Switch, Route } from 'react-router';
 import { History } from '../cmps/doctor/history';
 import { Meetings } from '../cmps/doctor/meetings';
 import { Patients } from '../cmps/doctor/patients';
-import { useDispatch, useSelector } from 'react-redux';
-import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
 
 const nestedRoutes = [
     {
-        path: '/doctor/meetings',
+        path: '/doctor-page/meetings',
         component: Meetings,
     },
     {
-        path: '/doctor/patiences',
+        path: '/doctor-page/patiences',
         component: Patients,
     },
     {
-        path: '/doctor/history',
+        path: '/doctor-page/history',
         component: History,
     },
 ];
 
 export function DoctorPage() {
-    const { user } = useSelector((state) => state.userModule);
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        if (!user) dispatch(getLoggedInUser());
-    }, [user]);
-
-    const onLogOut = () => {
-        window.location.href = '/';
-        dispatch(onLogout());
-    };
-
     return (
         <div className="main-wrapper">
             <div className="main-contents">
@@ -59,24 +44,24 @@ export function DoctorPage() {
                                 </div>
                             </div>
                             <div className="logout-btn">
-                                <button onClick={onLogOut}>logout</button>
+                                <button>logout</button>
                             </div>
                         </div>
                     </div>
 
                     <div className="details-wrapper">
                         <div className="details">
-                            <NavLink to="/doctor/meetings">
+                            <NavLink to="/doctor-page/meetings">
                                 Meetings
                             </NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor/patiences">
+                            <NavLink to="/doctor-page/patiences">
                                 Patiences
                             </NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor/history">History</NavLink>
+                            <NavLink to="/doctor-page/history">History</NavLink>
                         </div>
                     </div>
                 </div>

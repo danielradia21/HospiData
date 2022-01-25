@@ -1,0 +1,67 @@
+.doctor-card {
+  .doctor-name {
+    color: #343531;
+  }
+  .doctor-prof {
+    color: #6e807a;
+    font-size: 14px;
+  }
+}
+
+.carousel-card-top {
+  position: relative;
+
+  .meta-background{
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.363);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+  
+  }
+  &:hover{
+    .meta-background{
+      opacity: 1;
+    }
+    .meta {
+      opacity: 1;
+      top:75%;
+    }
+  }
+  img {
+    object-fit: cover;
+  }
+  .meta {
+    display: flex;
+    gap:10px;
+    transition: 0.3s;
+    position: absolute;
+    opacity: 0;
+    left:30%;
+    top:90%;
+   
+
+    .icon{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      color:#6e807a;
+      width:40px;
+      height:40px;
+      border-radius: 50%;
+      transition: 0.3s;
+      font-size: 16px;
+      cursor: pointer;
+      &.whatsapp-icon{
+        color:#00af9c;
+      }
+      &:hover{
+        background-color: #6e807a;
+        color:#fff;
+      }
+    }
+   
+  }
+}

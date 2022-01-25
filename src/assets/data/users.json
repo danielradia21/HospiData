@@ -4,14 +4,14 @@
         "fullName": "Orly Amadi",
         "username": "orlyAma@gmail.com",
         "password": "tinkerbell",
-        "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg",
-        "isAdmin": true,
+        "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'",
+        "isAdmin": false,
         "type": "doctor",
         "patience": [
             {
                 "_id": "u103",
                 "fullname": "Tino Blom",
-                "imgUrl": "https://randomuser.me/api/portraits/women/0.jpg"
+                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             }
         ],
         "meetings": [
@@ -27,7 +27,7 @@
         "fullName": "Tino Blom",
         "username": "Tinoblom@gmail.com",
         "password": "1234Password",
-        "imgUrl": "https://randomuser.me/api/portraits/women/0.jpg",
+        "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
         "isAdmin": false,
         "type": "patient",
         "appointments": [
@@ -40,7 +40,7 @@
                 "doctor": {
                     "_id": "u101",
                     "fullname": "Orly Amadi",
-                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
                 }
             },
             {
@@ -52,7 +52,7 @@
                 "doctor": {
                     "_id": "u101",
                     "fullname": "Orly Amadi",
-                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
                 },
                 "drugs": ["acamol", "decsamol"],
                 "medical references": [
@@ -65,14 +65,14 @@
             },
             {
                 "_id": "a104",
-                "title": "headache",
-                "description": "Head hurts alot, feels like i may faint",
+                "title": "",
+                "description": "",
                 "date": "1642508155660",
                 "status": "pending",
                 "doctor": {
                     "_id": "u101",
                     "fullname": "Orly Amadi",
-                    "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg"
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
                 }
             }
         ]
@@ -82,14 +82,19 @@
         "fullName": "David Davidov",
         "username": "DavidDav@gmail.com",
         "password": "iamtheking",
-        "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg",
+        "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
         "isAdmin": false,
         "type": "doctor",
         "patience": [
             {
                 "_id": "u103",
                 "fullname": "Gal Dror",
-                "imgUrl": "https://randomuser.me/api/portraits/women/3.jpg"
+                "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                "_id": "u120",
+                "fullname": "Ronit Pushkin",
+                "imgUrl": "https://randomuser.me/api/portraits/women/31.jpg"
             }
         ],
         "meetings": [
@@ -110,7 +115,7 @@
         "fullName": "Gal Dror",
         "username": "DroriG@gmail.com",
         "password": "123123",
-        "imgUrl": "https://randomuser.me/api/portraits/women/3.jpg",
+        "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
         "isAdmin": false,
         "type": "patient",
         "appointments": [
@@ -123,7 +128,7 @@
                 "doctor": {
                     "_id": "u103",
                     "fullname": "David Davidov",
-                    "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg"
+                    "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["decsamol"]
             }
@@ -147,7 +152,7 @@
                 "doctor": {
                     "_id": "u103",
                     "fullname": "David Davidov",
-                    "imgUrl": "https://randomuser.me/api/portraits/men/29.jpg"
+                    "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["acamol"],
                 "medical references": [
@@ -169,4 +174,8 @@
         "isAdmin": true,
         "type": "admin"
     }
+
+
+
+    
 ]
