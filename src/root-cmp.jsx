@@ -9,6 +9,7 @@ import { AppHeader } from './cmps/app-header';
 import { AppFooter } from './cmps/app-footer';
 import { PatientPage } from './pages/patient-page';
 import { HomePage } from './pages/home-page';
+import { DoctorPage } from './pages/doctor-page';
 
 export class RootCmp extends React.Component {
 
@@ -29,6 +30,8 @@ export class RootCmp extends React.Component {
                             />
                         ))}
                         <Route component={PatientPage} path={'/patient'}/>
+                        <Route component={DoctorPage} path={'/doctor'}/>
+                        
                     </Switch>
                 </main>
                 <AppFooter />
