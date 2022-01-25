@@ -7,7 +7,6 @@ import { AppFooter } from './cmps/app-footer';
 import { DoctorPage } from './pages/doctor-page';
 import { HomePage } from './pages/home-page';
 
-
 export class RootCmp extends React.Component {
     render() {
         return (
