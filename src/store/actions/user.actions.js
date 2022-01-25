@@ -50,6 +50,7 @@ export function getLoggedInUser() {
     return async (dispatch) => {
         try {
             const user = await userService.getLoggedinUser();
+            if (!user) window.location.href = '/';
             dispatch({
                 type: 'SET_USER',
                 user,
