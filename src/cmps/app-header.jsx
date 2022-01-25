@@ -30,6 +30,9 @@ export function AppHeader() {
             </Link>
             <div className="nav-links-container">
                 <nav className="nav-links">
+                    <NavLink exact to="/">
+                        Home
+                    </NavLink>
                     {routes.map((route) => (
                         <NavLink exact key={route.path} to={route.path}>
                             {route.label}
@@ -49,7 +52,7 @@ export function AppHeader() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style} className='check'>
+                <Box sx={style} className="check">
                     <SignIn onClose={handleClose} />
                 </Box>
             </Modal>

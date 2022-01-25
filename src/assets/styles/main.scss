@@ -14,6 +14,7 @@
 // Views
 
 @import 'views/home-page';
+@import 'views/doctor-page';
 
 // Components
 @import 'cmps/app-header';
@@ -22,6 +23,8 @@
 @import 'cmps/homepage/card-list';
 @import 'cmps/homepage/card-prev';
 @import 'cmps/homepage/health-section';
+@import 'cmps/patients';
+// @import 'cmps/usersTamplate';
 
 
 .spacer {

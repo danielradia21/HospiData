@@ -1,13 +1,9 @@
 import { HomePage } from './pages/home-page.jsx';
-
+import { DoctorPage } from './pages/doctor-page';
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
-    {
-        path: '/',
-        component: HomePage,
-        label: 'Home',
-    },
+
     {
         path: '/about',
         component: HomePage,
@@ -23,6 +19,7 @@ const routes = [
         component: HomePage,
         label: 'Contact',
     },
-];
+
+]
 
 export default routes;
