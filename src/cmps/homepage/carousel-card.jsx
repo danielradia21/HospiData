@@ -8,8 +8,8 @@ import PhoneIcon from '@mui/icons-material/Phone'
 
 export function CarouselCard({ doctor }) {
   return (
-    <Card sx={{ width: 240, height: 344 }} className="doctor-card">
-      <div className="doctor-card-top">
+    <Card sx={{ width: 240, height: 344 }} className="doctor-card carousel-card-preview">
+      <div className="carousel-card-top">
         <div className="meta-background"></div>
         <CardMedia
           component="img"

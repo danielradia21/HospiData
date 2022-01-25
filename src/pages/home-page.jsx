@@ -4,7 +4,7 @@ import {HealthSection} from  '../cmps/homepage/health-section'
 import { DocCarousel } from '../cmps/homepage/carousel';
 export function HomePage() {
     return (
-        <section>
+        <section className='home-page-container'>
             <Hero />
             <CardList />
             <HealthSection/>

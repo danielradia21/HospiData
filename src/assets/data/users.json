@@ -1,273 +1,177 @@
 [
-  {
-      "_id":"u101",
-      "fullName":"Orly Amadi",
-      "userName":"orlyAma@gmail.com",
-      "password":"tinkerbell",
-      "imgUrl":"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "isAdmin":false,
-      "type":"doctor",
-      "patience":[
-          {
-              "_id":"u103",
-              "fullname":"Tino Blom",
-              "imgUrl":"https://randomuser.me/api/portraits/women/0.jpg"
-          }
-      ],
-      "meetings":[
-          {
-              "_id":"m-101",
-              "fullname":"Tino Blom",
-              "date":"1642507155660"
-          }
-      ]
-  },
-  {
-    "_id":"u102",
-    "fullName":"Tino Blom",
-    "userName":"Tinoblom@gmail.com",
-    "password":"1234Password",
-    "imgUrl":"https://randomuser.me/api/portraits/women/0.jpg",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a101",
-            "title":"Nose Pain",
-            "description":"Nose bled twice for no reason",
-            "date":"1642506255660",
-            "status":"cancelled",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-
+    {
+        "_id": "u101",
+        "fullName": "Orly Amadi",
+        "username": "orlyAma@gmail.com",
+        "password": "tinkerbell",
+        "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'",
+        "isAdmin": false,
+        "type": "doctor",
+        "patience": [
+            {
+                "_id": "u103",
+                "fullname": "Tino Blom",
+                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             }
-        },
-        {
-            "_id":"a103",
-            "title":"Back pain",
-            "description":"Back hurts after falling from a bike",
-            "date":"1642507155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-
-            },
-            "drugs":["acamol","decsamol"],
-            "medical references":[
-                {
-                    "_id":"r-101",
-                    "title":"Ultrasound",
-                    "date":"1642508955660"
-                }
-            ]
-        },
-        {
-            "_id":"a104",
-            "title":"headache",
-            "description":"Head hurts alot, feels like i may faint",
-            "date":"1642508155660",
-            "status":"pending",
-            "doctor":{
-                "_id":"u101",
-                "fullname":"Orly Amadi",
-                "imgUrl":"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-
+        ],
+        "meetings": [
+            {
+                "_id": "m-101",
+                "fullname": "Tino Blom",
+                "date": "1642507155660"
             }
-        }
-    ]
-},
-{
-    "_id":"u103",
-    "fullName":"David Davidov",
-    "imgUrl":"https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
-    "userName":"DavidDav@gmail.com",
-    "password":"iamtheking",
-    "isAdmin":false,
-    "type":"doctor",
-    "patience":[
-        {
-            "_id":"u103",
-            "fullname":"Gal Dror",
-            "imgUrl":"https://randomuser.me/api/portraits/women/3.jpg"
-        }
-    ],
-    "meetings":[
-        {
-            "_id":"m200",
-            "fullname":"Gal Dror",
-            "date":"1642508155660"
-        },
-        {
-            "_id":"m21232",
-            "fullname":"Ronit Pushkin",
-            "date":"1642509155660"
-        }
-    ]
-},
-{
-    "_id":"u190",
-    "fullName":"Ashley Gordon",
-    "imgUrl":"https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80",
-    "userName":"GordonAshley@gmail.com",
-    "password":"ashleyashley",
-    "isAdmin":false,
-    "type":"doctor",
-    "patience":[
-        {
-            "_id":"u120",
-            "fullname":"Zoya Kozol",
-            "imgUrl":"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        }
-    ],
-    "meetings":[
-        {
-            "_id":"m14222",
-            "fullname":"Zoya Kozol",
-            "date":"1642509155660"
-        }
-    ]
-},
-{
-    "_id":"u2344",
-    "fullName":"Anna Daninov",
-    "imgUrl":"https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-    "userName":"Daninov123@gmail.com",
-    "password":"ADninov1",
-    "isAdmin":false,
-    "type":"doctor",
-    "patience":[
-        {
-            "_id":"u120",
-            "fullname":"Zoya Kozol",
-            "imgUrl":"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-        }
-    ],
-    "meetings":[
-        {
-            "_id":"m149",
-            "fullname":"Zoya Kozol",
-            "date":"1642509255660"
-        }
-    ]
-},
-{
-    "_id":"u109",
-    "fullName":"Gal Dror",
-    "imgUrl":"https://randomuser.me/api/portraits/women/3.jpg",
-    "userName":"DroriG@gmail.com",
-    "password":"123123",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a110",
-            "title":"fevor",
-            "description":"had 39C last night",
-            "date":"1642508155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u103",
-                "fullname":"David Davidov",
-                "imgUrl":"https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
-
-            },
-            "drugs":["decsamol"]
-        }
-    ]
-},
-{
-    "_id":"u120",
-    "fullName":"Zoya Kozol",
-    "userName":"ZoyaZoy@gmail.com",
-    "password":"123123",
-    "imgUrl":"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a2222",
-            "title":"arm hurts",
-            "description":"fell on my arm and it started hurting",
-            "date":"1642509155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u190",
-                "fullname":"Ashley Gordon",
-                "imgUrl":"https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1152&q=80"
-            },
-            "drugs":["acamol"],
-            "medical references":[
-                {
-                    "_id":"r-345",
-                    "title":"Rentgen",
-                    "date":"1642610155660"
+        ]
+    },
+    {
+        "_id": "u102",
+        "fullName": "Tino Blom",
+        "username": "Tinoblom@gmail.com",
+        "password": "1234Password",
+        "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a101",
+                "title": "Nose Pain",
+                "description": "Nose bled twice for no reason",
+                "date": "1642506255660",
+                "status": "cancelled",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
                 }
-            ]
-        },
-        {
-            "_id":"a155",
-            "title":"head hurts",
-            "description":"fell on my head and it started hurting",
-            "date":"1642509255660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u2344",
-                "fullName":"Anna Daninov",
-                "imgUrl":"https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
             },
-            "drugs":["acamol"],
-            "medical references":[
-                {
-                    "_id":"r-1225",
-                    "title":"Rentgen",
-                    "date":"1642600155660"
-                }
-            ]
-        }
-    ]
-},
-{
-    "_id":"u120",
-    "fullName":"Ronit Pushkin",
-    "userName":"RontPush@gmail.com",
-    "password":"111111",
-    "imgUrl":"https://randomuser.me/api/portraits/women/31.jpg",
-    "isAdmin":false,
-    "type":"patient",
-    "appointments":[
-        {
-            "_id":"a125",
-            "title":"leg hurts",
-            "description":"fell on my leg and it started hurting",
-            "date":"1642509155660",
-            "status":"arrived",
-            "doctor":{
-                "_id":"u103",
-                "fullname":"David Davidov",
-                "imgUrl":"https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+            {
+                "_id": "a103",
+                "title": "Back pain",
+                "description": "Back hurts after falling from a bike",
+                "date": "1642507155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
+                },
+                "drugs": ["acamol", "decsamol"],
+                "medical references": [
+                    {
+                        "_id": "r-101",
+                        "title": "Ultrasound",
+                        "date": "1642508955660"
+                    }
+                ]
             },
-            "drugs":["acamol"],
-            "medical references":[
-                {
-                    "_id":"r-105",
-                    "title":"Rentgen",
-                    "date":"1642510155660"
+            {
+                "_id": "a104",
+                "title": "headache",
+                "description": "Head hurts alot, feels like i may faint",
+                "date": "1642508155660",
+                "status": "pending",
+                "doctor": {
+                    "_id": "u101",
+                    "fullname": "Orly Amadi",
+                    "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'"
                 }
-            ]
-        }
-    ]
-},
-{
-    "_id":"u105",
-    "fullName":"Admin Adminovich",
-    "userName":"Admin@Admin.com",
-    "password":"Admin",
-    "imgUrl":"https://randomuser.me/api/portraits/men/72.jpg",
-    "isAdmin":true,
-    "type":"admin"
-}
-  ]
+            }
+        ]
+    },
+    {
+        "_id": "u103",
+        "fullName": "David Davidov",
+        "username": "DavidDav@gmail.com",
+        "password": "iamtheking",
+        "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
+        "isAdmin": false,
+        "type": "doctor",
+        "patience": [
+            {
+                "_id": "u103",
+                "fullname": "Gal Dror",
+                "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                "_id": "u120",
+                "fullname": "Ronit Pushkin",
+                "imgUrl": "https://randomuser.me/api/portraits/women/31.jpg"
+            }
+        ],
+        "meetings": [
+            {
+                "_id": "m110",
+                "fullname": "Gal Dror",
+                "date": "1642508155660"
+            },
+            {
+                "_id": "m111",
+                "fullname": "Ronit Pushkin",
+                "date": "1642509155660"
+            }
+        ]
+    },
+    {
+        "_id": "u109",
+        "fullName": "Gal Dror",
+        "username": "DroriG@gmail.com",
+        "password": "123123",
+        "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a110",
+                "title": "fevor",
+                "description": "had 39C last night",
+                "date": "1642508155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u103",
+                    "fullname": "David Davidov",
+                    "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+                },
+                "drugs": ["decsamol"]
+            }
+        ]
+    },
+    {
+        "_id": "u120",
+        "fullName": "Ronit Pushkin",
+        "username": "RontPush@gmail.com",
+        "password": "111111",
+        "imgUrl": "https://randomuser.me/api/portraits/women/31.jpg",
+        "isAdmin": false,
+        "type": "patient",
+        "appointments": [
+            {
+                "_id": "a125",
+                "title": "leg hurts",
+                "description": "fell on my leg and it started hurting",
+                "date": "1642509155660",
+                "status": "arrived",
+                "doctor": {
+                    "_id": "u103",
+                    "fullname": "David Davidov",
+                    "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+                },
+                "drugs": ["acamol"],
+                "medical references": [
+                    {
+                        "_id": "r-105",
+                        "title": "Rentgen",
+                        "date": "1642510155660"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "u105",
+        "fullName": "Admin Adminovich",
+        "username": "Admin@Admin.com",
+        "password": "Admin",
+        "imgUrl": "https://randomuser.me/api/portraits/men/72.jpg",
+        "isAdmin": true,
+        "type": "admin"
+    }
+]

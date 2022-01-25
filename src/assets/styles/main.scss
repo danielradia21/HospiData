@@ -14,6 +14,8 @@
 // Views
 
 @import 'views/home-page';
+@import 'views/doctor-page';
+@import 'views/about-us';
 
 // Components
 @import 'cmps/app-header';
@@ -24,3 +26,14 @@
 @import 'cmps/homepage/health-section';
 @import 'cmps/homepage/carousel';
 @import 'cmps/homepage/carousel-card';
+@import 'cmps/aboutUs/health-section';
+@import 'cmps/aboutUs/hero';
+@import 'cmps/aboutUs/carousel';
+@import 'cmps/aboutUs/carousel-card';
+@import 'cmps/patient/appointment-list';
+@import 'cmps/patient/appointment-prev';
+
+
+.spacer {
+    height: 80px;
+}

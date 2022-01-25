@@ -8,7 +8,7 @@
   }
 }
 
-.doctor-card-top {
+.carousel-card-top {
   position: relative;
 
   .meta-background{
@@ -54,6 +54,9 @@
       transition: 0.3s;
       font-size: 16px;
       cursor: pointer;
+      &.whatsapp-icon{
+        color:#00af9c;
+      }
       &:hover{
         background-color: #6e807a;
         color:#fff;

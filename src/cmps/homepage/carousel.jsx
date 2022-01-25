@@ -34,9 +34,9 @@ export function DocCarousel() {
   ]
 
   return (
-      <section className='doctor-carousel'>
+      <section className='carousel-card-container'>
           <h1>Our Doctors</h1>
-          <Carousel itemPadding={[10, 50]} itemsToShow={3} pagination={false} showArrows={false} ref={ref => (carousel = ref)}>
+          <Carousel itemPadding={[10,25]}  itemsToShow={3} pagination={false} showArrows={false} ref={ref => (carousel = ref)} >
             {doctors.map((doctor) => (
               <CarouselCard doctor={doctor} key={doctor._id}/>
             ))}
