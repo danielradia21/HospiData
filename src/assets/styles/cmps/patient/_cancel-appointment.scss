@@ -1,0 +1,58 @@
+// .cancel-modal{
+//     position: absolute;
+//     width: 100vw;
+//     height: 100vh;
+// }
+
+// .cancel-modal-content{
+//     position: absolute;
+//     z-index: 9;
+// }
+
+// .blackscreen {
+//     position: fixed;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: rgba(26, 24, 24, 0.561);
+//     z-index: 8;
+//   }
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #04477b;
+    color: white;
+    button{
+        height: 25px;
+        margin-top: 13px;
+        margin-right: 10px;
+        background-color: #fe0000ab;
+        color: white;
+    }
+    p{
+        padding-top:10px;
+        margin-left: 10px;
+    }
+}
+
+.modal-info-continer{
+    p{
+        margin-bottom: 0;
+        padding-top: 15px;
+    }
+
+    button{
+        &.acspet{
+            background-color: #00D9A5;
+            padding: 15px;
+           margin-bottom: 0;
+        }
+        &.Cancel{
+            background-color: #fe0000ab;
+            padding: 10px;
+        }
+        margin-top: 15px;
+        margin-bottom: 30px;
+        color: white;
+    }
+}

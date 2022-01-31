@@ -13,12 +13,9 @@ export const userService = {
     getById,
     getByUID,
     update,
-    updateLoggedInUser
+    updateLoggedInUser,
 };
 
-async function updateLoggedInUser(user) {
-    _saveLocalUser(user);
-}
 
 async function getUsers() {
     try {
@@ -53,8 +50,8 @@ async function getByUID(UID) {
 
 async function update(user) {
     try {
-        if (!getLoggedinUser().isAdmin)
-            throw Error('Cant update when you are not admin');
+        // if (!getLoggedinUser().isAdmin)
+        //   throw Error('Cant update when you are not admin')
         await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
         return _saveLocalUser(user);
@@ -68,7 +65,8 @@ async function login(userCred) {
         const users = await getUsers();
         const user = users.find(
             (user) =>
-                user.username === userCred.username &&
+                user.username.toLowerCase() ===
+                    userCred.username.toLowerCase() &&
                 user.password === userCred.password
         );
         if (user) return _saveLocalUser(user);
@@ -97,6 +95,17 @@ async function logout() {
         //   return await httpService.post('auth/logout')
     } catch (err) {
         console.log('Had error on userService: LOGOUT', err);
+    }
+}
+
+
+async function updateLoggedInUser(user) {
+    try {
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
+        await update(user);
+        return user;
+    } catch (err) {
+        console.log(err);
     }
 }
 

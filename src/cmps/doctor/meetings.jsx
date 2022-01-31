@@ -89,8 +89,8 @@ export function Meetings() {
         const idx = user.meetings.findIndex((meet) => meet._id === meetingId);
         user.meetings.splice(idx, 1);
         if (stat === 'deny') {
-            await doctorService.updateDoctor(user);
-            userService.updateLoggedInUser(user);
+      
+           await userService.updateLoggedInUser(user);
             return;
         }
         const exsist = user.patients.some(
@@ -98,8 +98,7 @@ export function Meetings() {
         );
         if (!exsist) user.patients.push(currMeet.patient);
         user.history.push(currMeet);
-        await doctorService.updateDoctor(user);
-        userService.updateLoggedInUser(user);
+        await userService.updateLoggedInUser(user);
         // send message to user inbox
     };
 

@@ -19,10 +19,10 @@
         "meetings": [
             {
                 "_id": "a101",
-                "status": "cancelled",
+                "status":"cancelled",
                 "patient": {
                     "_id": "u103",
-                    "UID": "54564222381",
+                    "UID":"54564222381",
                     "fullname": "Tino Blom",
                     "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 },
@@ -30,10 +30,10 @@
             },
             {
                 "_id": "a104",
-                "status": "pending",
+                "status":"pending",
                 "patient": {
                     "_id": "u103",
-                    "UID": "54564222381",
+                    "UID":"54564222381",
                     "fullname": "Tino Blom",
                     "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 },
@@ -75,7 +75,7 @@
                     "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80"
                 },
                 "drugs": ["acamol", "decsamol"],
-                "medical references": [
+                "referrals": [
                     {
                         "_id": "r-101",
                         "title": "Ultrasound",
@@ -129,33 +129,33 @@
         "meetings": [
             {
                 "_id": "a110",
-                "status": "arrived",
-                "patient": {
+                "status":"arrived",
+                "patient":  {
                     "_id": "u103",
                     "fullname": "Gal Dror",
-                    "UID": "5456454441",
+                    "UID":"5456454441",
                     "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 },
                 "date": "1642508155660"
             },
             {
                 "_id": "a125",
-                "status": "arrived",
-                "patient": {
+                "status":"arrived",
+                "patient":  {
                     "_id": "u120",
-                    "UID": "54564543",
+                    "UID":"54564543",
                     "fullname": "Ronit Pushkin",
                     "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                 },
                 "date": "1642509155660"
             },
             {
-                "_id": "a1345",
-                "status": "arrived",
-                "patient": {
-                    "_id": "u1997",
-                    "fullName": "Beny Kursalin",
-                    "UID": "520844775",
+                "_id":"a1345",
+                "status":"arrived",
+                "patient":  {
+                    "_id":"u1997",
+                    "fullName":"Beny Kursalin",
+                    "UID":"520844775",
                     "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
                 },
                 "date": "1642509255660"
@@ -209,7 +209,7 @@
                     "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["acamol"],
-                "medical references": [
+                "referrals": [
                     {
                         "_id": "r-105",
                         "title": "Rentgen",
@@ -241,7 +241,7 @@
                     "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["acamol"],
-                "medical references": [
+                "referrals": [
                     {
                         "_id": "r-105",
                         "title": "Rentgen",
@@ -319,10 +319,10 @@
         "meetings": [
             {
                 "_id": "a103",
-                "status": "pending",
+                "status":"pending",
                 "patient": {
                     "_id": "u103",
-                    "UID": "54564222381",
+                    "UID":"54564222381",
                     "fullname": "Tino Blom",
                     "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 },
@@ -340,6 +340,6 @@
         "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
         "isAdmin": true,
         "type": "patient",
-        "appointments": []
+        "appointments":[]
     }
 ]

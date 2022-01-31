@@ -4,6 +4,7 @@ import { PatientPage } from './pages/patient-page.jsx';
 import { Lab } from './cmps/patient/lab.jsx';
 import { AppointmentList } from './cmps/patient/appointment-list.jsx';
 import { DoctorPage } from './pages/doctor-page.jsx';
+import { MedicalReferrals } from './cmps/patient/medial-referrals.jsx';
 
 
 // Routes accesible from the main navigation (in AppHeader)
@@ -37,6 +38,11 @@ export const patientNestedRoutes=[
     {
       path: '/patient/lab',
       component: Lab,
-      label: 'Labs',
+      label: 'Labs Results',
     },
+    {
+      path: '/patient/medical-referrals',
+      component: MedicalReferrals,
+      label: 'Medical Refferals',
+    }
   ]
