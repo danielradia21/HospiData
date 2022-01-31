@@ -13,15 +13,13 @@
 
 // Views
 @import 'views/home-page';
-<<<<<<< HEAD
-=======
 @import 'views/doctor-page';
 @import 'views/admin-page';
-
 @import 'views/about-us';
->>>>>>> 8453f2116d08eb8dcefd10bbe55b88976ee83b76
 
 // Components
+// Main
+// Admin
 @import 'cmps/app-header';
 @import 'cmps/app-footer';
 @import 'cmps/homepage/hero';
@@ -29,18 +27,17 @@
 @import 'cmps/homepage/card-prev';
 @import 'cmps/homepage/health-section';
 @import 'cmps/usersTamplate';
-
-
-
-
 @import 'cmps/homepage/carousel';
 @import 'cmps/homepage/carousel-card';
 @import 'cmps/aboutUs/health-section';
 @import 'cmps/aboutUs/hero';
 @import 'cmps/aboutUs/carousel';
 @import 'cmps/aboutUs/carousel-card';
+// Patient
 @import 'cmps/patient/appointment-list';
 @import 'cmps/patient/appointment-prev';
-@import 'cmps/patients';
-@import 'cmps/usersTamplate';
+// Doctor
+@import 'cmps/doctor/patients';
+@import 'cmps/doctor/meetings';
+
 

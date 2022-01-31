@@ -35,6 +35,7 @@ export function onLogin(credentials) {
     return async (dispatch) => {
         try {
             const user = await userService.login(credentials);
+            console.log('file: user.actions.js   line 39   user', user);
             dispatch({
                 type: 'SET_USER',
                 user,
@@ -75,6 +76,16 @@ export function onSignup(credentials) {
                 // showErrorMsg('Cannot signup');
                 console.log('Cannot signup', err);
             });
+    };
+}
+
+export function setNewUser(newUser) {
+
+    return (dispatch) => {
+        dispatch({
+            type: 'SET_USER',
+            user: newUser,
+        });
     };
 }
 

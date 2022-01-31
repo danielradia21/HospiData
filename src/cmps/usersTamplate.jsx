@@ -67,7 +67,7 @@ export function DoctorPage() {
                 </div>
                 <div className="main-content-section">
                     <div className="main-content">
-                        <div className="contents">
+                        <div className="main-content-header">
                             <Switch>
                                 {nestedRoutes.map((nestedRoute) => (
                                     <Route

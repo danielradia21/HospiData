@@ -1,0 +1,141 @@
+.main-content-header {
+    .doc-patient-header {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        .sub-btn {
+            position: absolute;
+            left: 24px;
+            color: white;
+            padding: 3px;
+            top: 0;
+            border: 1px solid white;
+            &:hover {
+                text-decoration: none;
+                // background-color: #20aa5ce0;
+            }
+        }
+    }
+}
+
+.doc-patient-actions-container {
+    display: flex;
+    width: 100%;
+    padding: 15px 25px;
+}
+
+.doc-patients-main-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    input {
+        padding: 8px;
+        margin: 20px 25px;
+        width: 350px;
+        &.search {
+            margin: 5px 0px;
+        }
+    }
+}
+.doc-patient-card-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    .doc-patient-card {
+        box-shadow: 0px 0px 5px 0px #000000ad;
+        width: 239px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        &:nth-child(even) {
+            background-color: rgba(51, 203, 116, 0.2);
+        }
+        &:nth-child(odd) {
+            background-color: rgba(4, 71, 123, 0.2);
+        }
+        .sub-btn {
+            margin-bottom: 0;
+        }
+        .img-container {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .patient-details {
+            align-self: flex-start;
+        }
+    }
+}
+.btns-container {
+    height: 45px;
+    width: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+        width: 80px;
+    }
+}
+
+.doc-patients-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    .doc-patient-profile {
+        width: 100%;
+        background-color: rgba(51, 203, 116, 0.2);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        .img-container {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .doc-patient-details {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            .patient-details-info {
+                margin-top: 10px;
+                color: #6e807a;
+                text-transform: capitalize;
+                p {
+                    color: #6e807a;
+                    margin: 0;
+                    line-height: 1.7rem;
+                    &:first-child {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+        button {
+            align-self: flex-end;
+            background-color: #33cb74;
+            font-size: 1rem;
+        }
+    }
+}

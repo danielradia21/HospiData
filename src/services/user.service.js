@@ -13,8 +13,12 @@ export const userService = {
     getById,
     getByUID,
     update,
-
+    updateLoggedInUser
 };
+
+async function updateLoggedInUser(user) {
+    _saveLocalUser(user);
+}
 
 async function getUsers() {
     try {
@@ -37,18 +41,15 @@ async function getById(userId) {
     }
 }
 
-
 async function getByUID(UID) {
     try {
         let users = await storageService.query('user');
-        return users.filter(user=>user.UID===UID)
+        return users.find((user) => user.UID === UID);
         //   return await httpService.get(`user/${userId}`)
     } catch (err) {
         console.log('Had error on userService: GETUSERBYID', err);
     }
 }
-
-
 
 async function update(user) {
     try {
@@ -64,17 +65,12 @@ async function update(user) {
 
 async function login(userCred) {
     try {
-        console.log(userCred);
         const users = await getUsers();
-        console.log('file: user.service.js   line 53   users', users);
-
         const user = users.find(
             (user) =>
                 user.username === userCred.username &&
                 user.password === userCred.password
         );
-        console.log('file: user.service.js   line 60   user', user);
-
         if (user) return _saveLocalUser(user);
         //   const user = await httpService.post('auth/login', userCred)
     } catch (err) {
