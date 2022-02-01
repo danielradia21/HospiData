@@ -4,12 +4,14 @@ import { PieChart } from "./pie-chart";
 import {adminService} from "../../services/admin.service"
 import { useEffect, useState } from "react";
 
+
 export function AdminDashBord() {
 
         const [doctors,setDoctors] = useState(null)
         const [patience,setPatience] = useState(null)
         const [appointments,setAppointments] = useState(null)
         const [activeCmp,setActiveCmp] = useState('line')
+        const [history,setHistory] = useState([])
 
         useEffect(async() => {
            await getDoctors();
@@ -50,6 +52,8 @@ export function AdminDashBord() {
             setActiveCmp(prev=> prev = cmpName)
         }
 
+
+
      if (!doctors || !patience || !appointments) return <div>lodinng...</div>
      
     // <div className="dashBord-continer"> 
@@ -75,8 +79,8 @@ export function AdminDashBord() {
     <div className="dasbord">
          <CardList doctorsSum={doctors.length} patienceSum={patience.length} appointments={appointments}/>
          <div className="flex dasbord-btn-continer ">
-             <button onClick={()=>selectCmp('line')}>line</button>
-             <button onClick={()=>selectCmp('pie')}>pie</button>
+             <button  onClick={()=>selectCmp('line')}>Financial Data</button>
+             <button onClick={()=>selectCmp('pie')}>Doctors status</button>
          </div>
          {showCpm()}
         </div>     

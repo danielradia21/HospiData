@@ -1,4 +1,6 @@
 
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { NavLink, Route, Switch } from "react-router-dom"
 import {AdminDashBord} from "../cmps/admin/admin-dashbord"
 import {AdminDoctorsList} from "../cmps/admin/admin-doctors-list"
@@ -6,12 +8,13 @@ import { AdminMainContect } from "../cmps/admin/admin-main-contect"
 import {AdminPatienceList} from "../cmps/admin/admin-patience-list"
 import { AdminProfile } from "../cmps/admin/admin-proflie"
 import { AdminSideNavBar } from "../cmps/admin/admin-side-nav"
+import { getLoggedInUser, onLogout } from "../store/actions/user.actions"
 
 const _ADMIN =  {
        _id: "u101",
-       fullName: "Orly Amdadi",
-       userName: "orly@amdadi.com",
-      password: "tinkerbell",
+     fullName: "Orly Amdadi",
+     userName: "orly@amdadi.com",
+      password: "tinkerbell",
        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSxyoKZ4E4mGbUJ7owqGf1P9hdoCUe7wHaBAoMpIc12Quq2tETjLYq3OA-EtPSgNVXcsg&usqp=CAU",
       isAdmin:true,
       type:"doctor",
@@ -69,6 +72,20 @@ const nestedRoutes = [
 ];
 
 export function AdminPage() {
+
+    const { user } = useSelector((state) => state.userModule);
+
+const dispatch = useDispatch();
+
+useEffect(() => {
+    if (!user) dispatch(getLoggedInUser());
+}, [user]);
+
+const onLogOut = () => {
+    window.location.href = '/';
+    dispatch(onLogout());
+};
+
     // return <section className="main-container ">
     //     <div className="flex" >
     //      <div className="admin-side flex column align-center">
@@ -171,13 +188,14 @@ export function AdminPage() {
 //         </div>
 //      </div>
 //  </div>        <div className="main-wrapper">
+if(!user) return <div>loding...</div>
 return   <div className="main-wrapper">
             <div className="main-contents">
                 <div className="profile-section">
                     <div className="main-profile-container">
                         <div className="img-wrapper">
                             <img
-                                src="https://randomuser.me/api/portraits/women/39.jpg"
+                                src={user.imgUrl}
                                 alt=""
                             />
                         </div>
@@ -185,14 +203,14 @@ return   <div className="main-wrapper">
                         <div className="name-section">
                             <div>
                                 <div className="details">
-                                    <p className="title">{_ADMIN.fullName}</p>
+                                    <p className="title">{user.fullName}</p>
                                 </div>
                                 <div className="details">
                                     <p className="sub-title">Admin</p>
                                 </div>
                             </div>
                             <div className="logout-btn">
-                                <button>logout</button>
+                                <button onClick={onLogOut}>logout</button>
                             </div>
                         </div>
                     </div>

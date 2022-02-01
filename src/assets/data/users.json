@@ -4,7 +4,7 @@
         "fullName": "Orly Amadi",
         "username": "orlyAma@gmail.com",
         "password": "tinkerbell",
-        "imgUrl": "'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'",
+        "imgUrl": "https://randomuser.me/api/portraits/women/39.jpg",
         "isAdmin": false,
         "type": "doctor",
         "patience": [
