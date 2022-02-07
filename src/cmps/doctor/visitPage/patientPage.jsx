@@ -1,5 +1,7 @@
+import { Box, Modal } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PatientModal } from '../patient/patientModal';
 
 import { PatientTable } from '../patients-table';
 
@@ -9,6 +11,7 @@ export function PatientPage({ user }) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [open, setOpen] = React.useState(false);
+
     const filterHistory = (ev) => {
         const FilteredList = user.appointments.filter((app) =>
             app.doctor.fullname.toLowerCase().includes(ev.target.value)
@@ -19,6 +22,7 @@ export function PatientPage({ user }) {
         setModalQuest((prev) => (prev = question));
         handleOpen();
     };
+
     if (!user) return;
     return (
         <>
@@ -43,7 +47,9 @@ export function PatientPage({ user }) {
                             <p>last visited</p>
                         </div>
                     </div>
-                    <button className="main-btn">New something</button>
+                    <button onClick={handleOpen} className="main-btn">
+                        New something
+                    </button>
                 </div>
                 <div className="doc-patients-main-content">
                     <input
@@ -61,6 +67,7 @@ export function PatientPage({ user }) {
                     />
                 </div>
             </div>
+            <PatientModal open={open} handleClose={handleClose} />
         </>
     );
 }

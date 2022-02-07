@@ -15,7 +15,6 @@ export function PateintProfile() {
         if (searchParams.has('uid')) {
             let patId = searchParams.get('uid');
             const user = await userService.getByUID(patId);
-            console.log('file: pateintProfile.jsx   line 18   user', user);
             setUser((prev) => (prev = user));
         }
     };
