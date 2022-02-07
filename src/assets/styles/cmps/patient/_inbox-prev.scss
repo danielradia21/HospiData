@@ -1,0 +1,53 @@
+.prev-inbox-msg-container {
+  display: flex;
+  border-top: 1px solid rgba(128, 128, 128, 0.438);
+  flex-direction: column;
+  position: relative;
+  transition:0.4s;
+  padding:10px 10px;
+
+//   .prev-container{
+//       position: absolute;
+//       transition: 1s;
+//       z-index:-1;
+//     top:-50px;
+      
+//       &.open-prev{
+//           position: sticky;
+//           z-index:2;
+//     }
+//   }
+
+  span{
+    font-weight: 700;
+  }
+  .prev-mail-name{
+    max-width:70%;
+    min-height:28px;
+    max-height:56px;
+    overflow: auto;
+  }
+  .prev-mail-msg{
+      max-width:70%;
+      min-height:28px;
+      max-height:85px;
+      overflow: auto;
+  }
+  button {
+    background-color: #04477b7a;
+    border:1px solid rgba(0, 0, 0, 0.534);
+    color: #fff;
+    position: absolute;
+    border-radius: 10px;
+    right: 0;
+    transition: 0.4s;
+    &:hover{
+        background-color:#33cb74e0;
+        
+    }
+    svg{
+        width:15px;
+        height: 15px;
+    }
+  }
+}

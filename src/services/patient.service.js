@@ -13,7 +13,8 @@ export const patientService = {
   update,
   updateSelfPatient,
   getDoctors,
-  makeAppointment
+  makeAppointment,
+  cancelAppointment,
 }
 
 async function query() {
@@ -43,29 +44,62 @@ async function updateSelfPatient(user) {
   }
 }
 
-async function makeAppointment({doctorId,date}){
-  try{
-      let loggedInUser  = await userService.getLoggedinUser()
-      const randomId = 'a' + utilService.makeId()
-      const meeting = {
-        _id:randomId,
-        status:'pending',
-        patient:{_id:loggedInUser._id,UID:loggedInUser.UID,fullname:loggedInUser.fullName,imgUrl:loggedInUser.imgUrl},
-        date:date
-      }
-      let doctor = await userService.getById(doctorId)
-      doctor.meetings.push(meeting)
-      await userService.update(doctor)
-      // const appointment = getEmptyAppointment()
-      // appointment._id = randomId
-      // appointment.doctor = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
-      // appointment.date = date
-      const miniDoc = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
-      const appointment = makePatientAppointment(randomId,miniDoc,date)
-      loggedInUser.appointments.push(appointment)
-     await userService.updateLoggedInUser(loggedInUser)
-  }catch(err){
+async function cancelAppointment(user, appId) {
+  try {
+    const appIdx = user.appointments.findIndex((app) => app._id === appId)
+    if (user.appointments[appIdx].status === 'cancelled') return
+    let doctor = await userService.getById(user.appointments[appIdx].doctor._id)
+    if (user.appointments[appIdx].status === 'approved') {
+      const historyIdx = doctor.history.findIndex(
+        (oldMeeting) => oldMeeting._id === appId
+      )
+      doctor.history.splice(historyIdx, 1)
+    } else {
+      const meetIdx = doctor.meetings.findIndex(
+        (meeting) => meeting._id === appId
+      )
+      doctor.meetings.splice(meetIdx, 1)
+    }
+    user.appointments[appIdx].status = 'cancelled'
+    await userService.update(doctor)
+    return await updateSelfPatient(user)
+  } catch (err) {
     console.log(err)
+  }
+}
+
+async function makeAppointment({ doctorId, date }) {
+  try {
+    let loggedInUser = await userService.getLoggedinUser()
+    const randomId = 'a' + utilService.makeId()
+    const meeting = {
+      _id: randomId,
+      status: 'pending',
+      patient: {
+        _id: loggedInUser._id,
+        UID: loggedInUser.UID,
+        fullname: loggedInUser.fullName,
+        imgUrl: loggedInUser.imgUrl,
+      },
+      date: date,
+    }
+    let doctor = await userService.getById(doctorId)
+    doctor.meetings.unshift(meeting)
+    await userService.update(doctor)
+    // const appointment = getEmptyAppointment()
+    // appointment._id = randomId
+    // appointment.doctor = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
+    // appointment.date = date
+    const miniDoc = {
+      _id: doctor._id,
+      fullname: doctor.fullName,
+      imgUrl: doctor.imgUrl,
+    }
+    const appointment = makePatientAppointment(randomId, miniDoc, date)
+    loggedInUser.appointments.push(appointment)
+    await userService.updateLoggedInUser(loggedInUser)
+  } catch (err) {
+     console.log(err)
   }
 }
 
@@ -75,7 +109,7 @@ async function getDoctors() {
     return users.reduce((acc, user) => {
       if (user.type === 'doctor')
         acc.push({ fullname: user.fullName, _id: user._id })
-        return acc
+      return acc
     }, [])
   } catch (err) {
     console.log(err)
@@ -106,26 +140,26 @@ async function remove(id) {
   }
 }
 
-function makePatientAppointment(_id,doctor,date){
+function makePatientAppointment(_id, doctor, date) {
   return {
-  _id,
-  title: '',
-  description: '',
-  date,
-  status: "pending",
-  doctor
+    _id,
+    title: '',
+    description: '',
+    date,
+    status: 'pending',
+    doctor,
   }
 }
 
-function getEmptyAppointment(){
- return {
+function getEmptyAppointment() {
+  return {
     _id: '',
     title: '',
     description: '',
     date: 0,
-    status: "pending",
-    doctor: {}
-}
+    status: 'pending',
+    doctor: {},
+  }
 }
 
 function getEmptyPatient() {
@@ -134,8 +168,10 @@ function getEmptyPatient() {
     username: '',
     password: '',
     imgUrl: '',
+    UID:'',
     isAdmin: false,
     type: 'patient',
     appointments: [],
+    inbox:[]
   }
 }

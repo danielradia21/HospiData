@@ -51,8 +51,12 @@ export function AppointmentModal({
     }
   }
 
-  const onAppointmentReq=()=>{
-      makeAppointment(doctorId,treatmentType,date)
+  const onAppointmentReq= async ()=>{
+    try{
+       makeAppointment(doctorId,treatmentType,date)
+    }catch(err){
+      console.log(err)
+    }
   }
 
   // const docTypeOptions = ['Allergists','Anesthesiologists','Cardiologists','Dermatologists','Endocrinologists','Family Physicians','Gastroenterologists','Hematologists','Internists']
@@ -69,7 +73,7 @@ export function AppointmentModal({
   ]
 
   return (
-      <>
+      <div className='appointment-modal-container'>
       {!doctors&&<div>Loading...</div>}
       {doctors&&(
     <Modal
@@ -133,11 +137,12 @@ export function AppointmentModal({
                 </FormControl>
             </div>
               </Box>
-              <div className='date-time-selector'>
+              <div className='date-time-selector appointment-modal-date'>
                   <p>Possible appointment times</p>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Stack spacing={3}>
         <DateTimePicker
+        disabled={!treatmentType||!doctorId}
           renderInput={(params) => <TextField {...params} />}
           label="Ignore time in each day"
           value={date}
@@ -152,11 +157,11 @@ export function AppointmentModal({
       </Stack>
     </LocalizationProvider>
     </div>
-    <button className='make-appointment-btn' disabled={!treatmentType&&!doctorId} onClick={onAppointmentReq}>Request an appointment</button>
+    <button className='make-appointment-btn' disabled={!treatmentType||!doctorId} onClick={onAppointmentReq}>Request an appointment</button>
           </div>
         </div>
       </Box>
     </Modal>)}
-    </>
+    </div>
   )
 }
