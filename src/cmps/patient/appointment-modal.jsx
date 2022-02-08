@@ -143,7 +143,7 @@ export function AppointmentModal({
                         </MenuItem>
                         {doctors.map((doc) => (
                           <MenuItem key={doc._id} value={doc._id}>
-                            Dr. {doc.fullName}
+                            Dr. {doc.fullname}
                           </MenuItem>
                         ))}
                       </Select>

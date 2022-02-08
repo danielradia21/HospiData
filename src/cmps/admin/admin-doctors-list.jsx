@@ -23,7 +23,7 @@ export function AdminDoctorsList() {
 
   const [doctors,setDoctors] = useState(null)
   const [selcteDcotor,setSelcteDcotor] = useState({
-      fullName : '',
+    fullname : '',
       imgUrl : '',
   })
   const [isAdmin, setisAdmin] = useState(false);
@@ -42,8 +42,8 @@ export function AdminDoctorsList() {
 
   const update = (doctor) =>{
     handleOpen();
-    const {fullName,imgUrl,isAdmin} = doctor
-    setSelcteDcotor(prev => prev = {fullName,imgUrl})
+    const {fullname,imgUrl,isAdmin} = doctor
+    setSelcteDcotor(prev => prev = {fullname,imgUrl})
     setisAdmin(prev => prev = isAdmin)
 }
 
@@ -73,7 +73,7 @@ export function AdminDoctorsList() {
                     <div>
                         <h1>updet User</h1>
                         <label>full name</label>
-                        <input id="fullName" type='text' placeholder="full name" value={selcteDcotor.fullName} onChange={hedle}/>
+                        <input id="fullname" type='text' placeholder="full name" value={selcteDcotor.fullname} onChange={hedle}/>
                         <label>img url</label>
                         <input id="imgUrl" type='url' placeholder="img url" value={selcteDcotor.imgUrl} onChange={hedle} />
                         <label>is admin</label>
