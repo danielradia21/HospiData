@@ -1,6 +1,6 @@
 import { Box, Modal } from "@mui/material";
 
-export function CancelAppointment({closeCancelModal,cancelAppointment,openId}) {
+export function CancelAppointment({open,closeCancelModal,cancelAppointment,openId}) {
 
 
 
@@ -18,7 +18,7 @@ export function CancelAppointment({closeCancelModal,cancelAppointment,openId}) {
 
   return (
     <Modal
-    open={openId}
+    open={open}
     onClose={closeCancelModal}
     aria-labelledby="modal-modal-title"
     aria-describedby="modal-modal-description"
@@ -31,8 +31,8 @@ export function CancelAppointment({closeCancelModal,cancelAppointment,openId}) {
     </div>
     <div className=" modal-info-continer flex column justify-center align-center">
     <p>Are you sure you want to cancel the appointment?</p>
-    <button onClick={closeCancelModal} className="acspet">Don't cancel the appointment</button>
-    <button onClick={cancelAppointment} className="Cancel">Cancel the appointment</button>
+    <button onClick={cancelAppointment} className="acspet">Cancel the appointment</button>
+    <button onClick={closeCancelModal} className="Cancel">Don't cancel the appointment</button>
     </div>
 </div>
 </Box>

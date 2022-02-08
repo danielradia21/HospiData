@@ -1,11 +1,11 @@
 import { Box, Modal } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { doctorService } from '../../../services/doctor.service';
 import { PatientModal } from '../patient/patientModal';
-
 import { PatientTable } from '../patients-table';
 
-export function PatientPage({ user }) {
+export function PatientPage({ patient, user }) {
     const [filteredHistory, setFilteredHistory] = React.useState(null);
     const [modalQuest, setModalQuest] = React.useState('');
     const handleOpen = () => setOpen(true);
@@ -13,7 +13,7 @@ export function PatientPage({ user }) {
     const [open, setOpen] = React.useState(false);
 
     const filterHistory = (ev) => {
-        const FilteredList = user.appointments.filter((app) =>
+        const FilteredList = patient.appointments.filter((app) =>
             app.doctor.fullname.toLowerCase().includes(ev.target.value)
         );
         setFilteredHistory((prev) => (prev = FilteredList));
@@ -23,13 +23,32 @@ export function PatientPage({ user }) {
         handleOpen();
     };
 
-    if (!user) return;
+    const makeAppointment = async (values) => {
+        const meeting = user.meetings.find(
+            (meet) =>
+                meet.patient.UID === patient.UID &&
+                meet.status === ('approved' || 'pending')
+        );
+
+        if (meeting) {
+            await doctorService.updateMeeting(
+                meeting._id,
+                patient,
+                values,
+                user
+            );
+        } else {
+            await doctorService.getEmptyMeet(user, patient, values);
+        }
+    };
+
+    if (!patient) return <div>Loading...</div>;
     return (
         <>
             <div className="main-content-header">
                 <div className="doc-patient-header">
                     {' '}
-                    <div>{user.fullName}</div>
+                    <div>{patient.fullName}</div>
                     <Link to={`/doctor/patiences/`} className="sub-btn">
                         Back
                     </Link>
@@ -39,10 +58,10 @@ export function PatientPage({ user }) {
                 <div className="doc-patient-profile">
                     <div className="doc-patient-details">
                         <div className="img-container">
-                            <img src={user.imgUrl} alt="" />
+                            <img src={patient.imgUrl} alt="" />
                         </div>
                         <div className="patient-details-info">
-                            <p>{user.fullName}</p>
+                            <p>{patient.fullName}</p>
                             <p>age</p>
                             <p>last visited</p>
                         </div>
@@ -62,12 +81,16 @@ export function PatientPage({ user }) {
                 <div className="doc-meeting-main-content">
                     <PatientTable
                         isHistory={true}
-                        items={filteredHistory || user.appointments}
+                        items={filteredHistory || patient.appointments}
                         toggleModal={toggleModal}
                     />
                 </div>
             </div>
-            <PatientModal open={open} handleClose={handleClose} />
+            <PatientModal
+                makeAppointment={makeAppointment}
+                open={open}
+                handleClose={handleClose}
+            />
         </>
     );
 }

@@ -17,19 +17,26 @@
     padding: 0 0 10px 0;
   }
 }
-
-.modal-info-continer  {
- .make-appointment-btn {
-  margin-top: 30px;
-  background-color: #00D9A5;
-  padding:10px;
+.make-appointment-btn {
+    margin-top: 30px;
+    background-color: #00D9A5;
+    padding:10px;
+    transition:0.3s;
+    &:disabled{
+      background-color: #89cebe;
+    }
+    &:hover:not(:disabled){
+      background-color:#12be96;  
+    }
+    }
+.appointment-modal-date{
+  .MuiButtonBase-root{
+       margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #fe0000ab;
+          padding: 10px;
   }
-.MuiButtonBase-root{
-     margin-top: 0px;
-  margin-bottom: 0px;
-  background-color: #fe0000ab;
-        padding: 10px;
-}
+
 }
 
 .appoint-modal-title {

@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
 import { doctorService } from '../services/doctor.service';
 import { PateintProfile } from '../cmps/doctor/visitPage/pateintProfile';
+import { DocCalendar } from '../cmps/doctor/doc-calendar';
+
 const nestedRoutes = [
     {
         path: '/doctor/meetings',
@@ -26,6 +28,10 @@ const nestedRoutes = [
     {
         path: '/doctor/history',
         component: History,
+    },
+    {
+        path: '/doctor/calendar',
+        component: DocCalendar,
     },
 ];
 
@@ -84,6 +90,9 @@ export function DoctorPage() {
                         </div>
                         <div className="details">
                             <NavLink to="/doctor/history">History</NavLink>
+                        </div>
+                        <div className="details">
+                            <NavLink to="/doctor/calendar">Calendar</NavLink>
                         </div>
                     </div>
                 </div>

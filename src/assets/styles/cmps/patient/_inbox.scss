@@ -1,0 +1,54 @@
+.inbox-main-container{
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+.inbox-content{
+    display: flex;
+    flex-direction: column;
+    border-bottom:1px solid #04477b;
+    height: 82.5%;
+  width:100%;
+background-color: #fff;
+
+.line-seperator{
+    box-sizing: initial;
+height:1px;
+width:100%;
+background-color: #04477b; 
+transition: 0.4s;
+
+}
+}
+.btns-containet{
+
+}
+}
+.inbox-msg-content{
+    height: 100px;
+    display: flex;
+    gap:10px;
+    img{
+        width:100px;
+    }
+}
+
+
+// @keyframes prev {
+//     0%{position: absolute;top:100px;z-index:-1}
+//     25%{z-index:2;}
+//     75%{top:200px}
+//     100% {position: sticky;}
+// }
+
+// .inbox-prev-animator {
+//     position: sticky;
+  
+//     width:100%;
+   
+//     // transition: 2s;
+//     animation-duration: 0.6s;
+//     animation-name:prev;
+    
+// }

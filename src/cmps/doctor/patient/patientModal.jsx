@@ -6,9 +6,8 @@ import { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import Button from '@mui/material/Button';
 
-export function PatientModal({ open, handleClose }) {
+export function PatientModal({ open, handleClose, makeAppointment }) {
     const [pickedDrugList, setPickedDrugList] = useState('');
-
     const textFieldOutline = (props) => (
         <TextField {...props} margin="normal" fullWidth />
     );
@@ -35,10 +34,11 @@ export function PatientModal({ open, handleClose }) {
     };
 
     const updatePateient = (values) => {
-        console.log('from update patient', {
+        const formRes = {
             ...values,
             drugs: pickedDrugList,
-        });
+        };
+        makeAppointment(formRes);
     };
 
     return (
