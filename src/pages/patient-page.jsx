@@ -39,7 +39,7 @@ export function PatientPage() {
 
               <div className="name-section">
                 <div className="details">
-                  <p className="title">{user.fullName}</p>
+                  <p className="title">{user.fullname}</p>
                 </div>
                 <div className="logout-btn">
                   <button onClick={onLogOut}>logout</button>

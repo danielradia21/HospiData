@@ -69,7 +69,7 @@ export function DoctorPage() {
                         <div className="name-section">
                             <div>
                                 <div className="details">
-                                    <p className="title">{user.fullName}</p>
+                                    <p className="title">{user.fullname}</p>
                                 </div>
                                 <div className="details">
                                     <p className="sub-title">{user.type}</p>

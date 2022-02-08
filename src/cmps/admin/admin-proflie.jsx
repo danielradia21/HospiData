@@ -5,7 +5,7 @@ export function AdminProfile ({admin}) {
                <div className="admin-profile-img-continer">
                  <img src={admin.imgUrl} alt="admin.png" />
                </div>
-            <h1>{admin.fullName}</h1>
+            <h1>{admin.fullname}</h1>
             <p>Admin</p>
         </div>
 }

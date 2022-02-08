@@ -47,7 +47,7 @@ export default function StickyHeadTable({items}) {
     return { id, name, image, admin,update};
   }
   
-  const rows = items.map(item =>createData(item._id,item.fullName,item.imgUrl,item.isAdmin ));
+  const rows = items.map(item =>createData(item._id,item.fullname,item.imgUrl,item.isAdmin ));
 
   
   const handleChangePage = (event, newPage) => {
