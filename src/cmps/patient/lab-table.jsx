@@ -91,6 +91,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
+import  {LabToPdf} from './lab-to-pdf'
 
 
 function descendingComparator(a, b, orderBy) {
@@ -219,9 +220,8 @@ export function LabTable({
   function createData(title, timestamp) {
     const date = getDate(timestamp)
     const download = (
-      <button key={timestamp} className="download-btn">
-        Download
-      </button>
+     <LabToPdf  key={timestamp} />
+    
     )
     return { date, title, download,id:Math.floor(Math.random()*Date.now()) }
   }

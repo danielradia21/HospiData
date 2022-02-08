@@ -6,7 +6,7 @@ import { MedicalReferralsTable } from './medical-referrals-table'
 
 export function MedicalReferrals() {
   const { user } = useSelector((state) => state.userModule)
-  const [referrals,setReferrals] = useState([])
+  const [referrals,setReferrals] = useState(null)
   const [filteredRefs, setFilteredRefs] = useState(null);
 
   
@@ -35,7 +35,7 @@ export function MedicalReferrals() {
                     type="text"
                     placeholder="Serach Meetings..."
                 />
-      {referrals.length&&<MedicalReferralsTable referrals={filteredRefs||referrals}/>}
+      {referrals&&<MedicalReferralsTable referrals={filteredRefs||referrals}/>}
       
     </div>
   )

@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service'
+import { doctorService } from './doctor.service'
 import { httpService } from './http.service'
 import { userService } from './user.service'
 import { utilService } from './util.service'
@@ -15,6 +16,7 @@ export const patientService = {
   getDoctors,
   makeAppointment,
   cancelAppointment,
+  getPatientDoctors
 }
 
 async function query() {
@@ -68,6 +70,23 @@ async function cancelAppointment(user, appId) {
   }
 }
 
+async function getPatientDoctors(){
+  try{
+    let patient = await userService.getLoggedinUser()
+  let appointments =   patient.appointments.filter(app=>app.status === ('pending' || 'approved') )
+   let doctors =  await doctorService.getDoctors()
+  //  return doctors.filter((doc)=>!appointments.includes(doc._id) )
+  return doctors.reduce((acc,doc)=>{
+    if(!appointments.some((app)=>app.doctor._id===doc._id)) acc.push({ fullname: doc.fullname, _id: doc._id })
+    return acc
+    // return !appointments.some(app=>app.doctor._id===doc._id) ? acc.push({ fullname: doc.fullname, _id: doc._id }) : acc
+  },[] )
+   
+  }catch(err){
+    console.log(err)
+  }
+}
+
 async function makeAppointment({ doctorId, date }) {
   try {
     let loggedInUser = await userService.getLoggedinUser()
@@ -78,7 +97,7 @@ async function makeAppointment({ doctorId, date }) {
       patient: {
         _id: loggedInUser._id,
         UID: loggedInUser.UID,
-        fullname: loggedInUser.fullName,
+        fullname: loggedInUser.fullname,
         imgUrl: loggedInUser.imgUrl,
       },
       date: date,
@@ -88,11 +107,11 @@ async function makeAppointment({ doctorId, date }) {
     await userService.update(doctor)
     // const appointment = getEmptyAppointment()
     // appointment._id = randomId
-    // appointment.doctor = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
+    // appointment.doctor = {_id:doctor._id,fullname:doctor.fullname,imgUrl:doctor.imgUrl}
     // appointment.date = date
     const miniDoc = {
       _id: doctor._id,
-      fullname: doctor.fullName,
+      fullname: doctor.fullname,
       imgUrl: doctor.imgUrl,
     }
     const appointment = makePatientAppointment(randomId, miniDoc, date)
@@ -108,7 +127,7 @@ async function getDoctors() {
     let users = await userService.getUsers()
     return users.reduce((acc, user) => {
       if (user.type === 'doctor')
-        acc.push({ fullname: user.fullName, _id: user._id })
+        acc.push({ fullname: user.fullname, _id: user._id })
       return acc
     }, [])
   } catch (err) {
@@ -164,7 +183,7 @@ function getEmptyAppointment() {
 
 function getEmptyPatient() {
   return {
-    fullName: '',
+    fullname: '',
     username: '',
     password: '',
     imgUrl: '',

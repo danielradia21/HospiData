@@ -8,6 +8,7 @@ import { Alert, Snackbar } from '@mui/material'
 
 export function AppointmentList() {
   const { user } = useSelector((state) => state.userModule)
+
   const [appointments, setAppointments] = useState([])
   const [doctors, setDoctors] = useState([])
   const [filteredApps, setFilteredApps] = useState(null)
@@ -23,7 +24,6 @@ export function AppointmentList() {
     if (!user) dispatch(getLoggedInUser())
     if (user.appointments.length) {
       getAppointments()
-      // console.log(user.appointments,appointments)
     }
   }, [user])
 
@@ -32,10 +32,13 @@ export function AppointmentList() {
   }, [])
 
   function getAppointments() {
+    // const futureAppointments = user.appointments.filter(
+    //   (app) =>
+    //     app.date > Date.now() && (app.status === 'pending' || app.status === 'approved')
+    // )
     const futureAppointments = user.appointments.filter(
       (app) =>
-        app.date > Date.now() &&
-        (app.status === 'pending' || app.status === 'approved')
+        app.status === 'pending' || app.status === 'approved'
     )
     // const futureAppointments = user.appointments.filter(
     //   (app) => app.date > Date.now()
@@ -46,7 +49,7 @@ export function AppointmentList() {
   }
 
   async function getDoctors() {
-    const doctors = await patientService.getDoctors()
+    const doctors = await patientService.getPatientDoctors()
     setDoctors((prevDoctors) => (prevDoctors = doctors))
   }
 
@@ -94,6 +97,7 @@ export function AppointmentList() {
         throw new Error('Pick another date')
       await patientService.makeAppointment({ doctorId, date })
       dispatch(getLoggedInUser())
+      await getDoctors()
       handleOpenSnackbar('success','Appointment sent for review')
       closeNewAppModal()
     } catch (err) {

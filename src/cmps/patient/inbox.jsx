@@ -73,7 +73,7 @@ export function Inbox(){
         let updatedUser = {...user}
         if(idx>-1 && !user.inbox[idx].isOpened){
             updatedUser.inbox[idx].isOpened = true
-           await  patientService.updateSelfPatient(updatedUser)
+           await patientService.updateSelfPatient(updatedUser)
            dispatch(getLoggedInUser())
         }
     }
