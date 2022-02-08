@@ -1,7 +1,7 @@
 [
     {
         "_id": "u101",
-        "fullName": "Orly Amadi",
+        "fullname": "Orly Amadi",
         "username": "orlyAma@gmail.com",
         "password": "tinkerbell",
         "UID":"5456421451",
@@ -43,7 +43,7 @@
     },
     {
         "_id": "u102",
-        "fullName": "Tino Blom",
+        "fullname": "Tino Blom",
         "UID":"54564222381",
         "username": "Tinoblom@gmail.com",
         "password": "1234Password",
@@ -123,7 +123,7 @@
     },
     {
         "_id": "u103",
-        "fullName": "David Davidov",
+        "fullname": "David Davidov",
         "UID":"545642111",
         "username": "DavidDav@gmail.com",
         "password": "iamtheking",
@@ -145,7 +145,7 @@
             },
             {
                 "_id":"u1997",
-                "fullName":"Beny Kursalin",
+                "fullname":"Beny Kursalin",
                 "UID":"520844775",
                 "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
             }
@@ -178,7 +178,7 @@
                 "status":"arrived",
                 "patient":  {
                     "_id":"u1997",
-                    "fullName":"Beny Kursalin",
+                    "fullname":"Beny Kursalin",
                     "UID":"520844775",
                     "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
                 },
@@ -188,7 +188,7 @@
     },
     {
         "_id": "u109",
-        "fullName": "Gal Dror",
+        "fullname": "Gal Dror",
         "UID":"5456454441",
         "username": "DroriG@gmail.com",
         "password": "123123",
@@ -227,7 +227,7 @@
     },
     {
         "_id": "u120",
-        "fullName": "Ronit Pushkin",
+        "fullname": "Ronit Pushkin",
         "username": "RontPush@gmail.com",
         "UID":"54564543",
         "password": "111111",
@@ -274,7 +274,7 @@
     },
     {
         "_id": "u1997",
-        "fullName": "Beny Kursalin",
+        "fullname": "Beny Kursalin",
         "username": "Beku1997@gmail.com",
         "password": "123123123",
         "UID":"520844775",
@@ -321,7 +321,7 @@
     },
     {
         "_id": "u1995",
-        "fullName": "Daniel Radia",
+        "fullname": "Daniel Radia",
         "UID":"55556841",
         "username": "DanielRad@gmail.com",
         "password": "123123123",
@@ -351,7 +351,7 @@
         ]
     },{
         "_id": "u2193912",
-        "fullName": "Avishai Etach",
+        "fullname": "Avishai Etach",
         "UID":"57575722",
         "username": "AvishaiE@gmail.com",
         "password": "123123123",
