@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -21,7 +21,8 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
-
+import { patientService } from '../../services/patient.service';
+import { ViewDetailsModal } from './patient/viewDetailsModal';
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -161,6 +162,10 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+    const [open, setOpen] = React.useState(false);
+    const [currApp, setCurrApp] = React.useState({});
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -177,7 +182,14 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
         setSelected([]);
     };
 
-    function createData(timestemp, name, id) {
+    const openDetalis = async (appId, id) => {
+        const currApp = await patientService.getAppByAppId(appId, id);
+
+        setCurrApp((prev) => (prev = currApp));
+        handleOpen();
+    };
+
+    function createData(timestemp, name, id, patId, meet) {
         if (!isHistory) {
             const doneBtn = (
                 <button
@@ -207,7 +219,8 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
         } else {
             const detailsBtn = (
                 <button
-                    onClick={() => console.log('open details')}
+                    disabled={meet.status === 'approved' ? true : false}
+                    onClick={() => openDetalis(patId, id)}
                     className="sub-btn"
                 >
                     View Detials
@@ -225,7 +238,13 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
     }
 
     const rows = items.map((meet) =>
-        createData(meet.date, meet.patient.fullname, meet._id)
+        createData(
+            meet.date,
+            meet.patient.fullname,
+            meet._id,
+            meet.patient._id,
+            meet
+        )
     );
 
     const handleClick = (event, name) => {
@@ -366,6 +385,11 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
                     />
                 </Paper>
             </Box>
+            <ViewDetailsModal
+                currApp={currApp}
+                open={open}
+                handleClose={handleClose}
+            />
         </>
     );
 }
