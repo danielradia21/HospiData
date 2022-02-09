@@ -297,7 +297,7 @@
                 "title": "stomach ache",
                 "description": "food poisining ",
                 "date": "1642509255660",
-                "status": "pending",
+                "status": "arrived",
                 "doctor": {
                     "_id": "u103",
                     "fullname": "David Davidov",
