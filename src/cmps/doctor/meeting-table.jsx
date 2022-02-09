@@ -149,8 +149,8 @@ const timeConversion = (time) => {
 const dateConvertion = (time) => {
     const newTime = new Date(+time);
     const Year = newTime.getFullYear();
-    const Month = newTime.getMonth();
-    const Day = newTime.getDay();
+    const Month = newTime.getMonth() + 1;
+    const Day = newTime.getDate();
     return `${Day}/${Month}/${Year}`;
 };
 
