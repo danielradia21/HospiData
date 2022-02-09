@@ -35,7 +35,7 @@ export function History() {
 
     const getHistory = () => {
         const histor = user.meetings.filter(
-            (meet) => meet.status !== 'pending'
+            (meet) => meet.status === 'arrived'
         );
         setHistory((prev) => (prev = histor));
     };
