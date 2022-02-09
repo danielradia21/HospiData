@@ -45,6 +45,19 @@ async function getEmptyMeet(user, patient, vals) {
     };
 
     user.meetings.push(docMeeting);
+    patient.inbox.unshift({
+        _id: utilService.makeId(),
+        appId: patMeeting._id,
+        date: Date.now(),
+        isOpened: false,
+        by: {
+            _id: user._id,
+            fullname: user.fullname,
+            imgUrl: user.imgUrl,
+        },
+        msg: `Your appointment with me has ended,
+         Your's Dr. ${user.fullname}`,
+    });
     await patientService.update(patient);
     await userService.updateLoggedInUser(user);
 }
@@ -66,8 +79,22 @@ async function updateMeeting(appId = null, patient, newApp, user) {
         status: 'arrived',
         date: Date.now(),
     };
+    patient.inbox.unshift({
+        _id: utilService.makeId(),
+        appId: appointment._id,
+        date: Date.now(),
+        isOpened: false,
+        by: {
+            _id: user._id,
+            fullname: user.fullname,
+            imgUrl: user.imgUrl,
+        },
+        msg: `Your appointment with me has ended,
+         Your's Dr. ${user.fullname}`,
+    });
 
     patient.appointments.splice(idx, 1, appointment);
+
     await patientService.update(patient);
 
     const meetIdx = user.meetings.findIndex((meet) => meet._id === appId);
