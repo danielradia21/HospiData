@@ -12,7 +12,6 @@ export const doctorService = {
 };
 
 async function getEmptyMeet(user, patient, vals) {
-    
     const referrals = {
         title: vals.referrals,
         date: Date.now() + 1000 * 60 * 60 * 24,
@@ -24,34 +23,30 @@ async function getEmptyMeet(user, patient, vals) {
         doctor: {
             _id: user._id,
             UID: user.UID,
-            fullname: user.fullName,
+            fullname: user.fullname,
             imgUrl: user.imgUrl,
         },
         date: Date.now(),
         ...vals,
         referrals,
     };
+
     patient.appointments.push(patMeeting);
-    await patientService.update(patient);
-    delete patMeeting.title;
-    delete patMeeting.description;
-    delete patMeeting.referrals;
-    delete patMeeting.doctor;
     const docMeeting = {
-        ...patMeeting,
+        _id: patMeeting._id,
+        status: 'arrived',
         patient: {
             _id: patient._id,
             UID: patient.UID,
-            fullname: patient.fullName,
+            fullname: patient.fullname,
             imgUrl: patient.imgUrl,
         },
+        date: patMeeting.date,
     };
-   
 
-    console.log("file: doctor.service.js   line 46  user.meetings", user.meetings)
     user.meetings.push(docMeeting);
-    console.log("file: doctor.service.js   line 48   user.meetings", user.meetings)
-    await updateDoctor(user);
+    await patientService.update(patient);
+    await userService.updateLoggedInUser(user);
 }
 
 async function updateMeeting(appId = null, patient, newApp, user) {
@@ -69,6 +64,7 @@ async function updateMeeting(appId = null, patient, newApp, user) {
         ...newApp,
         referrals,
         status: 'arrived',
+        date: Date.now(),
     };
 
     patient.appointments.splice(idx, 1, appointment);
@@ -76,10 +72,10 @@ async function updateMeeting(appId = null, patient, newApp, user) {
 
     const meetIdx = user.meetings.findIndex((meet) => meet._id === appId);
     user.meetings[meetIdx].status = 'arrived';
-    await updateDoctor(user);
+    await userService.updateLoggedInUser(user);
 }
 
-function getEmptyMail(id, { _id, fullName, imgUrl }, stat) {
+function getEmptyMail(id, { _id, fullname, imgUrl }, stat) {
     return {
         _id: utilService.makeId(),
         appId: id,
@@ -87,10 +83,10 @@ function getEmptyMail(id, { _id, fullName, imgUrl }, stat) {
         isOpened: false,
         by: {
             _id,
-            fullname: fullName,
+            fullname: fullname,
             imgUrl,
         },
-        msg: `Your appointment got ${stat}, By doctor ${fullName}`,
+        msg: `Your appointment got ${stat}, By doctor ${fullname}`,
     };
 }
 

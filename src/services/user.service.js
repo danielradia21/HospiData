@@ -16,7 +16,6 @@ export const userService = {
     updateLoggedInUser,
 };
 
-
 async function getUsers() {
     try {
         let users = await storageService.query('user');
@@ -54,7 +53,6 @@ async function update(user) {
         //   throw Error('Cant update when you are not admin')
         await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
-        return _saveLocalUser(user);
     } catch (err) {
         console.log('Had error on userService: UPDATE', err);
     }
@@ -97,7 +95,6 @@ async function logout() {
         console.log('Had error on userService: LOGOUT', err);
     }
 }
-
 
 async function updateLoggedInUser(user) {
     try {

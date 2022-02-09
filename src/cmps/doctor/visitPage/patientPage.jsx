@@ -1,16 +1,27 @@
 import { Box, Modal } from '@mui/material';
 import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { doctorService } from '../../../services/doctor.service';
+import { getLoggedInUser } from '../../../store/actions/user.actions';
 import { PatientModal } from '../patient/patientModal';
 import { PatientTable } from '../patients-table';
 
-export function PatientPage({ patient, user }) {
+export function PatientPage({ patient, user ,makeAppointment}) {
     const [filteredHistory, setFilteredHistory] = React.useState(null);
     const [modalQuest, setModalQuest] = React.useState('');
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [open, setOpen] = React.useState(false);
+    const [appointmentsList, setAppointmentsList] = React.useState([]);
+  
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        appList();
+    }, [patient]);
 
     const filterHistory = (ev) => {
         const FilteredList = patient.appointments.filter((app) =>
@@ -23,23 +34,12 @@ export function PatientPage({ patient, user }) {
         handleOpen();
     };
 
-    const makeAppointment = async (values) => {
-        const meeting = user.meetings.find(
-            (meet) =>
-                meet.patient.UID === patient.UID &&
-                meet.status === ('approved' || 'pending')
+  
+    const appList = () => {
+        const appointments = patient.appointments.filter(
+            (app) => app.status === 'arrived'
         );
-
-        if (meeting) {
-            await doctorService.updateMeeting(
-                meeting._id,
-                patient,
-                values,
-                user
-            );
-        } else {
-            await doctorService.getEmptyMeet(user, patient, values);
-        }
+        setAppointmentsList((prev) => (prev = appointments));
     };
 
     if (!patient) return <div>Loading...</div>;
@@ -48,11 +48,7 @@ export function PatientPage({ patient, user }) {
             <div className="main-content-header">
                 <div className="doc-patient-header">
                     {' '}
-<<<<<<< HEAD
-                    <div>{patient.fullName}</div>
-=======
-                    <div>{user.fullname}</div>
->>>>>>> 3cd7e1d813de108d5791b3656f1403d1cc80f79a
+                    <div>{patient.fullname}</div>
                     <Link to={`/doctor/patiences/`} className="sub-btn">
                         Back
                     </Link>
@@ -65,12 +61,8 @@ export function PatientPage({ patient, user }) {
                             <img src={patient.imgUrl} alt="" />
                         </div>
                         <div className="patient-details-info">
-<<<<<<< HEAD
-                            <p>{patient.fullName}</p>
-=======
-                            <p>{user.fullname}</p>
->>>>>>> 3cd7e1d813de108d5791b3656f1403d1cc80f79a
-                            <p>age</p>
+                            <p>{patient.fullname}</p>
+
                             <p>last visited</p>
                         </div>
                     </div>
@@ -89,7 +81,7 @@ export function PatientPage({ patient, user }) {
                 <div className="doc-meeting-main-content">
                     <PatientTable
                         isHistory={true}
-                        items={filteredHistory || patient.appointments}
+                        items={filteredHistory || appointmentsList}
                         toggleModal={toggleModal}
                     />
                 </div>

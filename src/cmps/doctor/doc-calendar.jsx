@@ -45,7 +45,6 @@ export function DocCalendar() {
         locales,
     });
 
-   
     console.log('file: doc-calendar.jsx   line 15   events', events);
     return (
         <Calendar
@@ -60,8 +59,8 @@ export function DocCalendar() {
                 backgroundColor: 'white',
             }}
             defaultView="day"
-            step={10} /// step =  timeslots זמן הרצוי  (לדוגמא 30 דקות) חלקי
-            timeslots={3}
+            step={6} /// step =  timeslots זמן הרצוי  (לדוגמא 30 דקות) חלקי
+            timeslots={5}
             views={['day', 'week', 'month']}
             min={
                 new Date(

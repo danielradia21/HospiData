@@ -44,7 +44,7 @@
     {
         "_id": "u102",
         "fullname": "Tino Blom",
-        "UID":"54564222381",
+        "UID": "54564222381",
         "username": "Tinoblom@gmail.com",
         "password": "1234Password",
         "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -124,7 +124,7 @@
     {
         "_id": "u103",
         "fullname": "David Davidov",
-        "UID":"545642111",
+        "UID": "545642111",
         "username": "DavidDav@gmail.com",
         "password": "iamtheking",
         "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
@@ -144,9 +144,9 @@
                 "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
             },
             {
-                "_id":"u1997",
-                "fullname":"Beny Kursalin",
-                "UID":"520844775",
+                "_id": "u1997",
+                "fullname": "Beny Kursalin",
+                "UID": "520844775",
                 "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
             }
         ],
@@ -174,12 +174,12 @@
                 "date": "1642509155660"
             },
             {
-                "_id":"a1345",
-                "status":"arrived",
-                "patient":  {
-                    "_id":"u1997",
-                    "fullname":"Beny Kursalin",
-                    "UID":"520844775",
+                "_id": "a1345",
+                "status": "arrived",
+                "patient": {
+                    "_id": "u1997",
+                    "fullname": "Beny Kursalin",
+                    "UID": "520844775",
                     "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
                 },
                 "date": "1642509255660"
@@ -189,7 +189,7 @@
     {
         "_id": "u109",
         "fullname": "Gal Dror",
-        "UID":"5456454441",
+        "UID": "5456454441",
         "username": "DroriG@gmail.com",
         "password": "123123",
         "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -329,8 +329,8 @@
     {
         "_id": "u1995",
         "fullname": "Daniel Radia",
-        "UID":"55556841",
-        "username": "DanielRad@gmail.com",
+        "UID": "55556841",
+        "username": "dr@gmail.com",
         "password": "123123123",
         "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
         "isAdmin": false,
@@ -360,7 +360,7 @@
     {
         "_id": "u2193912",
         "fullname": "Avishai Etach",
-        "UID":"57575722",
+        "UID": "57575722",
         "username": "AvishaiE@gmail.com",
         "password": "123123123",
         "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
