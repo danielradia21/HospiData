@@ -356,7 +356,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
                     </TableContainer>
                     <TablePagination
                         className="table-pagination"
-                        rowsPerPageOptions={5}
+                        // rowsPerPageOptions={5}
                         component="div"
                         count={rows.length}
                         rowsPerPage={rowsPerPage}

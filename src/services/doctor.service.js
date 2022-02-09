@@ -3,6 +3,7 @@ import { patientService } from './patient.service';
 import { userService } from './user.service';
 import { utilService } from './util.service';
 
+
 export const doctorService = {
     getDoctors,
     updateDoctor,
@@ -134,3 +135,5 @@ async function updateDoctor(user) {
         console.log(err);
     }
 }
+
+

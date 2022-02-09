@@ -5,7 +5,8 @@ export const storageService = {
     post,
     put,
     remove,
-    postMany
+    postMany,
+    saveToStorge
 }
 
 function query(entityType, delay = 1200) {
@@ -79,3 +80,8 @@ function postMany(entityType, newEntities) {
             return entities
         })
 }
+
+function saveToStorge(entityType, entities) {
+  return localStorage.setItem(entityType, JSON.stringify(entities))
+}
+

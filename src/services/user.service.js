@@ -3,6 +3,7 @@ import { httpService } from './http.service';
 import defaultUsers from '../assets/data/users.json';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
 const STORAGE_KEY = 'user';
+const doctorsKeys = ['az89A','Wn68s','Zk56t','b79iB']
 
 export const userService = {
     login,
@@ -14,7 +15,18 @@ export const userService = {
     getByUID,
     update,
     updateLoggedInUser,
+    Chackey
 };
+
+async function Chackey(key) {
+    try {
+     return doctorsKeys.some(currKey=> key === currKey );
+        //   return httpService.get(`user`)
+    } catch (err) {
+        console.log('Had error on userService: GETUSERS', err);
+    }
+}
+
 
 async function getUsers() {
     try {
@@ -53,6 +65,7 @@ async function update(user) {
         //  throw Error('Cant update when you are not admin')
         return await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
+        // return _saveLocalUser(user);
     } catch (err) {
         console.log('Had error on userService: UPDATE', err);
     }

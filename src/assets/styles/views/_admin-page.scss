@@ -99,13 +99,30 @@
 .dasbord-btn-continer{
     padding-top: 20px;
     padding-bottom: 20px;
+    button{
+        flex-grow: 1;
+        background-color: #04477b;
+        color: white;
+        text-transform: capitalize;
+        &.activeChart{
+            background-color: #33cb74;
+        }
+    }
 }
 
 .pie-continer{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+
+    h1{
+        font-size: rem(20px);
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
 }
 
 .pie{
@@ -120,4 +137,88 @@
     p{
         margin-bottom: 0;
     }
+    .css-pdct74-MuiTablePagination-selectLabel{
+        display: none;
+
+    }
+    .css-16c50h-MuiInputBase-root-MuiTablePagination-select{
+        display: none;
+    }
 }
+
+.search-input-continer{
+    align-self: flex-start;
+    margin: 25px;
+    position: relative;
+}
+
+.search-input{
+    padding: 12px;
+    padding-left: 40px;
+    width: 300px;
+    color: #404145;
+}
+.search-input-icon{
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    color: #7a7d85;
+}
+
+.main-table-continer{
+    width: 100%;
+    padding:  0 25px 25px 25px;
+}
+.main-table-head{
+    background-color: #04477b !important;
+    color: white !important;
+    padding: 0 !important;
+    padding-left: 16px !important;
+  .head-title{
+      &:hover{
+          color: white !important;
+      }
+  }
+
+  .css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active{
+    color: white !important;
+    .MuiTableSortLabel-icon{
+        color: white !important;
+    }
+  }
+}
+
+.update{
+    padding: 30px;
+
+    h1{
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: 30px;
+    }
+    form{
+        gap: 15px;
+    }
+
+    .input-continer{
+        display: flex;
+        gap: 10px;
+      input[type="checkbox"]{
+           margin-top: 8px;
+       }
+    }
+}
+.modal-header-update{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    button{
+        height: 25px;
+        margin-top: 13px;
+        margin-right: 10px;
+        background-color: #fe0000ab;
+        color: white;
+        justify-self: flex-end;
+    }
+}
+

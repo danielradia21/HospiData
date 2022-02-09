@@ -22,9 +22,9 @@ export function Patients() {
 
     const patientsFilter = (ev) => {
         const patientFilterdList = user.patients.filter((patient) =>
-            patient.fullname.toLowerCase().includes(ev.target.value)
-        );
-        setFilteredPatients((prev) => (prev = patientFilterdList));
+        patient.fullname.toLocaleLowerCase().includes(ev.target.value)
+);
+        setFilteredPatients((prev) => prev = patientFilterdList);
     };
 
     const paging = (num) => {

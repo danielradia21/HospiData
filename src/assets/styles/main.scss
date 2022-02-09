@@ -17,9 +17,11 @@
 @import 'views/admin-page';
 @import 'views/about-us';
 @import 'views/patient-page';
+@import 'views/news';
 
 // Components
 // Main
+@import 'cmps/loder';
 // Admin
 @import 'cmps/app-header';
 @import 'cmps/app-footer';
