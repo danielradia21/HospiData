@@ -1,0 +1,40 @@
+.inbox-msg-content{
+    padding:0 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap:1px;
+    justify-content: space-between;
+    font-family:sans-serif ;
+    font-weight: 700;
+    transition: 1s;
+    cursor: pointer;
+    &.seen{
+        font-weight: 400;
+    }
+    &:hover{
+        background-color:rgba(120, 143, 151, 0.377);
+    }
+    .mail-msg{
+        text-overflow: ellipsis;
+        max-width: 40%;
+        white-space: nowrap;
+        overflow: hidden;  
+    }
+
+}
+.mail-profile-info{
+    display: flex;
+    align-items: center;
+    p{
+        padding:0 0 0 10px;
+        margin:0;
+    }
+    img{
+        width:40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit:cover;
+       
+    }
+}

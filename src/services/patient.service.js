@@ -1,4 +1,5 @@
 import { storageService } from './async-storage.service'
+import { doctorService } from './doctor.service'
 import { httpService } from './http.service'
 import { userService } from './user.service'
 import { utilService } from './util.service'
@@ -13,7 +14,9 @@ export const patientService = {
   update,
   updateSelfPatient,
   getDoctors,
-  makeAppointment
+  makeAppointment,
+  cancelAppointment,
+  getPatientDoctors
 }
 
 async function query() {
@@ -43,29 +46,79 @@ async function updateSelfPatient(user) {
   }
 }
 
-async function makeAppointment({doctorId,date}){
+async function cancelAppointment(user, appId) {
+  try {
+    const appIdx = user.appointments.findIndex((app) => app._id === appId)
+    if (user.appointments[appIdx].status === 'cancelled') return
+    let doctor = await userService.getById(user.appointments[appIdx].doctor._id)
+    if (user.appointments[appIdx].status === 'approved') {
+      const historyIdx = doctor.history.findIndex(
+        (oldMeeting) => oldMeeting._id === appId
+      )
+      doctor.history.splice(historyIdx, 1)
+    } else {
+      const meetIdx = doctor.meetings.findIndex(
+        (meeting) => meeting._id === appId
+      )
+      doctor.meetings.splice(meetIdx, 1)
+    }
+    user.appointments[appIdx].status = 'cancelled'
+    await userService.update(doctor)
+    return await updateSelfPatient(user)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function getPatientDoctors(){
   try{
-      let loggedInUser  = await userService.getLoggedinUser()
-      const randomId = 'a' + utilService.makeId()
-      const meeting = {
-        _id:randomId,
-        status:'pending',
-        patient:{_id:loggedInUser._id,UID:loggedInUser.UID,fullname:loggedInUser.fullName,imgUrl:loggedInUser.imgUrl},
-        date:date
-      }
-      let doctor = await userService.getById(doctorId)
-      doctor.meetings.push(meeting)
-      await userService.update(doctor)
-      // const appointment = getEmptyAppointment()
-      // appointment._id = randomId
-      // appointment.doctor = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
-      // appointment.date = date
-      const miniDoc = {_id:doctor._id,fullname:doctor.fullName,imgUrl:doctor.imgUrl}
-      const appointment = makePatientAppointment(randomId,miniDoc,date)
-      loggedInUser.appointments.push(appointment)
-     await userService.updateLoggedInUser(loggedInUser)
+    let patient = await userService.getLoggedinUser()
+  let appointments =   patient.appointments.filter(app=>app.status === ('pending' || 'approved') )
+   let doctors =  await doctorService.getDoctors()
+  //  return doctors.filter((doc)=>!appointments.includes(doc._id) )
+  return doctors.reduce((acc,doc)=>{
+    if(!appointments.some((app)=>app.doctor._id===doc._id)) acc.push({ fullname: doc.fullname, _id: doc._id })
+    return acc
+    // return !appointments.some(app=>app.doctor._id===doc._id) ? acc.push({ fullname: doc.fullname, _id: doc._id }) : acc
+  },[] )
+   
   }catch(err){
     console.log(err)
+  }
+}
+
+async function makeAppointment({ doctorId, date }) {
+  try {
+    let loggedInUser = await userService.getLoggedinUser()
+    const randomId = 'a' + utilService.makeId()
+    const meeting = {
+      _id: randomId,
+      status: 'pending',
+      patient: {
+        _id: loggedInUser._id,
+        UID: loggedInUser.UID,
+        fullname: loggedInUser.fullname,
+        imgUrl: loggedInUser.imgUrl,
+      },
+      date: date,
+    }
+    let doctor = await userService.getById(doctorId)
+    doctor.meetings.unshift(meeting)
+    await userService.update(doctor)
+    // const appointment = getEmptyAppointment()
+    // appointment._id = randomId
+    // appointment.doctor = {_id:doctor._id,fullname:doctor.fullname,imgUrl:doctor.imgUrl}
+    // appointment.date = date
+    const miniDoc = {
+      _id: doctor._id,
+      fullname: doctor.fullname,
+      imgUrl: doctor.imgUrl,
+    }
+    const appointment = makePatientAppointment(randomId, miniDoc, date)
+    loggedInUser.appointments.push(appointment)
+    await userService.updateLoggedInUser(loggedInUser)
+  } catch (err) {
+     console.log(err)
   }
 }
 
@@ -74,8 +127,8 @@ async function getDoctors() {
     let users = await userService.getUsers()
     return users.reduce((acc, user) => {
       if (user.type === 'doctor')
-        acc.push({ fullname: user.fullName, _id: user._id })
-        return acc
+        acc.push({ fullname: user.fullname, _id: user._id })
+      return acc
     }, [])
   } catch (err) {
     console.log(err)
@@ -106,36 +159,38 @@ async function remove(id) {
   }
 }
 
-function makePatientAppointment(_id,doctor,date){
+function makePatientAppointment(_id, doctor, date) {
   return {
-  _id,
-  title: '',
-  description: '',
-  date,
-  status: "pending",
-  doctor
+    _id,
+    title: '',
+    description: '',
+    date,
+    status: 'pending',
+    doctor,
   }
 }
 
-function getEmptyAppointment(){
- return {
+function getEmptyAppointment() {
+  return {
     _id: '',
     title: '',
     description: '',
     date: 0,
-    status: "pending",
-    doctor: {}
-}
+    status: 'pending',
+    doctor: {},
+  }
 }
 
 function getEmptyPatient() {
   return {
-    fullName: '',
+    fullname: '',
     username: '',
     password: '',
     imgUrl: '',
+    UID:'',
     isAdmin: false,
     type: 'patient',
     appointments: [],
+    inbox:[]
   }
 }

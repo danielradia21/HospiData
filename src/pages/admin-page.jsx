@@ -10,30 +10,6 @@ import { AdminProfile } from "../cmps/admin/admin-proflie"
 import { AdminSideNavBar } from "../cmps/admin/admin-side-nav"
 import { getLoggedInUser, onLogout } from "../store/actions/user.actions"
 
-const _ADMIN =  {
-       _id: "u101",
-     fullName: "Orly Amdadi",
-     userName: "orly@amdadi.com",
-      password: "tinkerbell",
-       imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSxyoKZ4E4mGbUJ7owqGf1P9hdoCUe7wHaBAoMpIc12Quq2tETjLYq3OA-EtPSgNVXcsg&usqp=CAU",
-      isAdmin:true,
-      type:"doctor",
-         patience:[
-             {
-                 _id:"u-103",
-                fullName:"tino blom",
-                imgUrl: "http://some-img"
-            }
-          ],
-         meetings:[
-                   {
-                    _id:"m-101",
-                    fullName:"tino blom",
-                    date:"16/01/2022 09:00",
-                 }
-          ]
-        
-}
 
 const adminNavLinks = [
 
@@ -105,7 +81,7 @@ const onLogOut = () => {
 
     //                 <div className="name-section">
     //                     <div className="details">
-    //                         <p className="title">{_ADMIN.fullName}</p>
+    //                         <p className="title">{_ADMIN.fullname}</p>
     //                     </div>
     //                     <div className="details">
     //                         <p>Admin</p>
@@ -203,7 +179,7 @@ return   <div className="main-wrapper">
                         <div className="name-section">
                             <div>
                                 <div className="details">
-                                    <p className="title">{user.fullName}</p>
+                                    <p className="title">{user.fullname}</p>
                                 </div>
                                 <div className="details">
                                     <p className="sub-title">Admin</p>

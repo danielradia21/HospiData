@@ -1,105 +1,174 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getLoggedInUser } from '../../store/actions/user.actions'
-import { AppointmentPrev } from './appointment-prev'
 import { AppointmentTable } from './appointment-table'
 import { patientService } from '../../services/patient.service'
-import { CancelAppointment } from './cancel-appointment'
-import {AppointmentModal} from './appointment-modal'
+import { AppointmentModal } from './appointment-modal'
+import { Alert, Snackbar } from '@mui/material'
 
 export function AppointmentList() {
   const { user } = useSelector((state) => state.userModule)
-  const [appointments, setAppointments] = useState([])
-  const [doctors,setDoctors] = useState([])
 
+  const [appointments, setAppointments] = useState([])
+  const [doctors, setDoctors] = useState([])
+  const [filteredApps, setFilteredApps] = useState(null)
+  const [openSnackbar, setOpenSnackbar] = useState({isOpen:false,msg:'',sev:'error'})
+
+  const [open, setOpen] = useState(false)
   const [openId, setOpenId] = useState(null)
-  const [openNewApp,setOpenNewApp] = useState(false)
+  const [openNewApp, setOpenNewApp] = useState(false)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (!user) dispatch(getLoggedInUser())
-    if (user) {
+    if (user.appointments.length) {
       getAppointments()
-      // console.log(user.appointments,appointments)
     }
   }, [user])
 
-  useEffect(async ()=>{
-    let doctors = await patientService.getDoctors()
-    setDoctors((prevDoctors=>prevDoctors = doctors))
-  },[])
- 
+  useEffect(async () => {
+    getDoctors()
+  }, [])
+
   function getAppointments() {
-    // const futureAppointments = user.appointments.filter((app)=>app.date>Date.now()&&app.status==='pending')
+    // const futureAppointments = user.appointments.filter(
+    //   (app) =>
+    //     app.date > Date.now() && (app.status === 'pending' || app.status === 'approved')
+    // )
     const futureAppointments = user.appointments.filter(
-      (app) => app.date < Date.now()
+      (app) =>
+        app.status === 'pending' || app.status === 'approved'
     )
+    // const futureAppointments = user.appointments.filter(
+    //   (app) => app.date > Date.now()
+    // )
     setAppointments(
       (prevAppointments) => (prevAppointments = futureAppointments)
     )
-  
+  }
+
+  async function getDoctors() {
+    const doctors = await patientService.getPatientDoctors()
+    setDoctors((prevDoctors) => (prevDoctors = doctors))
   }
 
   async function cancelAppointment() {
     try {
       if (!openId) return
-      let appIdx = user.appointments.findIndex((app) => app._id == openId)
-      let modifiedUser = { ...user }
-      if (appIdx > -1) {
-        setOpenId((prevOpenId) => (prevOpenId = null))
-        modifiedUser.appointments[appIdx].status = 'cancelled'
-        await patientService.updateSelfPatient(modifiedUser)
-        
-      }
+      await patientService.cancelAppointment(user, openId)
+      closeCancelModal()
+      dispatch(getLoggedInUser())
     } catch (err) {
       console.log(err)
     }
   }
 
+  const filterApps = ({ target }) => {
+    const filteredApps = appointments.filter((app) =>
+      app.doctor.fullname.toLowerCase().includes(target.value)
+    )
+    setFilteredApps((prev) => (prev = filteredApps))
+  }
+
   function openCancelModal(id) {
+    setOpen(() => true)
     setOpenId((prevOpenId) => (prevOpenId = id))
   }
 
   function closeCancelModal() {
+    setOpen(() => false)
     setOpenId((prevOpenId) => (prevOpenId = null))
   }
 
-  function openNewAppModal(){
-    setOpenNewApp((prevOpenNewApp)=>prevOpenNewApp=true)
+  function openNewAppModal() {
+    setOpenNewApp((prevOpenNewApp) => (prevOpenNewApp = true))
   }
 
-  function closeNewAppModal(){
-    setOpenNewApp((prevOpenNewApp)=>prevOpenNewApp=false)
+  function closeNewAppModal() {
+    setOpenNewApp((prevOpenNewApp) => (prevOpenNewApp = false))
   }
 
-  const makeAppointment=async (doctorId,treatment,date)=>{
+  const makeAppointment = async (doctorId, treatment, date) => {
     // treatment has no usage for now need to  think about how to add it
-    date = date.getTime()
-   await patientService.makeAppointment({doctorId,date})
-    console.log(doctorId,treatment,date)
+    try {
+      date = date.getTime()
+      if (Date.now() + 10 * 60 * 1000 >= date)
+        throw new Error('Pick another date')
+      await patientService.makeAppointment({ doctorId, date })
+      dispatch(getLoggedInUser())
+      await getDoctors()
+      handleOpenSnackbar('success','Appointment sent for review')
+      closeNewAppModal()
+    } catch (err) {
+      console.log('Pick a diffrent date')
+      handleOpenSnackbar('error','Pick a diffrent date')
+    }
   }
 
-  
+  function handleOpenSnackbar(sev,msg) {
+    setOpenSnackbar((prev) => prev = {sev,msg,isOpen:true})
+  }
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpenSnackbar((prev)=>prev={isOpen:false,msg:'',sev:'error'})
+  }
+
   return (
     <div className="appointments-content">
+      <Snackbar
+        open={openSnackbar.isOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={openSnackbar.sev}
+          sx={{ width: '100%' }}
+        >
+          {openSnackbar.msg}
+        </Alert>
+      </Snackbar>
       {/* {!appointments&&<div>Loading...</div>} */}
-      {!appointments.length && <div>You have no appointments</div>}
+      {/* {!appointments.length && <div>You have no appointments</div>} */}
       {/* {cancelAppointmentId&&<CancelAppointment closeCancelModal={closeCancelModal} cancelAppointment={cancelAppointment} open={open}/>} */}
-      {appointments.length && (
+      {appointments && (
         <>
           <div className="main-content-header">Appointments</div>
+          <input
+            onChange={filterApps}
+            className="patient-search-input"
+            type="text"
+            placeholder="Serach Appointments..."
+          />
           <AppointmentTable
-            appointments={appointments}
+            appointments={filteredApps || appointments}
             openId={openId}
+            open={open}
             openCancelModal={openCancelModal}
             closeCancelModal={closeCancelModal}
             cancelAppointment={cancelAppointment}
           />
-          <button className='new-appointment' onClick={openNewAppModal}>Make an appointment</button>
+          <div className="appointments-btn-container">
+            <button className="new-appointment" onClick={openNewAppModal}>
+              Make an appointment
+            </button>
+          </div>
         </>
       )}
-      {openNewApp&&<AppointmentModal openNewApp={openNewApp} closeNewAppModal={closeNewAppModal} makeAppointment={makeAppointment} openNewAppModal={openNewAppModal} doctors={doctors}/>}
+      {openNewApp && (
+        <AppointmentModal
+          openNewApp={openNewApp}
+          closeNewAppModal={closeNewAppModal}
+          makeAppointment={makeAppointment}
+          openNewAppModal={openNewAppModal}
+          doctors={doctors}
+        />
+      )}
     </div>
   )
 }

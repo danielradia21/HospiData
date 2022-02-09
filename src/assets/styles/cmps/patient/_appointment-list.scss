@@ -1,3 +1,27 @@
 .appointments-content{
     width:100%;
+    height: 100%;
+    position: relative;
+        input {
+            padding: 8px;
+            margin: 10px 25px;
+            width: 35%;
+            &.search {
+                margin: 5px 0px;
+            }
+        }
+    
 }
+
+    .new-appointment{
+        position: absolute;
+        bottom:15px;
+        right:15px;
+        background-color:#00D9A5 ;
+        color:#fff;
+        padding:10px;
+        transition: 0.3s;
+        &:hover{
+            background-color:#12be96;  
+        }
+    }

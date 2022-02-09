@@ -26,10 +26,7 @@ export function AdminDoctorsList() {
 
   const [doctors,setDoctors] = useState(null)
   const [filter,setfilter] = useState(null)
-  const [selcteDcotor,setSelcteDcotor] = useState({
-      fullName : '',
-      imgUrl : '',
-  })
+  const [selcteDcotor,setSelcteDcotor] = useState({})
   const [isAdmin, setisAdmin] = useState(false);
   const [open, setOpen] =React.useState(false);
   const [active, setactive] =React.useState('delate');
@@ -46,10 +43,11 @@ export function AdminDoctorsList() {
   }
 
   const update = (doctor) =>{
+      console.log(doctor);
     setactive(prv=>prv ='update')
     handleOpen();
-    const {fullName,imgUrl,isAdmin} = doctor
-    setSelcteDcotor(prev => prev = {...doctor,fullName,imgUrl})
+    // const {fullname,imgUrl,isAdmin} = doctor
+    setSelcteDcotor(prev => prev = doctor)
     setisAdmin(prev => prev = isAdmin)
 }
 
@@ -69,7 +67,7 @@ const remove = (doctor) =>{
 
     const handleSearch = (ev) => {
         const value = ev.target.value
-        const filterDoctors = doctors.filter(doctor => doctor.fullName.toLocaleLowerCase().includes(value))
+        const filterDoctors = doctors.filter(doctor => doctor.fullname.toLocaleLowerCase().includes(value))
         setfilter(prev => prev = filterDoctors)
     }
 
@@ -111,7 +109,7 @@ const remove = (doctor) =>{
                     <form className="flex column ">
                     <div className="input-continer">
                     <label>full name:</label>
-                    <input id="fullName" type='text'  placeholder="full name" value={selcteDcotor.fullName} required onChange={handleChange}/>
+                    <input id="fullName" type='text'  placeholder="full name" value={selcteDcotor.fullname} required onChange={handleChange}/>
                     </div>
                     <div className="input-continer">
                     <label>img url:</label>

@@ -6,22 +6,37 @@ import { MedicalReferralsTable } from './medical-referrals-table'
 
 export function MedicalReferrals() {
   const { user } = useSelector((state) => state.userModule)
-  const [referrals,setReferrals] = useState([])
+  const [referrals,setReferrals] = useState(null)
+  const [filteredRefs, setFilteredRefs] = useState(null);
+
+  
+
+    
+  const filterRefs = ({target}) => {
+    const filteredResults = referrals.filter((res) =>
+        res.title.toLowerCase().includes(target.value) 
+    );
+    setFilteredRefs((prev) => (prev = filteredResults));
+};
+
 
   useEffect(() => {
-    console.log(user)
-    const referrals = user.appointments.reduce((acc, app) => {
-        console.log(app)
-      if (app.referrals) acc.push([...app.referrals])
-      return acc
-    }, [])
+    const referrals = user.appointments.filter((app) => 
+      app.referrals)
     setReferrals((prevReferrals)=>prevReferrals = referrals)
   }, [])
 
   return (
     <div className="medical-referrals-content">
       <div className="main-content-header">Mecial Refferals</div>
-      <MedicalReferralsTable referrals={referrals}/>
+      <input
+                    onChange={filterRefs}
+                    className="patient-search-input"
+                    type="text"
+                    placeholder="Serach Meetings..."
+                />
+      {referrals&&<MedicalReferralsTable referrals={filteredRefs||referrals}/>}
+      
     </div>
   )
 }

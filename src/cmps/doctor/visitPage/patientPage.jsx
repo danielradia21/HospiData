@@ -25,7 +25,7 @@ export function PatientPage({ user }) {
             <div className="main-content-header">
                 <div className="doc-patient-header">
                     {' '}
-                    <div>{user.fullName}</div>
+                    <div>{user.fullname}</div>
                     <Link to={`/doctor/patiences/`} className="sub-btn">
                         Back
                     </Link>
@@ -38,7 +38,7 @@ export function PatientPage({ user }) {
                             <img src={user.imgUrl} alt="" />
                         </div>
                         <div className="patient-details-info">
-                            <p>{user.fullName}</p>
+                            <p>{user.fullname}</p>
                             <p>age</p>
                             <p>last visited</p>
                         </div>

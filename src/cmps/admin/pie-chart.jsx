@@ -22,7 +22,7 @@ const getDoctors = async () =>{
 }
 
 const data = {
-  labels: !doctors ? [] : doctors.map(doctor => doctor.fullName),
+  labels: !doctors ? [] : doctors.map(doctor => doctor.fullname),
   datasets: [
     {
       label: '# of Votes',

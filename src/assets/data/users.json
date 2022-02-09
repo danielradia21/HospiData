@@ -1,17 +1,17 @@
 [
     {
         "_id": "u101",
-        "fullName": "Orly Amadi",
+        "fullname": "Orly Amadi",
         "username": "orlyAma@gmail.com",
         "password": "tinkerbell",
-        "UID": "5456421451",
+        "UID":"5456421451",
         "imgUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         "isAdmin": false,
         "type": "doctor",
         "patients": [
             {
                 "_id": "u103",
-                "UID": "54564222381",
+                "UID":"54564222381",
                 "fullname": "Tino Blom",
                 "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             }
@@ -43,8 +43,8 @@
     },
     {
         "_id": "u102",
-        "fullName": "Tino Blom",
-        "UID": "54564222381",
+        "fullname": "Tino Blom",
+        "UID":"54564222381",
         "username": "Tinoblom@gmail.com",
         "password": "1234Password",
         "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -53,8 +53,8 @@
         "appointments": [
             {
                 "_id": "a101",
-                "title": "Nose Pain",
-                "description": "Nose bled twice for no reason",
+                "title": "",
+                "description": "",
                 "date": "1642506255660",
                 "status": "cancelled",
                 "doctor": {
@@ -68,20 +68,20 @@
                 "title": "Back pain",
                 "description": "Back hurts after falling from a bike",
                 "date": "1642507155660",
-                "status": "pending",
+                "status": "arrived",
                 "doctor": {
                     "_id": "u1995",
                     "fullname": "Daniel Radia",
                     "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80"
                 },
                 "drugs": ["acamol", "decsamol"],
-                "referrals": [
+                "referrals": 
                     {
                         "_id": "r-101",
                         "title": "Ultrasound",
                         "date": "1642508955660"
                     }
-                ]
+                
             },
             {
                 "_id": "a104",
@@ -95,12 +95,36 @@
                     "imgUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 }
             }
+        ],
+        "inbox":[
+            {
+            "_id":"m2293",
+            "appId":"a101",
+            "date":"1642506275660",
+            "isOpened":false,
+            "by":{  "_id": "u101",
+                "fullname": "Orly Amadi",
+                "imgUrl": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"},
+            "msg":"Your appointment got cancelled, By doctor Orly Amadi"
+            },
+            {
+                "_id":"m22343",
+                "appId":"a103",
+                "date":"1642507157660",
+                 "isOpened":false,
+                "by":{
+                    "_id": "u1995",
+                    "fullname": "Daniel Radia",
+                    "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80"
+                },
+                "msg":"Your appointment got approved, By doctor Daniel Radia"
+                }
         ]
     },
     {
         "_id": "u103",
-        "fullName": "David Davidov",
-        "UID": "545642111",
+        "fullname": "David Davidov",
+        "UID":"545642111",
         "username": "DavidDav@gmail.com",
         "password": "iamtheking",
         "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
@@ -110,19 +134,19 @@
             {
                 "_id": "u103",
                 "fullname": "Gal Dror",
-                "UID": "5456454441",
+                "UID":"5456454441",
                 "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             },
             {
                 "_id": "u120",
-                "UID": "54564543",
+                "UID":"54564543",
                 "fullname": "Ronit Pushkin",
                 "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
             },
             {
-                "_id": "u1997",
-                "fullName": "Beny Kursalin",
-                "UID": "520844775",
+                "_id":"u1997",
+                "fullname":"Beny Kursalin",
+                "UID":"520844775",
                 "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
             }
         ],
@@ -154,7 +178,7 @@
                 "status":"arrived",
                 "patient":  {
                     "_id":"u1997",
-                    "fullName":"Beny Kursalin",
+                    "fullname":"Beny Kursalin",
                     "UID":"520844775",
                     "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
                 },
@@ -164,8 +188,8 @@
     },
     {
         "_id": "u109",
-        "fullName": "Gal Dror",
-        "UID": "5456454441",
+        "fullname": "Gal Dror",
+        "UID":"5456454441",
         "username": "DroriG@gmail.com",
         "password": "123123",
         "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -185,13 +209,27 @@
                 },
                 "drugs": ["decsamol"]
             }
+        ],
+        "inbox":[
+            {
+            "_id":"m21566",
+            "appId":"a110",
+            "date":"1642508355660",
+            "isOpened":false,
+            "by":{
+                "_id": "u103",
+                "fullname": "David Davidov",
+                "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+            },
+            "msg":"Your appointment got approved, By doctor David Davidov"
+            }
         ]
     },
     {
         "_id": "u120",
-        "fullName": "Ronit Pushkin",
+        "fullname": "Ronit Pushkin",
         "username": "RontPush@gmail.com",
-        "UID": "54564543",
+        "UID":"54564543",
         "password": "111111",
         "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
         "isAdmin": false,
@@ -209,22 +247,37 @@
                     "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["acamol"],
-                "referrals": [
+                "referrals": 
                     {
                         "_id": "r-105",
                         "title": "Rentgen",
                         "date": "1642510155660"
                     }
-                ]
+                
+            }
+        ],
+        "inbox":[
+            {
+            "_id":"m2555566",
+            "appId":"a125",
+            "date":"1642509355660",
+            "isOpened":false,
+            "by":{
+                "_id": "u103",
+                "fullname": "David Davidov",
+                "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+            },
+            "msg":"Your appointment got approved, By doctor David Davidov"
             }
         ]
+        
     },
     {
         "_id": "u1997",
-        "fullName": "Beny Kursalin",
+        "fullname": "Beny Kursalin",
         "username": "Beku1997@gmail.com",
         "password": "123123123",
-        "UID": "520844775",
+        "UID":"520844775",
         "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg",
         "isAdmin": false,
         "type": "patient",
@@ -241,20 +294,35 @@
                     "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
                 },
                 "drugs": ["acamol"],
-                "referrals": [
+                "referrals": 
                     {
                         "_id": "r-105",
                         "title": "Rentgen",
                         "date": "1642510275660"
                     }
-                ]
+                
+            }
+        ],
+        "inbox":[
+            {
+            "_id":"m2555566",
+            "appId":"a1345",
+            "date":"1642509355660",
+            "isOpened":false,
+            "by":{
+                "_id": "u103",
+                "fullname": "David Davidov",
+                "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
+            },
+            "msg":"Your appointment got approved, By doctor David Davidov"
             }
         ]
+   
     },
     {
         "_id": "u1995",
-        "fullName": "Daniel Radia",
-        "UID": "55556841",
+        "fullname": "Daniel Radia",
+        "UID":"55556841",
         "username": "DanielRad@gmail.com",
         "password": "123123123",
         "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
@@ -263,55 +331,7 @@
         "patients": [
             {
                 "_id": "u103",
-                "UID": "54564222381",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u203",
-                "UID": "54564222341",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u303",
-                "UID": "54564222331",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u403",
-                "UID": "54564222281",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u503",
-                "UID": "54561222381",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u603",
-                "UID": "54514222381",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u1003",
-                "UID": "54563222381",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u12603",
-                "UID": "54564322381",
-                "fullname": "Tino Blom",
-                "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u1303",
-                "UID": "545642331",
+                "UID":"54564222381",
                 "fullname": "Tino Blom",
                 "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             }
@@ -328,18 +348,18 @@
                 },
                 "date": "1642507155660"
             }
-        ],
-        "history": []
-    },
-    {
+        ]
+    },{
         "_id": "u2193912",
-        "fullName": "Avishai Etach",
-        "UID": "57575722",
+        "fullname": "Avishai Etach",
+        "UID":"57575722",
         "username": "AvishaiE@gmail.com",
         "password": "123123123",
         "imgUrl": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
         "isAdmin": true,
         "type": "patient",
-        "appointments":[]
+        "appointments":[],
+        "inbox":[]
     }
+    
 ]

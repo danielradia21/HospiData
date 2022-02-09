@@ -65,7 +65,7 @@ async function update(user) {
         //   throw Error('Cant update when you are not admin')
         await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
-        return _saveLocalUser(user);
+        // return _saveLocalUser(user);
     } catch (err) {
         console.log('Had error on userService: UPDATE', err);
     }

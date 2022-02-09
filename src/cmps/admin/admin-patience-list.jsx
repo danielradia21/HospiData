@@ -31,10 +31,7 @@ export function AdminPatienceList() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [isAdmin, setisAdmin] = useState(false);
-    const [selctPatient,setSelctePatient] = useState({
-        fullName : '',
-        imgUrl : '',
-    })
+    const [selctPatient,setSelctePatient] = useState({})
 
     useEffect( () => {
         getPatience();
@@ -47,15 +44,15 @@ export function AdminPatienceList() {
 
     const handleSearch = (ev) => {
         const value = ev.target.value
-        const filterPatience = patience.filter(patient => patient.fullName.toLocaleLowerCase().includes(value))
+        const filterPatience = patience.filter(patient => patient.fullname.toLocaleLowerCase().includes(value))
         setfilter(prev => prev = filterPatience)
     }
 
     const update = (patient) =>{
     setactive(prv=>prv ='update')
     handleOpen();
-    const {fullName,imgUrl,isAdmin} = patient
-    setSelctePatient(prev => prev = {...patient,fullName,imgUrl})
+    const {fullname,imgUrl,isAdmin} = patient
+    setSelctePatient(prev => prev = patient)
     setisAdmin(prev => prev = isAdmin)
 }
 const remove = (patient) =>{
@@ -112,7 +109,7 @@ const OnRemovePatient = async () =>{
                     <form className="flex column ">
                     <div className="input-continer">
                     <label>full name:</label>
-                    <input id="fullName" type='text'  placeholder="full name" value={selctPatient.fullName} required onChange={handleChange}/>
+                    <input id="fullName" type='text'  placeholder="full name" value={selctPatient.fullname} required onChange={handleChange}/>
                     </div>
                     <div className="input-continer">
                     <label>img url:</label>

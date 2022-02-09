@@ -15,7 +15,7 @@ export function CarouselCard({ doctor }) {
           component="img"
           height="260"
           image={doctor.imgUrl}
-          alt={doctor.fullName}
+          alt={doctor.fullname}
         />
         <div className="meta">
           <div className="phone-icon icon">
@@ -28,7 +28,7 @@ export function CarouselCard({ doctor }) {
       </div>
       <CardContent>
         <Typography variant="h6" component="div" className="doctor-name">
-          Dr. {doctor.fullName}
+          Dr. {doctor.fullname}
         </Typography>
         <Typography
           gutterBottom

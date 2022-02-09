@@ -3,12 +3,10 @@ import { patientNestedRoutes } from "../../routes";
 
 
 export function PatientMainContent(){
-    return (
-        <Switch> 
+    return (<>
           <div className="main-content">
+        <Switch> 
         {patientNestedRoutes.map((route) => (
-         
-             
           <Route
             exact
             path={route.path}
@@ -16,7 +14,8 @@ export function PatientMainContent(){
             key={route.path}
           />
           ))}
-          </div>
       </Switch>
+          </div>
+      </>
     )
 }

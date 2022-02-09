@@ -157,7 +157,7 @@ export default function EnhancedTable({items,updateFunc,removeFunc}) {
     return { UID, name, image, admin,update, remove};
   }
 
-  const rows = items.map(item =>createData(item.UID,item.fullName,item.imgUrl,item.isAdmin,item));
+  const rows = items.map(item =>createData(item.UID,item.fullname,item.imgUrl,item.isAdmin,item));
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
