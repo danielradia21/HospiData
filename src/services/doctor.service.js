@@ -99,6 +99,7 @@ async function updateMeeting(appId = null, patient, newApp, user) {
 
     const meetIdx = user.meetings.findIndex((meet) => meet._id === appId);
     user.meetings[meetIdx].status = 'arrived';
+    user.meetings[meetIdx].date = appointment.date;
     await userService.updateLoggedInUser(user);
 }
 

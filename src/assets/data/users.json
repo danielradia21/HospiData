@@ -125,66 +125,13 @@
         "_id": "u103",
         "fullname": "David Davidov",
         "UID": "545642111",
-        "username": "DavidDav@gmail.com",
-        "password": "iamtheking",
+        "username": "dd@gmail.com",
+        "password": "123456789",
         "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80",
         "isAdmin": false,
         "type": "doctor",
-        "patients": [
-            {
-                "_id": "u103",
-                "fullname": "Gal Dror",
-                "UID": "5456454441",
-                "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            },
-            {
-                "_id": "u120",
-                "UID": "54564543",
-                "fullname": "Ronit Pushkin",
-                "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-            },
-            {
-                "_id": "u1997",
-                "fullname": "Beny Kursalin",
-                "UID": "520844775",
-                "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
-            }
-        ],
-        "meetings": [
-            {
-                "_id": "a110",
-                "status": "arrived",
-                "patient": {
-                    "_id": "u103",
-                    "fullname": "Gal Dror",
-                    "UID": "5456454441",
-                    "imgUrl": "https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                },
-                "date": "1642508155660"
-            },
-            {
-                "_id": "a125",
-                "status": "arrived",
-                "patient": {
-                    "_id": "u120",
-                    "UID": "54564543",
-                    "fullname": "Ronit Pushkin",
-                    "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                },
-                "date": "1642509155660"
-            },
-            {
-                "_id": "a1345",
-                "status": "arrived",
-                "patient": {
-                    "_id": "u1997",
-                    "fullname": "Beny Kursalin",
-                    "UID": "520844775",
-                    "imgUrl": "https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg"
-                },
-                "date": "1642509255660"
-            }
-        ]
+        "patients": [],
+        "meetings": []
     },
     {
         "_id": "u109",

@@ -43,6 +43,7 @@ export function PateintProfile() {
             await doctorService.getEmptyMeet(user, patient, values);
         }
         await getPatinet();
+        dispatch(getLoggedInUser())
     };
 
     if (!patient) return <div>loading...</div>;
