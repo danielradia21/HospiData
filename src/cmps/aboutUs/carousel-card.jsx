@@ -7,10 +7,29 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
 import { Link } from 'react-router-dom'
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import { useEffect, useState } from 'react'
+import { Formik, Field, Form } from 'formik';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
+import emailjs from '@emailjs/browser';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle'
 
 
-export function CarouselCard({ member }) {
+
+export function CarouselCard({ member ,handleOpen,getMember}) {
+
+  const openModel= () => {
+    handleOpen()
+    getMember(member);
+  }
+
+
   return (
+    <>
     <Card sx={{ width: 240, height: 344 }} className="carousel-card-preview member-card">
       <div className="carousel-card-top">
         <div className="meta-background"></div>
@@ -29,7 +48,7 @@ export function CarouselCard({ member }) {
             <a href={member.github} target="_blank" rel="noopener noreferrer"><GitHubIcon/></a>  
           </div>
           <div className="email-icon icon">
-          <a href={member.email} target="_blank" rel="noopener noreferrer"> <EmailIcon/></a>  
+          <div onClick={openModel}> <EmailIcon/></div>  
           </div>
         </div>
       </div>
@@ -47,9 +66,6 @@ export function CarouselCard({ member }) {
         </Typography>
       </CardContent>
     </Card>
-
-    // <div className="carousel-card">
-    //     <img src={doctor.imgUrl}/>
-    // </div>
+    </>
   )
 }

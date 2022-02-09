@@ -3,6 +3,7 @@ import { httpService } from './http.service';
 import defaultUsers from '../assets/data/users.json';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
 const STORAGE_KEY = 'user';
+const doctorsKeys = ['az89A','Wn68s','Zk56t','b79iB']
 
 export const userService = {
     login,
@@ -11,8 +12,21 @@ export const userService = {
     getLoggedinUser,
     getUsers,
     getById,
+    getByUID,
     update,
+    updateLoggedInUser,
+    Chackey
 };
+
+async function Chackey(key) {
+    try {
+     return doctorsKeys.some(currKey=> key === currKey );
+        //   return httpService.get(`user`)
+    } catch (err) {
+        console.log('Had error on userService: GETUSERS', err);
+    }
+}
+
 
 async function getUsers() {
     try {
@@ -35,10 +49,20 @@ async function getById(userId) {
     }
 }
 
+async function getByUID(UID) {
+    try {
+        let users = await storageService.query('user');
+        return users.find((user) => user.UID === UID);
+        //   return await httpService.get(`user/${userId}`)
+    } catch (err) {
+        console.log('Had error on userService: GETUSERBYID', err);
+    }
+}
+
 async function update(user) {
     try {
-        if (!getLoggedinUser().isAdmin)
-            throw Error('Cant update when you are not admin');
+        // if (!getLoggedinUser().isAdmin)
+        //   throw Error('Cant update when you are not admin')
         await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
         return _saveLocalUser(user);
@@ -49,17 +73,13 @@ async function update(user) {
 
 async function login(userCred) {
     try {
-        console.log(userCred);
         const users = await getUsers();
-        console.log('file: user.service.js   line 53   users', users);
-
         const user = users.find(
             (user) =>
-                user.username === userCred.username &&
+                user.username.toLowerCase() ===
+                    userCred.username.toLowerCase() &&
                 user.password === userCred.password
         );
-        console.log('file: user.service.js   line 60   user', user);
-
         if (user) return _saveLocalUser(user);
         //   const user = await httpService.post('auth/login', userCred)
     } catch (err) {
@@ -70,7 +90,7 @@ async function signup(userCred) {
     try {
         // Might need to change up the userCred here
         const users = await storageService.query(STORAGE_KEY);
-        if (users.find((user) => user.username === userCred.username))
+        if (users.find((user) => user.UID === userCred.UID))
             throw Error('Username already taken');
         const user = await storageService.post(STORAGE_KEY, userCred);
         return _saveLocalUser(user);
@@ -86,6 +106,17 @@ async function logout() {
         //   return await httpService.post('auth/logout')
     } catch (err) {
         console.log('Had error on userService: LOGOUT', err);
+    }
+}
+
+
+async function updateLoggedInUser(user) {
+    try {
+        sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
+        await update(user);
+        return user;
+    } catch (err) {
+        console.log(err);
     }
 }
 

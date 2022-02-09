@@ -18,7 +18,7 @@ import { SignIn } from './login';
 
 const theme = createTheme();
 
-export function SignUp({ onClose }) {
+export function SignUp({ onClose ,userSatus }) {
     const [toggleForm, setToggleForm] = React.useState(false);
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));
@@ -37,7 +37,7 @@ export function SignUp({ onClose }) {
                         <CssBaseline />
                         <Box
                             sx={{
-                                marginTop: 8,
+                                // marginTop: 2,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
@@ -47,25 +47,47 @@ export function SignUp({ onClose }) {
                                 <LockOutlinedIcon />
                             </Avatar>
                             <Typography component="h1" variant="h5">
-                                Sign up
+                                Sign up {userSatus}
                             </Typography>
                             <Formik
                                 initialValues={{
                                     fullname: '',
-                                    email: '',
+                                    username: '',
                                     password: '',
+                                    UID:''
                                 }}
                                 onSubmit={async (values) => {
                                     onClose();
-                                    await userService.signup(values);
+                                    let userCred = {
+                                        ...values,
+                                        imgUrl:"https://www.iconspng.com/images/young-user-icon.jpg",
+                                        isAdmin: false,
+                                        type: userSatus,
+                                    }
+                                    if(userSatus === 'patient'){
+                                        userCred = {...userCred ,appointments: [],inbox:[] }
+                                    }else if(userSatus === 'doctor'){
+                                        userCred = {...userCred ,meetings: [],patients:[] }
+                                    }
+                                    await userService.signup (userCred);
+                                    values.fullname = '';
                                     values.username = '';
                                     values.password = '';
+                                    values.UID = '';
                                 }}
                             >
                                 <Form>
                                     <Field
-                                        as={textFieldOutline}
+                                       as={textFieldOutline}
+                                       label="UID"
+                                       type="text"
+                                       id="UID"
+                                       name="UID"
+                                       placeholder="UID"
                                         autoFocus
+                                    />
+                                    <Field
+                                        as={textFieldOutline}
                                         label="Full Name"
                                         id="fullname"
                                         name="fullname"
@@ -75,8 +97,8 @@ export function SignUp({ onClose }) {
                                     <Field
                                         as={textFieldOutline}
                                         label="Email"
-                                        id="email"
-                                        name="email"
+                                        id="username"
+                                        name="username"
                                         placeholder="jane@acme.com"
                                         type="email"
                                     />

@@ -3,10 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "leaflet": "^1.7.1",
+        "react-leaflet": "^3.2.2",
+        "@emailjs/browser": "^3.4.0",
         "@emotion/react": "^11.4.1",
         "@emotion/styled": "^11.3.0",
         "@material-ui/core": "^4.10.0",
         "@mui/icons-material": "^5.2.5",
+        "@mui/lab": "^5.0.0-alpha.66",
         "@mui/material": "^5.0.1",
         "@mui/styles": "latest",
         "@mui/utils": "latest",
@@ -16,6 +20,7 @@
         "axios": "^0.21.4",
         "chart.js": "^3.7.0",
         "clsx": "latest",
+        "date-fns": "^2.28.0",
         "faker": "5.5.3",
         "formik": "^2.2.9",
         "node-sass": "^6.0.1",
@@ -46,16 +51,9 @@
             "react-app/jest"
         ]
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+    ]
 }

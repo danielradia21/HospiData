@@ -14,27 +14,27 @@ export function AdminDashBord() {
         const [history,setHistory] = useState([])
 
         useEffect(async() => {
-           await getDoctors();
+           await getDoctorsData();
            await getPatience();
-           getAppointments()
+        //    getAppointments()
          }, []);
 
-        const getDoctors = async () =>{
+        const getDoctorsData = async () =>{
             const doctors = await adminService.getDoctors();
             setDoctors(prevDoctors => prevDoctors = doctors)
+            const appointments =  doctors.reduce((acc,doctor)=>{
+                return acc = acc  + doctor.meetings.length
+              },0)
+              setAppointments(prevAppointments => prevAppointments = appointments)
         }
         const getPatience = async () =>{
             const patience = await adminService.getPatience();
             setPatience(prevPatience => prevPatience = patience)
         }
 
-        const getAppointments= async () =>{
-            const doctors = await adminService.getDoctors();
-           const appointments =  doctors.reduce((acc,doctor)=>{
-              return acc = acc  + doctor.meetings.length
-            },0)
-            setAppointments(prevAppointments => prevAppointments = appointments)
-        }
+        // const getAppointments= async () =>{
+        //      const doctors = await adminService.getDoctors();
+        // }
 
 
         const showCpm = () => {
@@ -79,8 +79,8 @@ export function AdminDashBord() {
     <div className="dasbord">
          <CardList doctorsSum={doctors.length} patienceSum={patience.length} appointments={appointments}/>
          <div className="flex dasbord-btn-continer ">
-             <button  onClick={()=>selectCmp('line')}>Financial Data</button>
-             <button onClick={()=>selectCmp('pie')}>Doctors status</button>
+             <button className={activeCmp === 'line' ? 'activeChart' : '' } onClick={()=>selectCmp('line')}>Financial Data</button>
+             <button className={activeCmp === 'pie' ? 'activeChart' : '' } onClick={()=>selectCmp('pie')}>Doctors status</button>
          </div>
          {showCpm()}
         </div>     

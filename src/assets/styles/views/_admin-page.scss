@@ -104,14 +104,25 @@
         background-color: #04477b;
         color: white;
         text-transform: capitalize;
+        &.activeChart{
+            background-color: #33cb74;
+        }
     }
 }
 
 .pie-continer{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
+
+    h1{
+        font-size: rem(20px);
+        text-transform: capitalize;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
 }
 
 .pie{
@@ -125,6 +136,13 @@
 .table-pagination{
     p{
         margin-bottom: 0;
+    }
+    .css-pdct74-MuiTablePagination-selectLabel{
+        display: none;
+
+    }
+    .css-16c50h-MuiInputBase-root-MuiTablePagination-select{
+        display: none;
     }
 }
 
@@ -203,3 +221,4 @@
         justify-self: flex-end;
     }
 }
+

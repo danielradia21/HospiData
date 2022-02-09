@@ -15,10 +15,13 @@
 @import 'views/home-page';
 @import 'views/doctor-page';
 @import 'views/admin-page';
-
 @import 'views/about-us';
+@import 'views/news';
 
 // Components
+// Main
+@import 'cmps/loder';
+// Admin
 @import 'cmps/app-header';
 @import 'cmps/app-footer';
 @import 'cmps/delte-massge';
@@ -27,6 +30,12 @@
 @import 'cmps/homepage/card-prev';
 @import 'cmps/homepage/health-section';
 @import 'cmps/usersTamplate';
+@import 'cmps/patient/lab';
+@import 'cmps/patient/medical-referrals';
+@import 'cmps/patient/appointments-table';
+@import 'cmps/patient/cancel-appointment';
+@import 'cmps/patient/appointment-modal';
+@import 'cmps/patient/lab-table';
 
 
 
@@ -37,9 +46,12 @@
 @import 'cmps/aboutUs/hero';
 @import 'cmps/aboutUs/carousel';
 @import 'cmps/aboutUs/carousel-card';
+// Patient
 @import 'cmps/patient/appointment-list';
 @import 'cmps/patient/appointment-prev';
-@import 'cmps/patients';
-// @import 'cmps/usersTamplate';
+// Doctor
+@import 'cmps/doctor/patients';
+@import 'cmps/doctor/meetings';
+
 
 

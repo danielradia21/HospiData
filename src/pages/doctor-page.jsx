@@ -7,15 +7,21 @@ import { Meetings } from '../cmps/doctor/meetings';
 import { Patients } from '../cmps/doctor/patients';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
-
+import { doctorService } from '../services/doctor.service';
+import { PateintProfile } from '../cmps/doctor/visitPage/pateintProfile';
 const nestedRoutes = [
     {
         path: '/doctor/meetings',
         component: Meetings,
     },
+
     {
         path: '/doctor/patiences',
         component: Patients,
+    },
+    {
+        path: '/doctor/patiences/patient',
+        component: PateintProfile,
     },
     {
         path: '/doctor/history',
@@ -25,9 +31,7 @@ const nestedRoutes = [
 
 export function DoctorPage() {
     const { user } = useSelector((state) => state.userModule);
-
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (!user) dispatch(getLoggedInUser());
     }, [user]);
@@ -37,6 +41,13 @@ export function DoctorPage() {
         dispatch(onLogout());
     };
 
+    // const test = async () => {
+    //     const doctors = await doctorService.getDoctors();
+    // };
+
+    // test();
+
+    if (!user) return <div>w8</div>;
     return (
         <div className="main-wrapper">
             <div className="main-contents">
@@ -52,10 +63,10 @@ export function DoctorPage() {
                         <div className="name-section">
                             <div>
                                 <div className="details">
-                                    <p className="title">Orly Amadi</p>
+                                    <p className="title">{user.fullName}</p>
                                 </div>
                                 <div className="details">
-                                    <p className="sub-title">Doctor</p>
+                                    <p className="sub-title">{user.type}</p>
                                 </div>
                             </div>
                             <div className="logout-btn">
@@ -66,14 +77,10 @@ export function DoctorPage() {
 
                     <div className="details-wrapper">
                         <div className="details">
-                            <NavLink to="/doctor/meetings">
-                                Meetings
-                            </NavLink>
+                            <NavLink to="/doctor/meetings">Meetings</NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor/patiences">
-                                Patiences
-                            </NavLink>
+                            <NavLink to="/doctor/patiences">Patiences</NavLink>
                         </div>
                         <div className="details">
                             <NavLink to="/doctor/history">History</NavLink>
@@ -82,18 +89,16 @@ export function DoctorPage() {
                 </div>
                 <div className="main-content-section">
                     <div className="main-content">
-                        <div className="contents">
-                            <Switch>
-                                {nestedRoutes.map((nestedRoute) => (
-                                    <Route
-                                        key={nestedRoute.path}
-                                        exact
-                                        component={nestedRoute.component}
-                                        path={nestedRoute.path}
-                                    />
-                                ))}
-                            </Switch>
-                        </div>
+                        <Switch>
+                            {nestedRoutes.map((nestedRoute) => (
+                                <Route
+                                    key={nestedRoute.path}
+                                    exact
+                                    component={nestedRoute.component}
+                                    path={nestedRoute.path}
+                                />
+                            ))}
+                        </Switch>
                     </div>
                 </div>
             </div>

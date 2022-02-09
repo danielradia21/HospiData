@@ -15,13 +15,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Formik, Field, Form } from 'formik';
 import { userService } from '../services/user.service';
 import { SignUp } from './signup';
-import { onLogin } from '../store/actions/user.actions'
+import { onLogin } from '../store/actions/user.actions';
 import { useDispatch } from 'react-redux';
 
 const theme = createTheme();
 
 export function SignIn({ onClose }) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [toggleForm, setToggleForm] = React.useState(false);
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));

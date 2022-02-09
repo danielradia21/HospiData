@@ -55,7 +55,7 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'id', label: 'Id', minWidth: 100 ,isSort:true },
+  { id: 'UID', label: 'UID', align: 'center',minWidth: 100 ,isSort:true },
     { id: 'name', label: 'Full Name', minWidth: 100 ,isSort:true },
     {
       id: 'image',
@@ -146,18 +146,18 @@ export default function EnhancedTable({items,updateFunc,removeFunc}) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(3);
 
   
-  function createData(id, name, img, isAdmin,item) {
-    const update = <button key={id} className='updateBtn' onClick={()=>updateFunc(item)}><CreateIcon titleAccess='Edit'/></button>
-    const remove = <button key={id} className='deleteBtn' onClick={()=>removeFunc(item)}><DeleteIcon titleAccess='Delete'/></button>
-    const image = <img key={id}  src={img} alt='img.png' style={{width:'80px',height:'80px',objectFit:'cover',objectPosition: 'top'}}/>
+  function createData(UID, name, img, isAdmin,item) {
+    const update = <button key={UID} className='updateBtn' onClick={()=>updateFunc(item)}><CreateIcon titleAccess='Edit'/></button>
+    const remove = <button key={UID} className='deleteBtn' onClick={()=>removeFunc(item)}><DeleteIcon titleAccess='Delete'/></button>
+    const image = <img key={UID}  src={img} alt='img.png' style={{width:'80px',height:'80px',objectFit:'cover',objectPosition: 'top'}}/>
     const admin = isAdmin ? 'true' : 'false' 
-    return { id, name, image, admin,update, remove};
+    return { UID, name, image, admin,update, remove};
   }
 
-  const rows = items.map(item =>createData(item._id,item.fullName,item.imgUrl,item.isAdmin,item));
+  const rows = items.map(item =>createData(item.UID,item.fullName,item.imgUrl,item.isAdmin,item));
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -258,7 +258,7 @@ export default function EnhancedTable({items,updateFunc,removeFunc}) {
                         scope="row"
                         padding="none"
                       >
-                        {row.id}
+                        {row.UID}
                       </TableCell>
                       <TableCell >{row.name}</TableCell>
                       <TableCell>{row.image}</TableCell>
@@ -281,7 +281,7 @@ export default function EnhancedTable({items,updateFunc,removeFunc}) {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25 ,{ label: 'All', value: -1 }]}
+          // rowsPerPageOptions={[5, 10, 25 ,{ label: 'All', value: -1 }]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

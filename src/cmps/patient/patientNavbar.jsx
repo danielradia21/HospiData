@@ -8,7 +8,7 @@ export function PatientNavBar(){
     return (
         <>
       {patientNestedRoutes.map((route) => (
-                <div className="details">
+                <div className="details" key={route.path}>
                   <NavLink to={route.path}>
                     <p>{route.label}</p>
                   </NavLink>

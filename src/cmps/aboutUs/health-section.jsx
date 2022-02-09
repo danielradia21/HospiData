@@ -1,5 +1,7 @@
 import healthDoctor from '../../assets/img/health-section-doctor.png';
-
+import maekerIcon from "leaflet/dist/images/marker-icon.png"
+import {Icon} from 'leaflet'
+import { MapContainer , TileLayer, Marker, Popup } from 'react-leaflet'
 export function HealthSection() {
     return (
      
@@ -14,6 +16,17 @@ export function HealthSection() {
                     language are not obstacles to receiving world-class care.
                 </p>
             </div>
+            <MapContainer className="map" center={[42.08853550492383, -71.4054935980649]} zoom={17} scrollWheelZoom={true}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={[42.08853550492383, -71.4054935980649]} icon={new Icon({iconUrl:maekerIcon , iconSize:[25,41],iconAnchor:[12,41]})}>
+        <Popup>
+        HospiData Health Center
+        </Popup>
+      </Marker>
+    </MapContainer>
         </div>
 
     );

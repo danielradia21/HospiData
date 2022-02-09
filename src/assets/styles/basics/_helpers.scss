@@ -1,16 +1,29 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
+.fs12 {
+    font-size: rem(12px);
+}
+.fs14 {
+    font-size: rem(14px);
+}
+.fs18 {
+    font-size: rem(18px);
+}
+.fs20 {
+    font-size: rem(20px);
+}
+.fs24 {
+    font-size: rem(24px);
+}
+.fs28 {
+    font-size: rem(28px);
+}
+.fs30 {
+    font-size: rem(30px);
+}
 
 // flex helpers
 
 .flex {
-
     display: flex;
 
     > *.full {
@@ -39,8 +52,7 @@
     @include aspect-ratio(9, 16);
 }
 
-
-.main-btn{
+.main-btn {
     color: white;
     background-color: #00d9a5;
     width: 170px;
@@ -48,5 +60,47 @@
     transition: 0.3s;
     &:hover {
         background-color: #03a882;
+    }
+}
+.accept-btn {
+    color: white;
+    background-color: #33cb74;
+    width: 100px;
+    height: 50px;
+    transition: 0.3s;
+    &:hover {
+        background-color: #2caf65;
+    }
+}
+.remove-btn {
+    color: white;
+    background-color: #fe0000d6;
+    width: 100px;
+    height: 50px;
+    transition: 0.3s;
+    &:hover {
+        background-color: #c20000d6;
+    }
+}
+
+.sub-btn {
+    border: 1px solid black;
+    align-self: flex-end;
+    background-color: #04477b7a;
+    width: 70px;
+    margin-right: 0;
+    font-size: 0.875rem;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    letter-spacing: 0.8px;
+    &:hover {
+        text-decoration: none;
+        background-color: #33cb74e0;
+    }
+    &.details {
+        width: 130px;
     }
 }
