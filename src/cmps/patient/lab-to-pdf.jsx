@@ -1,11 +1,16 @@
 // import logo from '../../assets/img/logo.png';
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/labs-logo.png'
+import footXRay from '../../assets/img/foot-x-rays.jpg'
 import { jsPDF } from "jspdf";
 export function LabToPdf({user,labRes}){
 
+    
+
     const doc = new jsPDF();
-    doc.addImage(logo,"PNG",40,20,40,13)
-    doc.text('Labs',82,30)
+    doc.addImage(logo,"PNG",40,20,60,13)
+    doc.addImage(labRes.img,labRes.imgType,20,70,150,150)
+    doc.text('From :',20,29)
+    doc.text(`To : ${user.fullname}`,20,42)
 
 
     function savePDF(){

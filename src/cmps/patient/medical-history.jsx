@@ -1,0 +1,50 @@
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { userService } from '../../services/user.service'
+import { HistoryAppointmentModal } from './history-appointment-modal'
+import { MedicalHistoryTable } from './medical-history-table'
+
+export function MedicalHistory() {
+  const { user } = useSelector((state) => state.userModule)
+  const [history,setHistory] = useState(null)
+  const [filteredHistory,setFilteredHistory] = useState(null)
+  const [appointment,setAppointment] = useState(null)
+
+
+  const openAppointment=(app)=>{
+    setAppointment(prev=>prev = app)
+  }
+  
+  const closeAppointment = ()=>{
+    setAppointment(prev=>prev=null)
+  }
+
+    
+  const filterHistory = ({target}) => {
+    const filteredResults = history.filter((res) =>
+        res.title.toLowerCase().includes(target.value) 
+    );
+    setFilteredHistory((prev) => (prev = filteredResults));
+};
+
+
+  useEffect(() => {
+    const history = user.appointments.filter((app) =>  app.status === 'arrived')
+    setHistory((prevHistory)=>prevHistory = history)
+  }, [])
+
+  return (
+    <div className="medical-referrals-content">
+      <div className="main-content-header">Mecial History</div>
+      <input
+                    onChange={filterHistory}
+                    className="patient-search-input"
+                    type="text"
+                    placeholder="Serach Meetings..."
+                />
+      {history&&<MedicalHistoryTable history={filteredHistory||history} openAppointment={openAppointment}/>}
+      {appointment&&<HistoryAppointmentModal appointment={appointment} closeAppointment={closeAppointment} user={user} />}
+    </div>
+  )
+}

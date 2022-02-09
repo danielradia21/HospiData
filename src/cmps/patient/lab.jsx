@@ -1,23 +1,26 @@
 import { useState } from "react";
 import { LabTable } from "./lab-table"
-
+import footXRay from '../../assets/img/foot-x-rays.jpg'
+import handXRay from '../../assets/img/hand-x-rays.png'
+import bloodTestRes from '../../assets/img/blood-test-result.png'
+import ironTestRes from '../../assets/img/iron-test-results.png'
+import { useSelector } from "react-redux";
 
 
 export function Lab(){
-
+    const { user } = useSelector((state) => state.userModule)
     const [filteredRes, setFilterRes] = useState(null);
 
-    const labResults = [
-        {date:Date.now(),title:'Foot X-Ray'},
-        {date:Date.now()+1000*60*24*7,title:'Hand X-Ray'},
-        {date:Date.now()+1000*60*24*14,title:'Blood test'},
-        {date:Date.now()+1000*60*24*21,title:'Iron test'},
-        {date:Date.now()+1000*60*24*28,title:'Weight test'},
+    const labRes = [
+        {date:Date.now(),title:'Foot X-Ray',img:footXRay,imgType:"JPEG"},
+        {date:Date.now()+1000*60*24*7,title:'Hand X-Ray',img:handXRay,imgType:"PNG"},
+        {date:Date.now()+1000*60*24*14,title:'Blood test',img:bloodTestRes,imgType:"PNG"},
+        {date:Date.now()+1000*60*24*21,title:'Iron test',img:ironTestRes,imgType:"PNG"},
     ]
 
     
   const filterResults = ({target}) => {
-    const filteredResults = labResults.filter((res) =>
+    const filteredResults = labRes.filter((res) =>
         res.title.toLowerCase().includes(target.value) 
     );
     setFilterRes((prev) => (prev = filteredResults));
@@ -32,7 +35,7 @@ export function Lab(){
                     type="text"
                     placeholder="Serach Appointments..."
                 />
-      <LabTable labResults={filteredRes||labResults}/>
+      <LabTable labRes={filteredRes||labRes} user={user}/>
             </div>
     )
 }
