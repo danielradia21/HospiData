@@ -4,7 +4,7 @@ import Modal from '@mui/material/Modal';
 import { MeetingTable } from './meeting-table';
 import { Box } from '@mui/material';
 import { doctorService } from '../../services/doctor.service';
-import { setNewUser } from '../../store/actions/user.actions';
+import { getLoggedInUser, setNewUser } from '../../store/actions/user.actions';
 import { useEffect } from 'react';
 import { patientService } from '../../services/patient.service';
 import { userService } from '../../services/user.service';
@@ -18,6 +18,7 @@ export function Meetings() {
     const [filteredMeetings, setFilteredMeetings] = React.useState(null);
     const [meetingId, setMeetingId] = React.useState('');
     const [patients, setPatients] = React.useState(null);
+    const [pendingMeetings, setPendingMeetings] = React.useState([]);
 
     const toggleModal = (question, id) => {
         setMeetingId((prev) => (prev = id));
@@ -39,23 +40,31 @@ export function Meetings() {
     };
 
     useEffect(async () => {
+        getPendingMeetings();
         const patients = await patientService.query();
         setPatients((prev) => (prev = patients));
     }, []);
 
     const filterMeetings = (ev) => {
-        const FilteredList = user.meetings.filter((meet) =>
+        const FilteredList = pendingMeetings.filter((meet) =>
             meet.patient.fullname.toLowerCase().includes(ev.target.value)
         );
         setFilteredMeetings((prev) => (prev = FilteredList));
     };
 
+    const getPendingMeetings = () => {
+        if (!user.meetings) return;
+        const pendings = user.meetings.filter(
+            (meet) => meet.status === 'pending'
+        );
+        setPendingMeetings((prev) => (prev = pendings));
+    };
     const switchBtns = () => {
         if (modalQuest === 'Finish')
             return (
                 <>
                     <button
-                        onClick={() => doneMeeting('approve')}
+                        onClick={() => doneMeeting('approved')}
                         className="accept-btn"
                     >
                         {modalQuest} Meeting
@@ -69,7 +78,7 @@ export function Meetings() {
             return (
                 <>
                     <button
-                        onClick={() => doneMeeting('deny')}
+                        onClick={() => doneMeeting('cancelled')}
                         className="accept-btn"
                     >
                         {modalQuest} Meeting
@@ -84,22 +93,26 @@ export function Meetings() {
 
     const doneMeeting = async (stat) => {
         handleClose();
-        const currMeet = user.meetings.find((meet) => meet._id === meetingId);
+        const currMeet = pendingMeetings.find((meet) => meet._id === meetingId);
         currMeet.status = stat;
         const idx = user.meetings.findIndex((meet) => meet._id === meetingId);
-        user.meetings.splice(idx, 1);
-        if (stat === 'deny') {
-      
-           await userService.updateLoggedInUser(user);
-            return;
-        }
+        user.meetings[idx].status = stat;
         const exsist = user.patients.some(
             (patient) => patient._id === currMeet.patient._id
         );
         if (!exsist) user.patients.push(currMeet.patient);
-        user.history.push(currMeet);
+        const currPatient = await userService.getByUID(currMeet.patient.UID);
+        const currAppIdx = currPatient.appointments.findIndex(
+            (app) => app._id === meetingId
+        );
+        const newPatientApp = currPatient.appointments[currAppIdx];
+        newPatientApp.status = stat;
+        currPatient.appointments.splice(currAppIdx, 1, newPatientApp);
         await userService.updateLoggedInUser(user);
-        // send message to user inbox
+        const msg = doctorService.getEmptyMail(currMeet._id, user, stat);
+        currPatient.inbox.unshift(msg);
+        await patientService.update(currPatient);
+        getPendingMeetings();
     };
 
     return (
@@ -115,7 +128,7 @@ export function Meetings() {
             </div>
             <div className="doc-meeting-main-content">
                 <MeetingTable
-                    items={filteredMeetings || user.meetings}
+                    items={filteredMeetings || pendingMeetings}
                     toggleModal={toggleModal}
                 />
                 <Modal

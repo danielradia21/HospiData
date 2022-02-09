@@ -62,8 +62,8 @@ async function getByUID(UID) {
 async function update(user) {
     try {
         // if (!getLoggedinUser().isAdmin)
-        //   throw Error('Cant update when you are not admin')
-        await storageService.put(STORAGE_KEY, user);
+        //  throw Error('Cant update when you are not admin')
+        return await storageService.put(STORAGE_KEY, user);
         //   user = await httpService.put(`user/${user._id}`, user)
         // return _saveLocalUser(user);
     } catch (err) {
@@ -108,7 +108,6 @@ async function logout() {
         console.log('Had error on userService: LOGOUT', err);
     }
 }
-
 
 async function updateLoggedInUser(user) {
     try {

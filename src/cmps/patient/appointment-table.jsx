@@ -380,8 +380,8 @@ export function AppointmentTable({
   openId,
   open,
 }) {
-    const [order, setOrder] = useState('asc');
-    const [orderBy, setOrderBy] = useState('calories');
+    const [order, setOrder] = useState('desc');
+    const [orderBy, setOrderBy] = useState('date');
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
@@ -544,7 +544,7 @@ export function AppointmentTable({
                                             </TableRow>
                                         );
                                     })}
-                                {emptyRows > 0 && (
+                                {/* {emptyRows > 0 && (
                                     <TableRow
                                         style={{
                                             height:
@@ -553,7 +553,7 @@ export function AppointmentTable({
                                     >
                                         <TableCell colSpan={6} />
                                     </TableRow>
-                                )}
+                                )} */}
                             </TableBody>
                         </Table>
                     </TableContainer>

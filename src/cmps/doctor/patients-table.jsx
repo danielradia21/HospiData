@@ -142,8 +142,8 @@ EnhancedTableHead.propTypes = {
 const dateConvertion = (time) => {
     const newTime = new Date(+time);
     const Year = newTime.getFullYear();
-    const Month = newTime.getMonth();
-    const Day = newTime.getDay();
+    const Month = newTime.getMonth() + 1;
+    const Day = newTime.getDate();
     return `${Day}/${Month}/${Year}`;
 };
 
@@ -153,7 +153,7 @@ export function PatientTable({ items, toggleModal, isHistory }) {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(4);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -270,7 +270,7 @@ export function PatientTable({ items, toggleModal, isHistory }) {
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
                                                 tabIndex={-1}
-                                                key={row.date}
+                                                key={index}
                                                 selected={isItemSelected}
                                             >
                                                 <TableCell padding="checkbox"></TableCell>
@@ -294,22 +294,12 @@ export function PatientTable({ items, toggleModal, isHistory }) {
                                             </TableRow>
                                         );
                                     })}
-                                {emptyRows > 0 && (
-                                    <TableRow
-                                        style={{
-                                            height:
-                                                (dense ? 33 : 53) * emptyRows,
-                                        }}
-                                    >
-                                        <TableCell colSpan={6} />
-                                    </TableRow>
-                                )}
                             </TableBody>
                         </Table>
                     </TableContainer>
                     <TablePagination
                         className="table-pagination"
-                        rowsPerPageOptions={5}
+                        rowsPerPageOptions={[]}
                         component="div"
                         count={rows.length}
                         rowsPerPage={rowsPerPage}

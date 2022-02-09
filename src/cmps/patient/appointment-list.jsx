@@ -94,7 +94,7 @@ export function AppointmentList() {
     try {
       date = date.getTime()
       if (Date.now() + 10 * 60 * 1000 >= date)
-        throw new Error('Pick another date')
+      throw new Error('Pick another date')
       await patientService.makeAppointment({ doctorId, date })
       dispatch(getLoggedInUser())
       await getDoctors()

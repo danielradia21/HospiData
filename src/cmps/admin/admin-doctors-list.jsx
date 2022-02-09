@@ -73,7 +73,7 @@ const remove = (doctor) =>{
 
     const sumbit =  async (ev) =>{
         ev.preventDefault()
-        await doctorService.updetDoctor(selcteDcotor)
+        await doctorService.updateDoctor(selcteDcotor)
         await getDoctors()
         handleClose()
     }

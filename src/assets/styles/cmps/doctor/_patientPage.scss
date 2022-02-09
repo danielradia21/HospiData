@@ -1,0 +1,102 @@
+.add-treatment {
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .modal-info-continer.doc-pat {
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: baseline;
+        background-color: #c2ebfb;
+        height: 653px;
+        .doc-pat-treatment {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+        }
+        .confirm {
+            position: absolute;
+            right: 100px;
+            bottom: 120px;
+            width: 100px;
+            height: 35px;
+        }
+    }
+}
+
+.doc-pat-title {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    height: 100px;
+    width: 300px;
+    label {
+        padding-left: 14px;
+    }
+    input {
+        background-color: #fff;
+        align-self: center;
+        width: 100%;
+        height: 30px;
+        padding-left: 6px;
+        font-size: 1.2rem;
+        border-radius: 3px;
+    }
+}
+
+.description {
+    height: 400px;
+
+    label {
+        padding-left: 14px;
+    }
+    font-family: ssp-reg;
+    resize: none;
+    align-self: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+.drugs {
+    width: 300px;
+    margin-bottom: 40px;
+    label {
+        padding-left: 14px;
+    }
+    #tags-outlined {
+        width: 200px;
+    }
+}
+.med-title {
+    height: 100px;
+    width: 300px;
+    label {
+        padding-left: 14px;
+    }
+    input {
+        align-self: center;
+        width: 100%;
+        height: 30px;
+        padding-left: 6px;
+        font-size: 1.2rem;
+        border-radius: 3px;
+        background-color: #fff;
+    }
+}
+.doc-pat-form {
+    display: flex;
+    align-items: baseline;
+    gap: 150px;
+}
+.css-17vbkzs-MuiFormControl-root-MuiTextField-root {
+    margin-top: 0;
+}
+.MuiAutocomplete-hasPopupIcon.css-eozd4h-MuiAutocomplete-root
+    .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.css-eozd4h-MuiAutocomplete-root
+    .MuiOutlinedInput-root {
+    background: white;
+}

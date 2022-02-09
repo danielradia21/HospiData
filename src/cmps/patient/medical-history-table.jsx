@@ -8,7 +8,7 @@
 //   TableRow,
 // } from '@mui/material'
 
-// export function MedicalReferralsTable({ referrals }) {
+// export function MedicalHistoryTable({ history }) {
 //   const columns = [
 //     { id: 'date', label: 'Date', minWidth: 100 },
 //     { id: 'time', label: 'Time', minWidth: 100 },
@@ -40,7 +40,7 @@
 //   return { date: `${day}/${month}/${year}`, time: `${hour}:${minute}` }
 // }
 
-//   const rows = referrals.map((res) => createData(res.title, +res.date,res._id))
+//   const rows = history.map((res) => createData(res.title, +res.date,res._id))
 
 
 //   return (
@@ -97,6 +97,7 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 import { CancelAppointment } from './cancel-appointment'
+import { HistoryAppointmentModal } from './history-appointment-modal';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -143,6 +144,7 @@ function EnhancedTableHead(props) {
     };
 
     return (
+        
         <TableHead>
             <TableRow>
                 <TableCell padding="checkbox"></TableCell>
@@ -187,8 +189,9 @@ EnhancedTableHead.propTypes = {
     rowCount: PropTypes.number.isRequired,
 };
 
-export function MedicalReferralsTable({
-referrals
+export function MedicalHistoryTable({
+    history,
+    openAppointment
 }) {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
@@ -225,10 +228,10 @@ referrals
   }
  
 
-  function createData(title, timestamp,id) {
+  function createData(title, timestamp,id,app) {
     const {date,time} = getDate(timestamp)
     const viewDetails = (
-      <button key={timestamp} className="view-details-btn">
+      <button key={id} onClick={()=>openAppointment(app)} className="view-details-btn">
         View Details{' '}
       </button>
     )
@@ -236,7 +239,7 @@ referrals
   }
 
 
-  const rows = referrals.map((res) => createData(res.title, +res.date,res._id))
+  const rows = history.map((res) => createData(res.title, +res.date,res._id,res))
 
     const handleClick = (event, name) => {
         const selectedIndex = selected.indexOf(name);

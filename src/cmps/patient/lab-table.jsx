@@ -8,7 +8,7 @@
 //   TableRow,
 // } from '@mui/material'
 
-// export function LabTable({ labResults }) {
+// export function LabTable({ labRes }) {
 //   const columns = [
 //     { id: 'date', label: 'Date', minWidth: 100 },
 //     { id: 'title', label: 'Title', minWidth: 100, align: 'center' },
@@ -33,7 +33,7 @@
   //   return `${day}/${month}/${year}`
   // }
 
-//   const rows = labResults.map((res) => createData(res.title, +res.date))
+//   const rows = labRes.map((res) => createData(res.title, +res.date))
 
 //   return (
 //     <TableContainer component={Paper}>
@@ -183,7 +183,7 @@ EnhancedTableHead.propTypes = {
 };
 
 export function LabTable({
-  labResults
+  labRes,user
 }) {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
@@ -217,15 +217,15 @@ export function LabTable({
     }
 
  
-  function createData(title, timestamp) {
+  function createData(title, timestamp,labResult) {
     const date = getDate(timestamp)
     const download = (
-     <LabToPdf  key={timestamp} />
+     <LabToPdf  key={timestamp} labRes={labResult} user={user}/>
     
     )
     return { date, title, download,id:Math.floor(Math.random()*Date.now()) }
   }
-  const rows = labResults.map((res) => createData(res.title, +res.date))
+  const rows = labRes.map((res) => createData(res.title, +res.date,res))
 
     const handleClick = (event, name) => {
         const selectedIndex = selected.indexOf(name);
