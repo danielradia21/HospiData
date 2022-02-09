@@ -40,6 +40,10 @@ export function onLogin(credentials) {
                 type: 'SET_USER',
                 user,
             });
+            if(user){
+                if(user.type === 'doctor') window.location.href = '/doctor/meetings'
+                else if(user.type === 'patient') window.location.href = '/patient/appointments'
+            }
         } catch (err) {
             // showErrorMsg('Cannot login');
             console.log('Cannot login', err);

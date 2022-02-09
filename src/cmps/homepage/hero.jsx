@@ -3,23 +3,35 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { SignUp } from '../signup';
+import { BtnModal } from './btn-modal';
+import { EnterKey } from './enter-key';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
 
 export function Hero() {
     const [open, setOpen] = React.useState(false);
+    const [modals,setmodals] = React.useState('');
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false);
+        handleChangeModel('')
+    }
+    const handleChangeModel = (stus) =>  setmodals(stus)
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '500px',
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+    };
+    
+
+
     return (
         <div className="main-hero full">
             <img src={hero} alt="Hospital" />
@@ -37,7 +49,12 @@ export function Hero() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style} className='check'>
-                    <SignUp onClose={handleClose} />
+                    {modals === 'patient' ? <SignUp onClose={handleClose} userSatus={modals} /> 
+                    : modals === 'enterKey' ? <EnterKey onClose={handleClose} handleChangeModel={handleChangeModel} userSatus={modals}/>
+                    : modals === 'doctor' ?<SignUp onClose={handleClose} userSatus={modals}/>
+                    :<BtnModal handleChangeModel={handleChangeModel}/>
+                     }
+                    {/* <SignUp onClose={handleClose} /> */}
                 </Box>
             </Modal>
         </div>

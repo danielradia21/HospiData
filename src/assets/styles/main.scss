@@ -17,9 +17,11 @@
 @import 'views/admin-page';
 @import 'views/about-us';
 @import 'views/patient-page';
+@import 'views/news';
 
 // Components
 // Main
+@import 'cmps/loder';
 // Admin
 @import 'cmps/app-header';
 @import 'cmps/app-footer';
@@ -50,6 +52,7 @@
 @import 'cmps/patient/inbox';
 @import 'cmps/patient/inbox-list';
 @import 'cmps/patient/inbox-prev';
+@import 'cmps/patient/history-modal';
 // Doctor
 @import 'cmps/doctor/patients';
 @import 'cmps/doctor/meetings';

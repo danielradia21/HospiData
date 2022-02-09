@@ -68,6 +68,7 @@ export function Inbox(){
     };
 
     const openMailPrev = async (mail)=>{
+        console.log(mail)
         setMailPrev((prev)=>prev=mail)
         const idx = user.inbox.findIndex((mail)=>mail._id===mail._id)
         let updatedUser = {...user}

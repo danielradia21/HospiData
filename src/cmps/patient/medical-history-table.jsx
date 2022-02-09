@@ -231,7 +231,7 @@ export function MedicalHistoryTable({
   function createData(title, timestamp,id,app) {
     const {date,time} = getDate(timestamp)
     const viewDetails = (
-      <button key={timestamp} onClick={()=>openAppointment(app)} className="view-details-btn">
+      <button key={id} onClick={()=>openAppointment(app)} className="view-details-btn">
         View Details{' '}
       </button>
     )

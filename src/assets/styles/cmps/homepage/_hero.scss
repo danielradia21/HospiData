@@ -33,3 +33,13 @@
         }
     }
 }
+.hero-modal{
+    justify-content: center;
+    align-items: center;
+    button{
+        &:first-of-type{
+            margin-top: 10px;
+           margin-bottom: 20px;
+        }
+    }
+}

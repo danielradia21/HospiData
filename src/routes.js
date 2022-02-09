@@ -6,6 +6,7 @@ import { AppointmentList } from './cmps/patient/appointment-list.jsx'
 import { DoctorPage } from './pages/doctor-page.jsx'
 import { MedicalHistory } from './cmps/patient/medical-history.jsx'
 import { Inbox, PatientInbox } from './cmps/patient/inbox.jsx'
+import {News} from './pages/news-page'
 
 // Routes accesible from the main navigation (in AppHeader)
 export const routes = [
@@ -18,14 +19,14 @@ export const routes = [
   },
   {
     path: '/news',
-    component: HomePage,
+    component: News,
     label: 'News',
   },
-  {
-    path: '/contact',
-    component: HomePage,
-    label: 'Contact',
-  },
+  // {
+  //   path: '/contact',
+  //   component: HomePage,
+  //   label: 'Contact',
+  // },
 ]
 
 export const patientNestedRoutes = [
