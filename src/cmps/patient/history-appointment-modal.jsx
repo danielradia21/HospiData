@@ -3,14 +3,27 @@ import {
     Modal,
   } from '@mui/material'
   import { useEffect, useState } from 'react'
-  
+  import logo from '../../assets/img/logo.png';
   export function HistoryAppointmentModal({
     appointment,
     closeAppointment,
-    user
+    user,
+    open
   }) {
 
-  
+  function isRecommendation(){
+      return appointment.drugs.legnth || appointment.referrals
+  }
+
+  function getDate() {
+    let date = new Date(+appointment.date)
+    const day = date.getDate()
+    const month = date.getMonth() + 1
+    const year = date.getFullYear()
+    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+    const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+    return <span> &nbsp;{day}/{month}/{year} &nbsp; {hour}:{minute}</span>
+  }
   
   
     useEffect(()=>{
@@ -49,7 +62,7 @@ import {
         {!appointment && <div>Loading...</div>}
         {appointment && (
           <Modal
-            open={appointment}
+            open={open}
             onClose={closeAppointment}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
@@ -62,6 +75,7 @@ import {
               </div>
                 <div className="modal-info-continer flex column justify-center">
                   <Box sx={{ minWidth: 400 }}>
+                      <img src={logo} alt='HospiData' className='appointment-modal-logo'/>
                       <div className="appointment-by-to flex">
                           <div className='appointment-by'>
                               <strong>Appointed By:</strong> 
@@ -72,19 +86,41 @@ import {
                               <div className='appointment-to-name'>{user.fullname}</div>
                           </div>
                       </div>
-                    <div className="appoint-modal-title">
-                        
-                        <span>Title : </span> {`${appointment.title}`}
+                      <div className="appointment-modal-info">
+                    <div className="appointment-modal-title">
+                        <strong>Title : </strong> {`${appointment.title}`}
                     </div>
-                    <div className="to-doctor-selector">
+                    <div className="appointment-modal-desc">
+                        <strong>Description : </strong> {appointment.description}
                     </div>
-                  </Box>
-                  <button
-                    className="download-button"
+                   
+                        {isRecommendation&&<div className='appointment-modal-recommendation'>
+                            <div>
+                            <strong>Recommendation : </strong>
+                            </div>
+                             {appointment.referrals&&<div className='appointment-modal-referrals'>
+                            <strong>Referrals : </strong> {appointment.referrals.title}</div>
+                            }
+                            {appointment.drugs.length&&<div className='appointment-modal-drugs'>
+                                    <strong>Drugs : </strong> 
+                                    {appointment.drugs.map((drug,idx)=><div key={idx}>{`${idx+1}. ${drug}`}</div>)}
+                                </div>}
+                            </div>}
+                    </div>
+                    <div className='appointment-modal-btns'>
+                    <button
+                    className="download-btn"
                     onClick={downloadPDF}
                   >
                     Download As PDF
                   </button>
+                    </div>
+                    <div className='appointment-modal-bottom'>
+                            <strong>Printed on : {getDate()} </strong> 
+                    </div>
+
+                  </Box>
+
                 </div>
               </div>
             </Box>

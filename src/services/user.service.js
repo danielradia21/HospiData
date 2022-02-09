@@ -77,7 +77,7 @@ async function signup(userCred) {
     try {
         // Might need to change up the userCred here
         const users = await storageService.query(STORAGE_KEY);
-        if (users.find((user) => user.username === userCred.username))
+        if (users.find((user) => user.username === userCred.username || user.UID === userCred.UID))
             throw Error('Username already taken');
         const user = await storageService.post(STORAGE_KEY, userCred);
         return _saveLocalUser(user);

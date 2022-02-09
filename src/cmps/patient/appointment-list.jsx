@@ -92,14 +92,14 @@ export function AppointmentList() {
   const makeAppointment = async (doctorId, treatment, date) => {
     // treatment has no usage for now need to  think about how to add it
     try {
-      closeNewAppModal()
       date = date.getTime()
       if (Date.now() + 10 * 60 * 1000 >= date)
-        throw new Error('Pick another date')
+      throw new Error('Pick another date')
       await patientService.makeAppointment({ doctorId, date })
       dispatch(getLoggedInUser())
       await getDoctors()
       handleOpenSnackbar('success','Appointment sent for review')
+      closeNewAppModal()
     } catch (err) {
       console.log('Pick a diffrent date')
       handleOpenSnackbar('error','Pick a diffrent date')

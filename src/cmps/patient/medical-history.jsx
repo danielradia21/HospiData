@@ -10,15 +10,19 @@ export function MedicalHistory() {
   const [history,setHistory] = useState(null)
   const [filteredHistory,setFilteredHistory] = useState(null)
   const [appointment,setAppointment] = useState(null)
+  const [open,setOpen] = useState(false)
 
 
   const openAppointment=(app)=>{
     setAppointment(prev=>prev = app)
+    setOpen(prev=>prev=true)
   }
   
   const closeAppointment = ()=>{
     setAppointment(prev=>prev=null)
+    setOpen(prev=>prev=false)
   }
+  
 
     
   const filterHistory = ({target}) => {
@@ -44,7 +48,7 @@ export function MedicalHistory() {
                     placeholder="Serach Meetings..."
                 />
       {history&&<MedicalHistoryTable history={filteredHistory||history} openAppointment={openAppointment}/>}
-      {appointment&&<HistoryAppointmentModal appointment={appointment} closeAppointment={closeAppointment} user={user} />}
+      {appointment&&<HistoryAppointmentModal appointment={appointment} closeAppointment={closeAppointment} open={open} user={user} />}
     </div>
   )
 }
