@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { DateTimePicker } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import { Loader } from '../loader'
 
 export function AppointmentModal({
   openNewApp,
@@ -82,7 +83,7 @@ export function AppointmentModal({
 
   return (
     <div className="appointment-modal-container">
-      {!doctors && <div>Loading...</div>}
+      {!doctors &&<Loader/>}
       {doctors && (
         <Modal
           open={openNewApp}

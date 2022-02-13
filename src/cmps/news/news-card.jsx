@@ -40,7 +40,7 @@ export function Card({item,RandomInt,labels}) {
             <div className="img-continer">
           <img src={`https://randomuser.me/api/portraits/men/${RandomInt}.jpg`}/>
            </div>
-           <p>{item.byline.original.substring(0,19)}</p>
+           <p>{ item.byline.original ? item.byline.original.substring(0,19) : 'by Tino Blome'}</p>
            <div className="flex">
            <div className="user-icon"><AccessTimeFilledIcon/></div>
            <p> {chageDate(item.pub_date)}</p>

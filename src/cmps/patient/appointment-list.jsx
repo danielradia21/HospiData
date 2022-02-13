@@ -5,6 +5,7 @@ import { AppointmentTable } from './appointment-table'
 import { patientService } from '../../services/patient.service'
 import { AppointmentModal } from './appointment-modal'
 import { Alert, Snackbar } from '@mui/material'
+import { Loader } from '../loader'
 
 export function AppointmentList() {
   const { user } = useSelector((state) => state.userModule)
@@ -133,7 +134,7 @@ export function AppointmentList() {
           {openSnackbar.msg}
         </Alert>
       </Snackbar>
-      {/* {!appointments&&<div>Loading...</div>} */}
+      {!appointments&&<Loader/>}
       {/* {!appointments.length && <div>You have no appointments</div>} */}
       {/* {cancelAppointmentId&&<CancelAppointment closeCancelModal={closeCancelModal} cancelAppointment={cancelAppointment} open={open}/>} */}
       {appointments && (

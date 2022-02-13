@@ -60,15 +60,14 @@ export function SignUp({ onClose ,userSatus }) {
                                     onClose();
                                     let userCred = {
                                         ...values,
-                                        imgUrl:"https://www.iconspng.com/images/young-user-icon.jpg",
-                                        isAdmin: false,
+                                        imgUrl:"https://cdn-icons.flaticon.com/png/512/552/premium/552909.png?token=exp=1644505497~hmac=75a9077847eff0c79484f678da3cb2bb",
                                         type: userSatus,
                                     }
-                                    if(userSatus === 'patient'){
-                                        userCred = {...userCred ,appointments: [],inbox:[] }
-                                    }else if(userSatus === 'doctor'){
-                                        userCred = {...userCred ,meetings: [],patients:[] }
-                                    }
+                                    // if(userSatus === 'patient'){
+                                    //     userCred = {...userCred ,appointments: [],inbox:[] }
+                                    // }else if(userSatus === 'doctor'){
+                                    //     userCred = {...userCred ,meetings: [],patients:[] }
+                                    // }
                                     await userService.signup (userCred);
                                     values.fullname = '';
                                     values.username = '';
