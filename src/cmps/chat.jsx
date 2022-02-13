@@ -17,6 +17,8 @@ export function chat({user}) {
         setMsgs((prev)=>prev.push(msg))
     }
    
+
+    // needs to have socketService.off
   
   
     return <div className="chat">
