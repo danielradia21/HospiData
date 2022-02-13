@@ -40,10 +40,14 @@ export function Meetings() {
     };
 
     useEffect(async () => {
+        onStart();
+    }, []);
+
+    const onStart = async () => {
         getPendingMeetings();
         const patients = await patientService.query();
         setPatients((prev) => (prev = patients));
-    }, []);
+    };
 
     const filterMeetings = (ev) => {
         const FilteredList = pendingMeetings.filter((meet) =>
@@ -60,7 +64,7 @@ export function Meetings() {
         setPendingMeetings((prev) => (prev = pendings));
     };
     const switchBtns = () => {
-        if (modalQuest === 'Finish')
+        if (modalQuest === 'Approve')
             return (
                 <>
                     <button

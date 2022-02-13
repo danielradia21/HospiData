@@ -1,7 +1,10 @@
-.carousel-card-container{
+.carousel-card-container {
     @media screen and (min-width: 1044px) {
         .carousel-arrows {
-        display: none;
-      }
+            display: none;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        width: 100%;
     }
 }

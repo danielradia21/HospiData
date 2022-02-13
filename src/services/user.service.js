@@ -4,7 +4,7 @@ import defaultUsers from '../assets/data/users.json';
 import { socketService } from './socket.service';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
 const STORAGE_KEY = 'user';
-const doctorsKeys = ['az89A','Wn68s','Zk56t','b79iB']
+const doctorsKeys = ['az89A', 'Wn68s', 'Zk56t', 'b79iB'];
 
 export const userService = {
     login,
@@ -17,20 +17,27 @@ export const userService = {
     update,
     updateLoggedInUser,
     Chackey,
+<<<<<<< HEAD
    
+=======
+>>>>>>> c20623bd921a8b9efb6343fa67fe9d2e1b173292
 };
 
 async function Chackey(key) {
     try {
-     return doctorsKeys.some(currKey=> key === currKey );
+        return doctorsKeys.some((currKey) => key === currKey);
         //   return httpService.get(`user`)
     } catch (err) {
         console.log('Had error on userService: GETUSERS', err);
     }
 }
 
+<<<<<<< HEAD
 
 async function getUsers(filterBy = {}) {
+=======
+async function getUsers() {
+>>>>>>> c20623bd921a8b9efb6343fa67fe9d2e1b173292
     try {
         // let users = await storageService.query('user');
         // if (!users || !users.length)
@@ -102,12 +109,27 @@ async function update(user) {
 async function signup(userCred) {
     try {
         // Might need to change up the userCred here
+<<<<<<< HEAD
         // const users = await storageService.query(STORAGE_KEY);
         // if (users.find((user) => user.username === userCred.username || user.UID === userCred.UID))
         //     throw Error('Username already taken');
         // const user = await storageService.post(STORAGE_KEY, userCred);
           return await httpService.post('auth/signup', userCred)
         // return _saveLocalUser(user);
+=======
+        const users = await storageService.query(STORAGE_KEY);
+        if (
+            users.find(
+                (user) =>
+                    user.username === userCred.username ||
+                    user.UID === userCred.UID
+            )
+        )
+            throw Error('Username already taken');
+        const user = await storageService.post(STORAGE_KEY, userCred);
+        return _saveLocalUser(user);
+        //   const user = await httpService.post('auth/signup', userCred)
+>>>>>>> c20623bd921a8b9efb6343fa67fe9d2e1b173292
     } catch (err) {
         console.log('Had error on userService: SIGNUP', err);
     }
