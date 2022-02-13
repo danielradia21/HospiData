@@ -5,6 +5,7 @@ import { AppointmentTable } from './appointment-table'
 import { patientService } from '../../services/patient.service'
 import { AppointmentModal } from './appointment-modal'
 import { Alert, Snackbar } from '@mui/material'
+import { Loader } from '../loader'
 
 export function AppointmentList() {
   const { user } = useSelector((state) => state.userModule)
@@ -36,10 +37,13 @@ export function AppointmentList() {
     //   (app) =>
     //     app.date > Date.now() && (app.status === 'pending' || app.status === 'approved')
     // )
+    
     const futureAppointments = user.appointments.filter(
-      (app) =>
-        app.status === 'pending' || app.status === 'approved'
+      (app) =>(app.status === 'pending' || app.status === 'approved')
     )
+    // console.log(user.appointments)
+
+    // console.log(futureAppointments)
     // const futureAppointments = user.appointments.filter(
     //   (app) => app.date > Date.now()
     // )
@@ -133,7 +137,7 @@ export function AppointmentList() {
           {openSnackbar.msg}
         </Alert>
       </Snackbar>
-      {/* {!appointments&&<div>Loading...</div>} */}
+      {!appointments&&<Loader/>}
       {/* {!appointments.length && <div>You have no appointments</div>} */}
       {/* {cancelAppointmentId&&<CancelAppointment closeCancelModal={closeCancelModal} cancelAppointment={cancelAppointment} open={open}/>} */}
       {appointments && (
@@ -162,6 +166,7 @@ export function AppointmentList() {
       )}
       {openNewApp && (
         <AppointmentModal
+        handleOpenSnackbar={handleOpenSnackbar}
           openNewApp={openNewApp}
           closeNewAppModal={closeNewAppModal}
           makeAppointment={makeAppointment}

@@ -198,7 +198,7 @@ export function MedicalHistoryTable({
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(4);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -287,7 +287,7 @@ export function MedicalHistoryTable({
      
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                            sx={{ minWidth:400,minHeight:400,maxWidth:750}}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

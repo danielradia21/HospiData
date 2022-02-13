@@ -4,6 +4,7 @@ import { patientService } from "../../services/patient.service"
 import { getLoggedInUser } from "../../store/actions/user.actions"
 import { InboxList } from "./inbox-list"
 import { InboxPrev } from "./inbox-prev"
+import {Loader} from "../loader"
 
 
 
@@ -13,6 +14,7 @@ export function Inbox(){
     const [inbox,setInbox] = useState([])
     const [mailPrev,setMailPrev] = useState(null)
     const [page,setPage] = useState(0)
+   
 
     const dispatch = useDispatch()
 
@@ -88,6 +90,7 @@ export function Inbox(){
         <div className="inbox-main-container">
             <div className="main-content-header">Inbox</div>
         <div className="inbox-content">
+            {!user&&<Loader/>}
             {!inbox.length && <div>You have no messages</div>}
             {inbox.length && pagination().map(mail=>{
                 return (

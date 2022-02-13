@@ -8,6 +8,7 @@ import { AdminMainContect } from "../cmps/admin/admin-main-contect"
 import {AdminPatienceList} from "../cmps/admin/admin-patience-list"
 import { AdminProfile } from "../cmps/admin/admin-proflie"
 import { AdminSideNavBar } from "../cmps/admin/admin-side-nav"
+import { socketService,SOCKET_EMIT_USER_WATCH } from "../services/socket.service"
 import { getLoggedInUser, onLogout } from "../store/actions/user.actions"
 
 
@@ -55,6 +56,10 @@ const dispatch = useDispatch();
 
 useEffect(() => {
     if (!user) dispatch(getLoggedInUser());
+    if(user) {
+        socketService.emit(SOCKET_EMIT_USER_WATCH,user._id)
+        
+    }
 }, [user]);
 
 const onLogOut = () => {

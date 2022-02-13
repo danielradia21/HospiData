@@ -59,7 +59,7 @@ async function getEmptyMeet(user, patient, vals) {
         msg: `Your appointment with me has ended,
          Your's Dr. ${user.fullname}`,
     });
-    await patientService.update(patient);
+    await userService.update(patient);
     await userService.updateLoggedInUser(user);
 }
 
@@ -121,9 +121,11 @@ function getEmptyMail(id, { _id, fullname, imgUrl }, stat) {
 
 async function getDoctors() {
     try {
-        const users = await userService.getUsers();
-        const doctors = users.filter((user) => user.type === 'doctor');
-        return doctors;
+        // const users = await userService.getUsers();
+        // const doctors = users.filter((user) => user.type === 'doctor');
+        // return doctors;
+        let filterBy = {type:'doctor'}
+        return await userService.getUsers(filterBy)
     } catch (err) {
         console.log('cant get doctors', err);
     }
@@ -131,7 +133,7 @@ async function getDoctors() {
 
 async function updateDoctor(user) {
     try {
-        return await storageService.put('user', user);
+        return await userService.update(user)
     } catch (err) {
         console.log(err);
     }

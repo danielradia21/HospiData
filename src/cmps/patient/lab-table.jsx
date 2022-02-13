@@ -273,7 +273,7 @@ export function LabTable({
      
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                            sx={{ maxWidth: 750 ,minHeight:400,minWidth:300}}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

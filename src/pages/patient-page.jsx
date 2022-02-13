@@ -11,6 +11,10 @@ import { PatientNavBar } from '../cmps/patient/patientNavbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getLoggedInUser, onLogout } from '../store/actions/user.actions'
 import { PatientMainContent } from '../cmps/patient/patientMainContent'
+import { Loader } from '../cmps/loader'
+import { socketService, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
+import { userService } from '../services/user.service'
+import { patientService } from '../services/patient.service'
 
 export function PatientPage() {
   const { user } = useSelector((state) => state.userModule)
@@ -19,16 +23,20 @@ export function PatientPage() {
 
   useEffect(() => {
     if (!user) dispatch(getLoggedInUser())
+    if(user) socketService.emit(SOCKET_EMIT_USER_WATCH,user._id)
+    // userService.getByUID("1233123213")
+    
   }, [user])
 
   const onLogOut = () => {
     window.location.href = '/'
     dispatch(onLogout())
   }
+  
 
   return (
     <div className="main-wrapper">
-      {/* {!patient && <div><img src={loader}/></div>} */}
+      {!user &&<Loader/>}
       {user && (
         <div className="main-contents">
           <div className="profile-section">

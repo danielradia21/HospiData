@@ -2,12 +2,15 @@ import { Box, Modal } from '@mui/material'
 import { useEffect, useState } from 'react'
 import logo from '../../assets/img/logo.png'
 import { jsPDF } from 'jspdf'
+import { Loader } from '../loader'
 export function HistoryAppointmentModal({
   appointment,
   closeAppointment,
   user,
   open,
 }) {
+
+
   function isRecommendation() {
     return appointment.drugs.legnth || appointment.referrals
   }
@@ -23,12 +26,12 @@ export function HistoryAppointmentModal({
   doc.text(`Description: ${appointment.description}`,20,95)
   if(appointment.referrals||appointment.drugs.length)doc.text('Recommendation: ',20,120)
   if(appointment.referrals)doc.text(`Referrals: ${appointment.referrals.title}`,20,135)
-  if(appointment.drugs.length) doc.text(`Drugs: ${appointment.drugs.map((drug,idx)=>`${drug.charAt(0).toUpperCase()+drug.substring(1,drug.length)}`)}`,20,145)
+  if(appointment.drugs.length) doc.text(`Drugs: ${appointment.drugs.map((drug,idx)=>`${drug.title.charAt(0).toUpperCase()+drug.title.substring(1,drug.title.length)}`)}`,20,145)
   doc.text(`Printed on: ${getPDFDate(new Date())}`,10,290)
 
 
   function savePDF(){
-      doc.save("test.pdf")
+      doc.save(`${user.fullname}-appointment-${appointment.date}.pdf`)
   }
 
 
@@ -87,7 +90,7 @@ export function HistoryAppointmentModal({
 
   return (
     <div className="appointment-modal-container">
-      {!appointment && <div>Loading...</div>}
+      {!appointment&&<Loader/>}
       {appointment && (
         <Modal
           open={open}
@@ -144,7 +147,7 @@ export function HistoryAppointmentModal({
                             <strong>Drugs : </strong>
                             {appointment.drugs.map((drug, idx) => (
                               <div className="appointment-modal-drug" key={idx}>
-                               <span>&nbsp;{`${drug}`}&nbsp;</span> 
+                               <span>&nbsp;{`${drug.title}`}&nbsp;</span> 
                               </div>
                             ))}
                           </div>
