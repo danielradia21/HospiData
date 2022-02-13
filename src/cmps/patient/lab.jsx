@@ -12,10 +12,10 @@ export function Lab(){
     const [filteredRes, setFilterRes] = useState(null);
 
     const labRes = [
-        {date:Date.now(),title:'Foot X-Ray',img:footXRay,imgType:"JPEG"},
-        {date:Date.now()+1000*60*24*7,title:'Hand X-Ray',img:handXRay,imgType:"PNG"},
-        {date:Date.now()+1000*60*24*14,title:'Blood test',img:bloodTestRes,imgType:"PNG"},
-        {date:Date.now()+1000*60*24*21,title:'Iron test',img:ironTestRes,imgType:"PNG"},
+        {date:Date.now(),title:'Foot X-Ray',img:footXRay,imgType:"JPEG",sizeX:170,sizeY:200,startX:20},
+        {date:Date.now()+1000*60*24*7,title:'Hand X-Ray',img:handXRay,imgType:"PNG",sizeX:170,sizeY:200,startX:20},
+        {date:Date.now()+1000*60*24*14,title:'Blood test',img:bloodTestRes,imgType:"PNG",sizeX:170,sizeY:200,startX:20},
+        {date:Date.now()+1000*60*24*21,title:'Iron test',img:ironTestRes,imgType:"PNG",sizeX:210,sizeY:70,startX:0},
     ]
 
     
