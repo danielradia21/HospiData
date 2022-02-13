@@ -10,6 +10,7 @@ import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
 import { doctorService } from '../services/doctor.service';
 import { PateintProfile } from '../cmps/doctor/visitPage/pateintProfile';
 import { DocCalendar } from '../cmps/doctor/doc-calendar';
+import { socketService,SOCKET_EMIT_USER_WATCH } from '../services/socket.service';
 
 const nestedRoutes = [
     {
@@ -40,6 +41,7 @@ export function DoctorPage() {
     const dispatch = useDispatch();
     useEffect(() => {
         if (!user) dispatch(getLoggedInUser());
+        if(user) socketService.emit(SOCKET_EMIT_USER_WATCH,user._id)
     }, [user]);
 
     const onLogOut = () => {

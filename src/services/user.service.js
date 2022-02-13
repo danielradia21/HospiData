@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 import defaultUsers from '../assets/data/users.json';
+import { socketService } from './socket.service';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
 const STORAGE_KEY = 'user';
 const doctorsKeys = ['az89A','Wn68s','Zk56t','b79iB']

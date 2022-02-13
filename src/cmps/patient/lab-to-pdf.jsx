@@ -14,7 +14,7 @@ export function LabToPdf({user,labRes}){
     doc.text(`Printed on: ${getPDFDate(new Date())}`,10,290)
 
     function savePDF(){
-        doc.save(`${user.fullname}-${labRes.title}-${new Date().getMonth + new Date().getDate()}.pdf`)
+        doc.save(`${user.fullname}-${labRes.title}-${new Date().getMonth()+1}-${new Date().getDate()}.pdf`)
     }
 
     function getPDFDate(date){

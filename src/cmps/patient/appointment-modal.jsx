@@ -19,6 +19,7 @@ export function AppointmentModal({
   closeNewAppModal,
   makeAppointment,
   doctors,
+  handleOpenSnackbar
 }) {
   const [treatmentType, setTreatmentType] = useState('')
   const [doctorId, setDoctorId] = useState('')
@@ -27,7 +28,10 @@ export function AppointmentModal({
 
 
   useEffect(()=>{
-    if(!doctors||!doctors.length) closeNewAppModal()
+    if(!doctors||!doctors.length) {
+      handleOpenSnackbar('error','No doctor\'s are avaiable right now')
+      closeNewAppModal()
+    }
   },[])
 
   

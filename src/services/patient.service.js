@@ -94,7 +94,6 @@ async function getPatientDoctors() {
             (app) => app.status === ('pending' || 'approved')
         );
         let doctors = await getDoctors();
-        console.log(doctors)
         //  return doctors.filter((doc)=>!appointments.includes(doc._id) )
         return doctors.reduce((acc, doc) => {
             if (!appointments.some((app) => app.doctor._id === doc._id))

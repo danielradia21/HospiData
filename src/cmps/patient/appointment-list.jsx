@@ -37,10 +37,13 @@ export function AppointmentList() {
     //   (app) =>
     //     app.date > Date.now() && (app.status === 'pending' || app.status === 'approved')
     // )
+    
     const futureAppointments = user.appointments.filter(
-      (app) =>
-        app.status === 'pending' || app.status === 'approved'
+      (app) =>(app.status === 'pending' || app.status === 'approved')
     )
+    // console.log(user.appointments)
+
+    // console.log(futureAppointments)
     // const futureAppointments = user.appointments.filter(
     //   (app) => app.date > Date.now()
     // )
@@ -163,6 +166,7 @@ export function AppointmentList() {
       )}
       {openNewApp && (
         <AppointmentModal
+        handleOpenSnackbar={handleOpenSnackbar}
           openNewApp={openNewApp}
           closeNewAppModal={closeNewAppModal}
           makeAppointment={makeAppointment}
