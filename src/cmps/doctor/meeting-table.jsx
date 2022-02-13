@@ -193,7 +193,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
         if (!isHistory) {
             const doneBtn = (
                 <button
-                    onClick={() => toggleModal('Finish', id)}
+                    onClick={() => toggleModal('Approve', id)}
                     className="accept-btn"
                 >
                     Approve

@@ -5,6 +5,8 @@ import Modal from '@mui/material/Modal';
 import { SignUp } from '../signup';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { userService } from '../../services/user.service';
+import { PatientPreview } from './visitPage/patientPreview';
 
 export function Patients() {
     const { user } = useSelector((state) => state.userModule);
@@ -12,7 +14,6 @@ export function Patients() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [filteredPatients, setFilteredPatients] = React.useState(null);
-
     const [pagiCountrer, setPagiCountrer] = React.useState(0);
     const [currFilter, setCurrFilter] = React.useState([]);
 
@@ -22,9 +23,9 @@ export function Patients() {
 
     const patientsFilter = (ev) => {
         const patientFilterdList = user.patients.filter((patient) =>
-        patient.fullname.toLocaleLowerCase().includes(ev.target.value)
-);
-        setFilteredPatients((prev) => prev = patientFilterdList);
+            patient.fullname.toLocaleLowerCase().includes(ev.target.value)
+        );
+        setFilteredPatients((prev) => (prev = patientFilterdList));
     };
 
     const paging = (num) => {
@@ -72,26 +73,7 @@ export function Patients() {
             </div>
             <div className="doc-patient-card-container">
                 {currFilter.map((patient) => {
-                    return (
-                        <div className="doc-patient-card">
-                            <div className="img-container">
-                                <img src={patient.imgUrl} alt="" />
-                            </div>
-                            <div className="patient-details">
-                                <div className="title">{patient.fullname}</div>
-                                <div className="age">36 Years Old</div>
-                                <div className="last-visit">
-                                    Last Visit: 11/12/23
-                                </div>
-                            </div>
-                            <Link
-                                to={`/doctor/patiences/patient/?uid=${patient.UID}`}
-                                className="sub-btn"
-                            >
-                                Visit
-                            </Link>
-                        </div>
-                    );
+                    return <PatientPreview key={patient.UID} patient={patient} />;
                 })}
             </div>
         </>

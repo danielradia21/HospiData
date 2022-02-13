@@ -3,7 +3,7 @@ import { httpService } from './http.service';
 import defaultUsers from '../assets/data/users.json';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
 const STORAGE_KEY = 'user';
-const doctorsKeys = ['az89A','Wn68s','Zk56t','b79iB']
+const doctorsKeys = ['az89A', 'Wn68s', 'Zk56t', 'b79iB'];
 
 export const userService = {
     login,
@@ -15,18 +15,17 @@ export const userService = {
     getByUID,
     update,
     updateLoggedInUser,
-    Chackey
+    Chackey,
 };
 
 async function Chackey(key) {
     try {
-     return doctorsKeys.some(currKey=> key === currKey );
+        return doctorsKeys.some((currKey) => key === currKey);
         //   return httpService.get(`user`)
     } catch (err) {
         console.log('Had error on userService: GETUSERS', err);
     }
 }
-
 
 async function getUsers() {
     try {
@@ -90,7 +89,13 @@ async function signup(userCred) {
     try {
         // Might need to change up the userCred here
         const users = await storageService.query(STORAGE_KEY);
-        if (users.find((user) => user.username === userCred.username || user.UID === userCred.UID))
+        if (
+            users.find(
+                (user) =>
+                    user.username === userCred.username ||
+                    user.UID === userCred.UID
+            )
+        )
             throw Error('Username already taken');
         const user = await storageService.post(STORAGE_KEY, userCred);
         return _saveLocalUser(user);

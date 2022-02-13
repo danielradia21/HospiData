@@ -5,17 +5,17 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { doctorService } from '../../../services/doctor.service';
 import { getLoggedInUser } from '../../../store/actions/user.actions';
+import { Loader } from '../../loader';
 import { PatientModal } from '../patient/patientModal';
 import { PatientTable } from '../patients-table';
 
-export function PatientPage({ patient, user ,makeAppointment}) {
+export function PatientPage({ patient, user, makeAppointment }) {
     const [filteredHistory, setFilteredHistory] = React.useState(null);
     const [modalQuest, setModalQuest] = React.useState('');
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [open, setOpen] = React.useState(false);
     const [appointmentsList, setAppointmentsList] = React.useState([]);
-  
 
     const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ export function PatientPage({ patient, user ,makeAppointment}) {
     }, [patient]);
 
     const filterHistory = (ev) => {
-        const FilteredList = patient.appointments.filter((app) =>
+        const FilteredList = appointmentsList.filter((app) =>
             app.doctor.fullname.toLowerCase().includes(ev.target.value)
         );
         setFilteredHistory((prev) => (prev = FilteredList));
@@ -34,7 +34,6 @@ export function PatientPage({ patient, user ,makeAppointment}) {
         handleOpen();
     };
 
-  
     const appList = () => {
         const appointments = patient.appointments.filter(
             (app) => app.status === 'arrived'
@@ -42,7 +41,22 @@ export function PatientPage({ patient, user ,makeAppointment}) {
         setAppointmentsList((prev) => (prev = appointments));
     };
 
-    if (!patient) return <div>Loading...</div>;
+    const patientLastVisit = () => {
+        if (!appointmentsList.length) return 'No recent visits';
+        const lastMeet = appointmentsList[appointmentsList.length - 1];
+        const date = dateConvertion(lastMeet.date);
+        return date;
+    };
+    const dateConvertion = (time) => {
+        const newTime = new Date(+time);
+        const Year = newTime.getFullYear();
+        const Month = newTime.getMonth() + 1;
+        const Day = newTime.getDate();
+        return `${Day}/${Month}/${Year}`;
+    };
+
+    if (!patient) return <Loader />;;
+
     return (
         <>
             <div className="main-content-header">
@@ -63,11 +77,11 @@ export function PatientPage({ patient, user ,makeAppointment}) {
                         <div className="patient-details-info">
                             <p>{patient.fullname}</p>
 
-                            <p>last visited</p>
+                            <p>last visited: {patientLastVisit()} </p>
                         </div>
                     </div>
                     <button onClick={handleOpen} className="main-btn">
-                        New something
+                        New Treatment
                     </button>
                 </div>
                 <div className="doc-patients-main-content">
