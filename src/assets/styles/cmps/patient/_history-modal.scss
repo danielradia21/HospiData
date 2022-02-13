@@ -1,10 +1,55 @@
 
+    .modal-info-continer{
+    flex-grow: 1;   
+ 
+        
+    }
+    
     .appointment-by-to{
         justify-content: space-around;
     }
 
     .appointment-modal-logo{
-        margin:20px 10px 5px;
+        margin:20px 40px 20px;
         width:200px;
     }
  
+    .appointment-modal-info{
+        margin:20px 0 20px 40px;
+        display: flex;
+        flex-direction: column;
+        gap:5px;
+        .appointment-modal-recommendation{
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+        }
+        .appointment-modal-drugs{
+            display: flex;
+        }
+
+        .appointment-modal-drug{
+            text-transform: capitalize;
+            &:not(:last-child){
+                &::after{
+                    
+                    content: ',';
+                }
+            }
+        }
+    }
+
+    
+
+    .appointment-modal-bottom{
+        margin-top:30px;
+      padding-left:40px;
+      display: flex;
+      flex-grow:1;
+      justify-content: space-between;
+       margin-bottom:30px;
+       .appointment-modal-btn{
+           margin:0;
+           margin-right:58px;
+       }
+    }
