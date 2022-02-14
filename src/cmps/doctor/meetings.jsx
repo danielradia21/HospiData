@@ -127,7 +127,7 @@ export function Meetings() {
                     onChange={filterMeetings}
                     className="doc-patient-search"
                     type="text"
-                    placeholder="Serach Meetings..."
+                    placeholder="Search Meetings..."
                 />
             </div>
             <div className="doc-meeting-main-content">

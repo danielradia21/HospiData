@@ -1,12 +1,17 @@
 import { Link, NavLink } from 'react-router-dom';
-import { routes } from '../routes';
+import { routes ,adminNestedRoutes,patientNestedRoutes,doctorNestedRoutes} from '../routes';
 import logo from '../assets/img/logo.png';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import { SignIn } from './login';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { onLogout } from '../store/actions/user.actions';
+import { MenuItem } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -21,16 +26,27 @@ const style = {
 };
 
 export function AppHeader() {
+    const { user } = useSelector((state) => state.userModule)
     const [menuOpen, setMenuOpen] = React.useState(false);
-    console.log('file: app-header.jsx   line 25   menuOpen', menuOpen);
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+
+    const dispatch = useDispatch()
+
+    const handleOpen = () => {
+        closeMenu()
+        setOpen(true);
+    }
     const handleClose = () => setOpen(false);
     const openMenu = () => {
         setMenuOpen((prev) => (prev = true));
     };
     const closeMenu = () => {
         setMenuOpen((prev) => (prev = false));
+    };
+
+    const onLogOut = () => {
+        window.location.href = '/';
+        dispatch(onLogout());
     };
     return (
         <header className="app-header">
@@ -56,13 +72,14 @@ export function AppHeader() {
                 <nav className="burger-container">
                     <div>
                         <div className="burger-sign" onClick={openMenu}>
-                            |||
+                            <MenuIcon/>
                         </div>
                     </div>
                     <div
                         className={`blackscreen ${
                             menuOpen ? 'open-blackscreen' : 'close-blackscreen'
                         }`}
+                        onClick={closeMenu}
                     ></div>
                     <div
                         className={`float-menu ${menuOpen ? 'open' : 'close'}`}
@@ -70,7 +87,7 @@ export function AppHeader() {
                         <div className="main-container">
                             <nav className="nav-links ">
                                 <div className="x-btn" onClick={closeMenu}>
-                                    X
+                                   <CloseIcon/>
                                 </div>
                                 <NavLink exact to={'/'}>
                                     Home
@@ -84,14 +101,58 @@ export function AppHeader() {
                                         {route.label}
                                     </NavLink>
                                 ))}
-                                <div>
+                                {!user&&<div>
                                     <button
                                         onClick={handleOpen}
                                         className="main-btn"
                                     >
                                         Login
                                     </button>
-                                </div>
+                                </div>}
+                               
+                                {user?.type==='patient'&&<>
+                                    <div className='navbar-line-seperator'><h2>Profile</h2></div>
+                                    {patientNestedRoutes.map((route) => (
+                                    <NavLink
+                                        exact
+                                        key={route.path}
+                                        to={route.path}
+                                    >
+                                        {route.label}
+                                    </NavLink>
+                                   
+                                ))}
+                                 <div >
+                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
+                                    </div>
+                                   </> }
+                                   {user?.type==='doctor'&&<>
+                                    <div className='navbar-line-seperator'><h2>Profile</h2></div>
+                                    {doctorNestedRoutes.map((route) => (
+                                    <NavLink
+                                        exact
+                                        key={route.path}
+                                        to={route.path}
+                                    >
+                                        {route.label}
+                                    </NavLink>
+                                ))}
+                                 <div >
+                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
+                                    </div>
+                                   </> }
+                                   {user?.isAdmin&&<>
+                                    <div className='navbar-line-seperator'><h2>Admin</h2></div>
+                                    {adminNestedRoutes.map((route) => (
+                                    <NavLink
+                                        exact
+                                        key={route.path}
+                                        to={route.path}
+                                    >
+                                        {route.label}
+                                    </NavLink>
+                                ))}
+                                   </> }
                             </nav>
                         </div>
                     </div>

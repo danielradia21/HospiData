@@ -7,7 +7,7 @@ export const SOCKET_EVENT_PATIENT_UPDATED = 'patient-update';
 export const SOCKET_EVENT_USER_TYPING = 'user-typing'
 
 
-const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3000'
+const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
 export const socketService = createSocketService()
 // export const socketService = createDummySocketService()
 

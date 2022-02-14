@@ -15,9 +15,9 @@ import { getLoggedInUser, onLogout } from "../store/actions/user.actions"
 const adminNavLinks = [
 
     { 
-        path: '/admin/DashBord',
+        path: '/admin/dashboard',
         component: AdminDashBord,
-        label: 'DashBord',
+        label: 'Dash Board',
     },
     { 
         path: '/admin/doctors',
@@ -25,9 +25,9 @@ const adminNavLinks = [
         label: 'Doctors',
     },
     { 
-        path: '/admin/patience',
+        path: '/admin/patients',
         component: AdminPatienceList,
-        label: 'Patience',
+        label: 'Patients',
     },
 
 ]

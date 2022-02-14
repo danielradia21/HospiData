@@ -72,13 +72,16 @@ export function Inbox(){
     const openMailPrev = async (mail)=>{
         console.log(mail)
         setMailPrev((prev)=>prev=mail)
-        const idx = user.inbox.findIndex((mail)=>mail._id===mail._id)
-        let updatedUser = {...user}
-        if(idx>-1 && !user.inbox[idx].isOpened){
-            updatedUser.inbox[idx].isOpened = true
+        const updatedUser = {...user}
+        const inbox = user.inbox.map(inbox=>{
+              if(inbox.appId===mail.appId)  inbox.isOpened = true
+              return inbox
+          })
+          updatedUser.inbox = inbox
+        //   console.log(updatedUser)
            await patientService.updateSelfPatient(updatedUser)
-           dispatch(getLoggedInUser())
-        }
+        //    dispatch(getLoggedInUser())
+        
     }
 
     const closeMailPrev = ()=>{

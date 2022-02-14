@@ -1,0 +1,59 @@
+.css-1yhpg23-MuiTableCell-root{
+    width:300px;
+}
+
+// table {
+//     border: 0;
+//     background-color: #f8f8f8;
+//   }
+
+//   table caption {
+//     font-size: 1.3em;
+//   }
+
+//   table thead {
+//     border: none;
+//     clip: rect(0 0 0 0);
+//     height: 1px;
+//     margin: -1px;
+//     overflow: hidden;
+//     padding: 0;
+//     position: absolute;
+//     width: 1px;
+//   }
+
+//   table tr {
+//     border-bottom: 3px solid #ddd;
+//     display: block;
+//   }
+
+//   table td {
+//     border-bottom: 1px solid #ddd;
+//     font-size: .8em;
+//     text-align: right;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     &.accpet{
+//       justify-content: center;
+//       align-items: center;
+//       padding-top: 10px;
+//     }
+//   }
+
+
+//   table td::before {
+//     content: attr(data-label);
+//     float: left;
+//     font-weight: bold;
+//     text-transform: uppercase;
+//   }
+
+//   table td:last-child {
+//     border-bottom: 0;
+//   }
+
+//   .orders-tabs{
+//     display: none;
+//   }
+

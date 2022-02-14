@@ -58,7 +58,7 @@ export function Patients() {
                         onChange={patientsFilter}
                         className="doc-patient-search search"
                         type="text"
-                        placeholder="Serach Patients..."
+                        placeholder="Search Patients..."
                     />
                 </div>
                 <div className="btns-container">

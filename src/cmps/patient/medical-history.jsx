@@ -47,7 +47,7 @@ export function MedicalHistory() {
                     onChange={filterHistory}
                     className="patient-search-input"
                     type="text"
-                    placeholder="Serach Meetings..."
+                    placeholder="Search Meetings..."
                 />
       {history&&<MedicalHistoryTable history={filteredHistory||history} openAppointment={openAppointment}/>}
       {appointment&&<HistoryAppointmentModal appointment={appointment} closeAppointment={closeAppointment} open={open} user={user} />}

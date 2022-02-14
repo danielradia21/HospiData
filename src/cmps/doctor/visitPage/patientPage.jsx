@@ -89,7 +89,7 @@ export function PatientPage({ patient, user, makeAppointment }) {
                         onChange={filterHistory}
                         className="doc-patient-search search"
                         type="text"
-                        placeholder="Serach Meetings..."
+                        placeholder="Search Meetings..."
                     />
                 </div>
                 <div className="doc-meeting-main-content">

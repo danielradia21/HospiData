@@ -19,11 +19,11 @@ const nestedRoutes = [
     },
 
     {
-        path: '/doctor/patiences',
+        path: '/doctor/patients',
         component: Patients,
     },
     {
-        path: '/doctor/patiences/patient',
+        path: '/doctor/patients/patient',
         component: PateintProfile,
     },
     {
@@ -88,7 +88,7 @@ export function DoctorPage() {
                             <NavLink to="/doctor/meetings">Meetings</NavLink>
                         </div>
                         <div className="details">
-                            <NavLink to="/doctor/patiences">Patiences</NavLink>
+                            <NavLink to="/doctor/patients">Patients</NavLink>
                         </div>
                         <div className="details">
                             <NavLink to="/doctor/history">History</NavLink>

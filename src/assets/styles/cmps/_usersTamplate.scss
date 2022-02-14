@@ -3,6 +3,9 @@
     height: 91vh;
     display: flex;
     justify-content: center;
+    @media screen and (max-width: 768px) {
+        height:94.8vh;
+     }
     .main-contents {
         width: 100%;
         height: 100%;
@@ -22,6 +25,10 @@
             flex-direction: column;
             gap: 30px;
             align-items: center;
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+
 
             .main-profile-container {
                 display: flex;
@@ -114,6 +121,9 @@
             justify-content: space-around;
             align-items: center;
             border-radius: 5px;
+            @media screen and (max-width: 768px) {
+               height:100%;
+            }
             .main-content {
                 width: 100%;
                 height: 100%;

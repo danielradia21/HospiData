@@ -33,7 +33,7 @@ export function Lab(){
                     onChange={filterResults}
                     className="patient-search-input"
                     type="text"
-                    placeholder="Serach Appointments..."
+                    placeholder="Search Appointments..."
                 />
       <LabTable labRes={filteredRes||labRes} user={user}/>
             </div>
