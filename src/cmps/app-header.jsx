@@ -6,13 +6,14 @@ import Box from '@mui/material/Box';
 
 import Modal from '@mui/material/Modal';
 import { SignIn } from './login';
+import { useSelector } from 'react-redux';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '500px',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -23,6 +24,12 @@ export function AppHeader() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleSite = (type) => {
+            if(type === 'doctor') window.location.href = '/doctor/meetings'
+            else if(type === 'patient') window.location.href = '/patient/appointments'
+    }
+    const { user } = useSelector((state) => state.userModule);
+
     return (
         <header className="app-header">
             <Link className="img-container" to={'/'}>
@@ -36,11 +43,11 @@ export function AppHeader() {
                         {route.label}
                     </NavLink>
                 ))}
-                 <div>
-                        <button onClick={handleOpen} className="main-btn">
+                 <div> 
+                       <button onClick={handleOpen} className="main-btn">
                             Login
-                        </button>
-                    </div>
+                   </button>
+                </div>
             </nav>
             </div>
             <Modal

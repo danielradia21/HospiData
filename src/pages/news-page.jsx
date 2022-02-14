@@ -71,7 +71,7 @@ export function News() {
         setfilter(prev => prev = filterNews)
     }
 
-  if(!news) return <div className="puklse-con"><div class="pulse"></div> </div>
+  if(!news) return <div className="puklse-con"><div className="pulse"></div> </div>
     return (
         <section className="about-us-container">
             <Hero/>

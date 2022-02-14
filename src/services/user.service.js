@@ -93,6 +93,10 @@ async function signup(userCred) {
         if (users.find((user) => user.UID === userCred.UID))
             throw Error('Username already taken');
         const user = await storageService.post(STORAGE_KEY, userCred);
+        if(user){
+            if(user.type === 'doctor') window.location.href = '/doctor/meetings'
+            else if(user.type === 'patient') window.location.href = '/patient/appointments'
+        }
         return _saveLocalUser(user);
         //   const user = await httpService.post('auth/signup', userCred)
     } catch (err) {

@@ -10,7 +10,16 @@ export const doctorService = {
     getEmptyMail,
     updateMeeting,
     getEmptyMeet,
+    removeDoctor
 };
+
+async function removeDoctor (doctor) {
+    try {
+        return await storageService.remove('user',doctor._id);
+    } catch (err) {
+        console.log('Had error on userService: GETUSERS', err);
+  }
+ }
 
 async function getEmptyMeet(user, patient, vals) {
     const referrals = {

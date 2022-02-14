@@ -30,7 +30,7 @@ export function SignUp({ onClose ,userSatus }) {
     return (
         <div >
             {toggleForm ? (
-                <SignIn />
+                <SignIn onClose={onClose} />
             ) : (
                 <ThemeProvider theme={theme}>
                     <Container component="main" maxWidth="xs">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { adminService } from '../../services/admin.service';
+import {Loader} from '../loader'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -47,6 +48,6 @@ const data = {
     },
   ],
 };
-  if(!doctors) return <div>loding...</div>
+  if(!doctors) return <Loader/>
   return <div className='pie-continer'><h1>doctors by patients </h1><div className='pie'> <Pie  data={data} /> </div></div>;
 }

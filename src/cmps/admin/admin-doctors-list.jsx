@@ -8,6 +8,7 @@ import { SignIn } from '../../cmps/login';
 import { DelteMassge } from "../delte-massge";
 import SearchIcon from '@mui/icons-material/Search';
 import { doctorService } from "../../services/doctor.service";
+import {Loader} from '../loader'
 
 
 const style = {
@@ -43,7 +44,6 @@ export function AdminDoctorsList() {
   }
 
   const update = (doctor) =>{
-      console.log(doctor);
     setactive(prv=>prv ='update')
     handleOpen();
     // const {fullname,imgUrl,isAdmin} = doctor
@@ -85,7 +85,7 @@ const remove = (doctor) =>{
     }
 
 
-  if (!doctors ) return <div>lodinng...</div>
+  if (!doctors ) return <Loader/>
     return <>
         <div className="main-content-header">Doctors List</div>
         <div className="search-input-continer"> 

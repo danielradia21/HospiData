@@ -17,6 +17,8 @@ import { userService } from '../services/user.service';
 import { SignUp } from './signup';
 import { onLogin } from '../store/actions/user.actions';
 import { useDispatch } from 'react-redux';
+import { EnterKey } from './homepage/enter-key';
+import { BtnModal } from './homepage/btn-modal';
 
 const theme = createTheme();
 
@@ -26,6 +28,9 @@ export function SignIn({ onClose }) {
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));
     };
+    const [modals,setmodals] = React.useState('');
+
+    const handleChangeModel = (stus) =>  setmodals(stus)
 
     const textFieldOutline = (props) => (
         <TextField {...props} margin="normal" required fullWidth />
@@ -34,7 +39,11 @@ export function SignIn({ onClose }) {
     return (
         <div>
             {toggleForm ? (
-                <SignUp />
+                modals === 'patient' ? <SignUp onClose={onClose} userSatus={modals} /> 
+                : modals === 'enterKey' ? <EnterKey onClose={onClose} handleChangeModel={handleChangeModel} userSatus={modals}/>
+                : modals === 'doctor' ?<SignUp onClose={onClose} userSatus={modals}/>
+                :<BtnModal handleChangeModel={handleChangeModel}/>
+                 
             ) : (
                 <ThemeProvider theme={theme}>
                     <Container component="main" maxWidth="xs">

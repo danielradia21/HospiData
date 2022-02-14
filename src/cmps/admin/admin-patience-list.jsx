@@ -8,6 +8,7 @@ import Modal from '@mui/material/Modal';
 import { DelteMassge } from "../delte-massge";
 import SearchIcon from '@mui/icons-material/Search';
 import { patientService } from "../../services/patient.service";
+import {Loader} from '../loader'
 
 const style = {
     position: 'absolute',
@@ -85,7 +86,7 @@ const OnRemovePatient = async () =>{
 
 
 
-    if (!patience) return <div>lodinng...</div>
+    if (!patience) return <Loader/>
     return  <>
     <div className="main-content-header">Patience List</div>
     <div className="search-input-continer"> 

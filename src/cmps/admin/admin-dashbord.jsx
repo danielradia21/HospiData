@@ -2,6 +2,7 @@ import { CardList } from "./card-list";
 import { LineChart } from "./line-chart";
 import { PieChart } from "./pie-chart";
 import {adminService} from "../../services/admin.service"
+import {Loader} from '../loader'
 import { useEffect, useState } from "react";
 
 
@@ -54,7 +55,7 @@ export function AdminDashBord() {
 
 
 
-     if (!doctors || !patience || !appointments) return <div>lodinng...</div>
+     if (!doctors || !patience || !appointments) return <Loader/>
      
     // <div className="dashBord-continer"> 
 
