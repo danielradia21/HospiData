@@ -3,7 +3,6 @@ import { patientService } from './patient.service';
 import { userService } from './user.service';
 import { utilService } from './util.service';
 
-
 export const doctorService = {
     getDoctors,
     updateDoctor,
@@ -32,7 +31,7 @@ async function getEmptyMeet(user, patient, vals) {
         referrals,
     };
 
-    patient.appointments.push(patMeeting);
+    patient.appointments.unshift(patMeeting);
     const docMeeting = {
         _id: patMeeting._id,
         status: 'arrived',
@@ -45,7 +44,7 @@ async function getEmptyMeet(user, patient, vals) {
         date: patMeeting.date,
     };
 
-    user.meetings.push(docMeeting);
+    user.meetings.unshift(docMeeting);
     patient.inbox.unshift({
         _id: utilService.makeId(),
         appId: patMeeting._id,
@@ -124,8 +123,8 @@ async function getDoctors() {
         // const users = await userService.getUsers();
         // const doctors = users.filter((user) => user.type === 'doctor');
         // return doctors;
-        let filterBy = {type:'doctor'}
-        return await userService.getUsers(filterBy)
+        let filterBy = { type: 'doctor' };
+        return await userService.getUsers(filterBy);
     } catch (err) {
         console.log('cant get doctors', err);
     }
@@ -133,10 +132,8 @@ async function getDoctors() {
 
 async function updateDoctor(user) {
     try {
-        return await userService.update(user)
+        return await userService.update(user);
     } catch (err) {
         console.log(err);
     }
 }
-
-

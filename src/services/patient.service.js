@@ -21,7 +21,7 @@ export const patientService = {
 
 async function query() {
     try {
-     const  filterBy={type:'patient'}
+        const filterBy = { type: 'patient' };
         return await userService.getUsers(filterBy);
         // return users.filter((user) => user.type === 'patient');
     } catch (err) {
@@ -79,17 +79,16 @@ async function cancelAppointment(user, appId) {
         }
         user.appointments[appIdx].status = 'cancelled';
         await userService.update(doctor);
-        return await userService.update(user)
+        return await userService.update(user);
         // return await updateSelfPatient(user);
     } catch (err) {
         console.log(err);
     }
 }
 
-async function getPatientDoctors() {
+async function getPatientDoctors(patient) {
     try {
-      
-        let patient = await userService.getLoggedinUser();
+        // let patient = await userService.getLoggedinUser();
         let appointments = patient.appointments.filter(
             (app) => app.status === ('pending' || 'approved')
         );
@@ -106,18 +105,19 @@ async function getPatientDoctors() {
     }
 }
 
-async function makeAppointment({ doctorId, date }) {
+async function makeAppointment({ doctorId, date, user }) {
     try {
-        let loggedInUser = await userService.getLoggedinUser();
+        // let loggedInUser = await userService.getLoggedinUser();
+
         const randomId = 'a' + utilService.makeId();
         const meeting = {
             _id: randomId,
             status: 'pending',
             patient: {
-                _id: loggedInUser._id,
-                UID: loggedInUser.UID,
-                fullname: loggedInUser.fullname,
-                imgUrl: loggedInUser.imgUrl,
+                _id: user._id,
+                UID: user.UID,
+                fullname: user.fullname,
+                imgUrl: user.imgUrl,
             },
             date: date,
         };
@@ -134,8 +134,8 @@ async function makeAppointment({ doctorId, date }) {
             imgUrl: doctor.imgUrl,
         };
         const appointment = makePatientAppointment(randomId, miniDoc, date);
-        loggedInUser.appointments.push(appointment);
-        await userService.updateLoggedInUser(loggedInUser);
+        user.appointments.unshift(appointment);
+        await userService.updateLoggedInUser(user);
     } catch (err) {
         console.log(err);
     }
@@ -149,9 +149,8 @@ async function getDoctors() {
         //         acc.push({ fullname: user.fullname, _id: user._id });
         //     return acc;
         // }, []);
-        let filterBy = {type:'doctor'}
-       return await userService.getUsers(filterBy)
-     
+        let filterBy = { type: 'doctor' };
+        return await userService.getUsers(filterBy);
     } catch (err) {
         console.log(err);
     }
@@ -175,7 +174,7 @@ async function update(patient) {
 
 async function remove(id) {
     try {
-        return await httpService.delete(`user/${id}`)
+        return await httpService.delete(`user/${id}`);
     } catch (err) {
         console.log("couldn't remove patient", err);
     }

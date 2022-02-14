@@ -39,9 +39,9 @@ export function Meetings() {
         boxShadow: 24,
     };
 
-    useEffect(async () => {
+    useEffect(() => {
         onStart();
-    }, []);
+    }, [user]);
 
     const onStart = async () => {
         getPendingMeetings();

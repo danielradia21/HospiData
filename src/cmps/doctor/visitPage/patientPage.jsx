@@ -21,7 +21,7 @@ export function PatientPage({ patient, user, makeAppointment }) {
 
     useEffect(() => {
         appList();
-    }, [patient]);
+    }, [patient, user]);
 
     const filterHistory = (ev) => {
         const FilteredList = appointmentsList.filter((app) =>
@@ -55,7 +55,7 @@ export function PatientPage({ patient, user, makeAppointment }) {
         return `${Day}/${Month}/${Year}`;
     };
 
-    if (!patient) return <Loader />;;
+    if (!patient) return <Loader />;
 
     return (
         <>

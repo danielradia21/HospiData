@@ -13,11 +13,17 @@ export function PatientPreview({ patient }) {
 
     const patientLastVisit = async () => {
         const currPatient = await userService.getByUID(patient.UID);
-        if (!currPatient.appointments.length)
+        if (!currPatient.appointments.length) {
             setCurrDate((prev) => (prev = 'No recent visits'));
+            return;
+        }
         const currAppointments = currPatient.appointments.filter(
             (app) => app.status === 'arrived'
         );
+        if (!currAppointments.length) {
+            setCurrDate((prev) => (prev = 'No recent visits'));
+            return;
+        }
         const lastMeet = currAppointments[currAppointments.length - 1];
         const date = dateConvertion(lastMeet.date);
         setCurrDate((prev) => (prev = date));
@@ -30,7 +36,7 @@ export function PatientPreview({ patient }) {
         const Day = newTime.getDate();
         return `${Day}/${Month}/${Year}`;
     };
-    if (!patient || !currDate) return <Loader />;;
+    if (!patient || !currDate) return <Loader />;
     return (
         <div className="doc-patient-card">
             <div className="img-container">
@@ -41,7 +47,7 @@ export function PatientPreview({ patient }) {
                 <div className="last-visit">Last Visit: {currDate}</div>
             </div>
             <Link
-                to={`/doctor/patiences/patient/?uid=${patient.UID}`}
+                to={`/doctor/patients/patient/?uid=${patient.UID}`}
                 className="sub-btn"
             >
                 Visit

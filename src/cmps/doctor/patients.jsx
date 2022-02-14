@@ -19,7 +19,7 @@ export function Patients() {
 
     React.useEffect(() => {
         pagination();
-    }, [filteredPatients, pagiCountrer]);
+    }, [filteredPatients, pagiCountrer, user]);
 
     const patientsFilter = (ev) => {
         const patientFilterdList = user.patients.filter((patient) =>
@@ -73,7 +73,9 @@ export function Patients() {
             </div>
             <div className="doc-patient-card-container">
                 {currFilter.map((patient) => {
-                    return <PatientPreview key={patient.UID} patient={patient} />;
+                    return (
+                        <PatientPreview key={patient.UID} patient={patient} />
+                    );
                 })}
             </div>
         </>

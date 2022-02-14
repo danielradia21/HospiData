@@ -324,7 +324,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
                                                 tabIndex={-1}
-                                                key={row.date}
+                                                key={index}
                                                 selected={isItemSelected}
                                             >
                                                 <TableCell padding="checkbox"></TableCell>
