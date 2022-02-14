@@ -7,6 +7,13 @@ import { DoctorPage } from './pages/doctor-page.jsx'
 import { MedicalHistory } from './cmps/patient/medical-history.jsx'
 import { Inbox, PatientInbox } from './cmps/patient/inbox.jsx'
 import {News} from './pages/news-page'
+import { Meetings } from './cmps/doctor/meetings.jsx'
+import { Patients } from './cmps/doctor/patients.jsx'
+import { History } from './cmps/doctor/history.jsx'
+import { DocCalendar } from './cmps/doctor/doc-calendar.jsx'
+import { AdminDashBord } from './cmps/admin/admin-dashbord.jsx'
+import { AdminDoctorsList } from './cmps/admin/admin-doctors-list.jsx'
+import { AdminPatienceList } from './cmps/admin/admin-patience-list.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 export const routes = [
@@ -49,5 +56,47 @@ export const patientNestedRoutes = [
     path: '/patient/medical-referrals',
     component: MedicalHistory,
     label: 'Medical History',
+  }
+]
+
+
+export const doctorNestedRoutes = [
+  {
+    path:'/doctor/meetings',
+    component:Meetings,
+    label:'Meetings'
+  },
+  {
+    path:'/doctor/patients',
+    component:Patients,
+    label:'Patients'
+  }, 
+  {
+    path:'/doctor/history',
+    component:History,
+    label:'History'
+  },
+  {
+    path:'/doctor/calendar',
+    component:DocCalendar,
+    label:'Calendar'
+  }
+]
+
+export const adminNestedRoutes =[
+  {
+    path:'/admin/dashboard',
+    component:AdminDashBord,
+    label:'Dash Board'
+  },
+  {
+    path:'/admin/doctors',
+    component:AdminDoctorsList,
+    label:'Doctors'
+  }, 
+  {
+    path:'/doctor/patients',
+    component:AdminPatienceList,
+    label:'Patients'
   }
 ]

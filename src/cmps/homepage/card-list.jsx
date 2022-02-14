@@ -23,7 +23,7 @@ export function CardList() {
     ];
     return (
         <div className="main-card-container">
-            <div className="cards-container flex">
+            <div className="cards-container">
                 {contents.map((content, idx) => (
                     <CardPrev
                         key={idx}

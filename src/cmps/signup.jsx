@@ -18,7 +18,7 @@ import { SignIn } from './login';
 
 const theme = createTheme();
 
-export function SignUp({ onClose ,userSatus }) {
+export function SignUp({ onClose, userSatus }) {
     const [toggleForm, setToggleForm] = React.useState(false);
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));
@@ -28,7 +28,7 @@ export function SignUp({ onClose ,userSatus }) {
     );
 
     return (
-        <div >
+        <div>
             {toggleForm ? (
                 <SignIn onClose={onClose} />
             ) : (
@@ -54,22 +54,21 @@ export function SignUp({ onClose ,userSatus }) {
                                     fullname: '',
                                     username: '',
                                     password: '',
-                                    UID:''
+                                    UID: '',
                                 }}
                                 onSubmit={async (values) => {
                                     onClose();
                                     let userCred = {
                                         ...values,
-                                        imgUrl:"https://www.iconspng.com/images/young-user-icon.jpg",
-                                        isAdmin: false,
+                                        imgUrl: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
                                         type: userSatus,
-                                    }
-                                    if(userSatus === 'patient'){
-                                        userCred = {...userCred ,appointments: [],inbox:[] }
-                                    }else if(userSatus === 'doctor'){
-                                        userCred = {...userCred ,meetings: [],patients:[] }
-                                    }
-                                    await userService.signup (userCred);
+                                    };
+                                    // if(userSatus === 'patient'){
+                                    //     userCred = {...userCred ,appointments: [],inbox:[] }
+                                    // }else if(userSatus === 'doctor'){
+                                    //     userCred = {...userCred ,meetings: [],patients:[] }
+                                    // }
+                                    await userService.signup(userCred);
                                     values.fullname = '';
                                     values.username = '';
                                     values.password = '';
@@ -78,12 +77,12 @@ export function SignUp({ onClose ,userSatus }) {
                             >
                                 <Form>
                                     <Field
-                                       as={textFieldOutline}
-                                       label="UID"
-                                       type="text"
-                                       id="UID"
-                                       name="UID"
-                                       placeholder="UID"
+                                        as={textFieldOutline}
+                                        label="UID"
+                                        type="text"
+                                        id="UID"
+                                        name="UID"
+                                        placeholder="UID"
                                         autoFocus
                                     />
                                     <Field

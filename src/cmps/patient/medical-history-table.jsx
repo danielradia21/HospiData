@@ -16,32 +16,27 @@
 //     { id: 'viewDetails', label: 'View Details', minWidth: 100, align: 'center' },
 //   ]
 
-
-  // function createData(title, timestamp,id) {
-  //   const {date,time} = getDate(timestamp)
-  //   const viewDetails = (
-  //     <button key={timestamp} className="view-details-btn">
-  //       View Details{' '}
-  //     </button>
-  //   )
-  //   return { date,time, title, viewDetails,id }
-  // }
-
-
-
+// function createData(title, timestamp,id) {
+//   const {date,time} = getDate(timestamp)
+//   const viewDetails = (
+//     <button key={timestamp} className="view-details-btn">
+//       View Details{' '}
+//     </button>
+//   )
+//   return { date,time, title, viewDetails,id }
+// }
 
 //   function getDate(timestamp) {
 //     let date = new Date(timestamp)
 //   const day = date.getDate()
 //   const month = date.getMonth() + 1
 //   const year = date.getFullYear()
-//   const hour = date.getHours() < 10 ? '0' + date.getHours()  : date.getHours() 
+//   const hour = date.getHours() < 10 ? '0' + date.getHours()  : date.getHours()
 //   const minute = date.getMinutes()  < 10 ? '0' + date.getMinutes() : date.getMinutes()
 //   return { date: `${day}/${month}/${year}`, time: `${hour}:${minute}` }
 // }
 
 //   const rows = history.map((res) => createData(res.title, +res.date,res._id))
-
 
 //   return (
 //     <TableContainer component={Paper}>
@@ -80,8 +75,6 @@
 //   )
 // }
 
-
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -96,7 +89,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
-import { CancelAppointment } from './cancel-appointment'
+import { CancelAppointment } from './cancel-appointment';
 import { HistoryAppointmentModal } from './history-appointment-modal';
 
 function descendingComparator(a, b, orderBy) {
@@ -128,23 +121,23 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'date', label: 'Date', numeric: false, disablePadding: false },
-  { id: 'time', label: 'Time', numeric: false, disablePadding: false },
-  { id: 'title', label: 'Title', numeric: false, disablePadding: false },
-  { id: 'viewDetails', label: 'View Details', disablePadding: false, numeric: false },
-]
+    { id: 'date', label: 'Date', numeric: false, disablePadding: false },
+    { id: 'time', label: 'Time', numeric: false, disablePadding: false },
+    { id: 'title', label: 'Title', numeric: false, disablePadding: false },
+    {
+        id: 'viewDetails',
+        label: 'View Details',
+        disablePadding: false,
+        numeric: false,
+    },
+];
 function EnhancedTableHead(props) {
-    const {
-        order,
-        orderBy,
-        onRequestSort,
-    } = props;
+    const { order, orderBy, onRequestSort } = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
 
     return (
-        
         <TableHead>
             <TableRow>
                 <TableCell padding="checkbox"></TableCell>
@@ -189,16 +182,13 @@ EnhancedTableHead.propTypes = {
     rowCount: PropTypes.number.isRequired,
 };
 
-export function MedicalHistoryTable({
-    history,
-    openAppointment
-}) {
+export function MedicalHistoryTable({ history, openAppointment }) {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(4);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -215,31 +205,37 @@ export function MedicalHistoryTable({
         setSelected([]);
     };
 
-    
-      function getDate(timestamp) {
-    let date = new Date(timestamp)
-    const day = date.getDate()
-    const month = date.getMonth() + 1
-    const year = date.getFullYear()
-    const hour = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
-    const minute =
-      date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-    return { date: `${day}/${month}/${year}`, time: `${hour}:${minute}` }
-  }
- 
+    function getDate(timestamp) {
+        let date = new Date(timestamp);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const hour =
+            date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        const minute =
+            date.getMinutes() < 10
+                ? '0' + date.getMinutes()
+                : date.getMinutes();
+        return { date: `${day}/${month}/${year}`, time: `${hour}:${minute}` };
+    }
 
-  function createData(title, timestamp,id,app) {
-    const {date,time} = getDate(timestamp)
-    const viewDetails = (
-      <button key={id} onClick={()=>openAppointment(app)} className="view-details-btn">
-        View Details{' '}
-      </button>
-    )
-    return { date,time, title, viewDetails,id }
-  }
+    function createData(title, timestamp, id, app) {
+        const { date, time } = getDate(timestamp);
+        const viewDetails = (
+            <button
+                key={id}
+                onClick={() => openAppointment(app)}
+                className="view-details-btn"
+            >
+                View Details{' '}
+            </button>
+        );
+        return { date, time, title, viewDetails, id };
+    }
 
-
-  const rows = history.map((res) => createData(res.title, +res.date,res._id,res))
+    const rows = history.map((res) =>
+        createData(res.title, +res.date, res._id, res)
+    );
 
     const handleClick = (event, name) => {
         const selectedIndex = selected.indexOf(name);
@@ -284,10 +280,13 @@ export function MedicalHistoryTable({
         <>
             <Box sx={{ width: '100%' }}>
                 <Paper sx={{ width: '100%', mb: 2 }}>
-     
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                            sx={{
+                                minWidth: 400,
+                                minHeight: 400,
+                                maxWidth: 750,
+                            }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >
@@ -339,8 +338,8 @@ export function MedicalHistoryTable({
                                                 </TableCell>
 
                                                 <TableCell align="center">
-                                                        {row.viewDetails}
-                                                    </TableCell>
+                                                    {row.viewDetails}
+                                                </TableCell>
                                             </TableRow>
                                         );
                                     })}

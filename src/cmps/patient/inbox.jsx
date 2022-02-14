@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react"
-import { useSelector,useDispatch } from "react-redux"
-import { patientService } from "../../services/patient.service"
-import { getLoggedInUser } from "../../store/actions/user.actions"
-import { InboxList } from "./inbox-list"
-import { InboxPrev } from "./inbox-prev"
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { patientService } from '../../services/patient.service';
+import { getLoggedInUser } from '../../store/actions/user.actions';
+import { InboxList } from './inbox-list';
+import { InboxPrev } from './inbox-prev';
+import { Loader } from '../loader';
 
+export function Inbox() {
+    const { user } = useSelector((state) => state.userModule);
+    const [inbox, setInbox] = useState([]);
+    const [mailPrev, setMailPrev] = useState(null);
+    const [page, setPage] = useState(0);
 
+    const dispatch = useDispatch();
 
-
-export function Inbox(){
-    const { user } = useSelector((state) => state.userModule)
-    const [inbox,setInbox] = useState([])
-    const [mailPrev,setMailPrev] = useState(null)
-    const [page,setPage] = useState(0)
-
-    const dispatch = useDispatch()
-
-    const maxPage = 6
+    const maxPage = 6;
 
     // const inbox=[
     //     {
@@ -43,21 +41,20 @@ export function Inbox(){
     //         "msg":"Your appointment got approved, By doctor David Davidov"
     //     }
     // ]
-  
-  
+
     useEffect(() => {
-      const userInbox = user.inbox.filter((msg) =>msg )
-      setInbox((prevInbox)=>prevInbox = userInbox)
-    }, [])
-  
+        const userInbox = user.inbox.filter((msg) => msg);
+        setInbox((prevInbox) => (prevInbox = userInbox));
+    }, []);
+
     const paging = (num) => {
-        if (page === 0 && num === -1) setPage(Math.floor(user.inbox.length/(maxPage+1)));
+        if (page === 0 && num === -1)
+            setPage(Math.floor(user.inbox.length / (maxPage + 1)));
         setPage((prev) => (prev += num));
         pagination();
     };
 
     const pagination = () => {
-        
         let cards = inbox || user.inbox;
         let cardToRender = page * maxPage;
         if (cards.slice(cardToRender, cardToRender + maxPage).length === 0)
@@ -70,13 +67,16 @@ export function Inbox(){
     const openMailPrev = async (mail)=>{
         console.log(mail)
         setMailPrev((prev)=>prev=mail)
-        const idx = user.inbox.findIndex((mail)=>mail._id===mail._id)
-        let updatedUser = {...user}
-        if(idx>-1 && !user.inbox[idx].isOpened){
-            updatedUser.inbox[idx].isOpened = true
+        const updatedUser = {...user}
+        const inbox = user.inbox.map(inbox=>{
+              if(inbox.appId===mail.appId)  inbox.isOpened = true
+              return inbox
+          })
+          updatedUser.inbox = inbox
+        //   console.log(updatedUser)
            await patientService.updateSelfPatient(updatedUser)
-           dispatch(getLoggedInUser())
-        }
+        //    dispatch(getLoggedInUser())
+        
     }
 
     const closeMailPrev = ()=>{
@@ -87,30 +87,43 @@ export function Inbox(){
     return (
         <div className="inbox-main-container">
             <div className="main-content-header">Inbox</div>
-        <div className="inbox-content">
-            {!inbox.length && <div>You have no messages</div>}
-            {inbox.length && pagination().map(mail=>{
-                return (
-                    <div key={mail._id}>
-                    <InboxList mail={mail}  openMailPrev={openMailPrev}/>
-                    {mailPrev?._id===mail._id&&<div className={`inbox-prev-animator ${mailPrev&&'open-prev'}`}>
-                        <InboxPrev mail={mailPrev} closeMailPrev={closeMailPrev}/></div>
-                        }
-                    <div className="line-seperator" ></div>
-                    </div>
-                )
-            })}
-        </div>
-        <div className="btns-container">
-                    <button className="sub-btn" onClick={() => paging(-1)}>
-                        Previous
-                    </button>
-                    <div>{page + 1}</div>
-                    <button className="sub-btn" onClick={() => paging(1)}>
-                        Next
-                    </button>
-                </div>
+            <div className="inbox-content">
+                {!user && <Loader />}
+                {!inbox.length && <div>You have no messages</div>}
+                {inbox.length &&
+                    pagination().map((mail) => {
+                        return (
+                            <div key={mail._id}>
+                                <InboxList
+                                    mail={mail}
+                                    openMailPrev={openMailPrev}
+                                />
+                                {mailPrev?._id === mail._id && (
+                                    <div
+                                        className={`inbox-prev-animator ${
+                                            mailPrev && 'open-prev'
+                                        }`}
+                                    >
+                                        <InboxPrev
+                                            mail={mailPrev}
+                                            closeMailPrev={closeMailPrev}
+                                        />
+                                    </div>
+                                )}
+                                <div className="line-seperator"></div>
+                            </div>
+                        );
+                    })}
             </div>
-    )
+            <div className="btns-container">
+                <button className="sub-btn" onClick={() => paging(-1)}>
+                    Previous
+                </button>
+                <div>{page + 1}</div>
+                <button className="sub-btn" onClick={() => paging(1)}>
+                    Next
+                </button>
+            </div>
+        </div>
+    );
 }
-

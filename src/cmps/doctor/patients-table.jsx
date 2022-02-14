@@ -21,6 +21,7 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
+import { ViewDetailsModal } from './patient/viewDetailsModal';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -147,13 +148,17 @@ const dateConvertion = (time) => {
     return `${Day}/${Month}/${Year}`;
 };
 
-export function PatientTable({ items, toggleModal, isHistory }) {
+export function PatientTable({ items }) {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(4);
+    const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
+    const handleOpen = () => setOpen(true);
+    const [currApp, setCurrApp] = React.useState({});
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -169,11 +174,15 @@ export function PatientTable({ items, toggleModal, isHistory }) {
         }
         setSelected([]);
     };
+    const openDetails = (appInfo) => {
+        setCurrApp((prev) => (prev = appInfo));
+        handleOpen()
+    };
 
-    function createData(timestemp, title, docName) {
+    function createData(timestemp, title, docName, appInfo) {
         const detailsBtn = (
             <button
-                onClick={() => console.log('open details')}
+                onClick={() => openDetails(appInfo)}
                 className="sub-btn details"
             >
                 View Detials
@@ -190,7 +199,7 @@ export function PatientTable({ items, toggleModal, isHistory }) {
     }
 
     const rows = items.map((app) =>
-        createData(app.date, app.title, app.doctor.fullname)
+        createData(app.date, app.title, app.doctor.fullname, app)
     );
 
     const handleClick = (event, name) => {
@@ -309,6 +318,11 @@ export function PatientTable({ items, toggleModal, isHistory }) {
                     />
                 </Paper>
             </Box>
+            <ViewDetailsModal
+                currApp={currApp}
+                open={open}
+                handleClose={handleClose}
+            />
         </>
     );
 }

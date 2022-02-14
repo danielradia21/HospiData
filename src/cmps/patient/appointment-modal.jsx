@@ -12,12 +12,14 @@ import { useEffect, useState } from 'react'
 import { DateTimePicker } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import { Loader } from '../loader'
 
 export function AppointmentModal({
   openNewApp,
   closeNewAppModal,
   makeAppointment,
   doctors,
+  handleOpenSnackbar
 }) {
   const [treatmentType, setTreatmentType] = useState('')
   const [doctorId, setDoctorId] = useState('')
@@ -26,7 +28,10 @@ export function AppointmentModal({
 
 
   useEffect(()=>{
-    if(!doctors||!doctors.length) closeNewAppModal()
+    if(!doctors||!doctors.length) {
+      handleOpenSnackbar('error','No doctor\'s are avaiable right now')
+      closeNewAppModal()
+    }
   },[])
 
   
@@ -36,8 +41,8 @@ export function AppointmentModal({
     top: '35%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '45%',
-    height: '60%',
+    paddingLeft:2,
+    paddingRight:2,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -82,7 +87,7 @@ export function AppointmentModal({
 
   return (
     <div className="appointment-modal-container">
-      {!doctors && <div>Loading...</div>}
+      {!doctors &&<Loader/>}
       {doctors && (
         <Modal
           open={openNewApp}

@@ -1,14 +1,12 @@
 .app-header {
-    width: 1100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px;
     font-size: 1rem;
     margin: 0 auto;
-    @media screen and (max-width: 1200px) {
-        width: 1000px;
-    }
+
     .img-container {
         width: 165px;
         height: 30px;
@@ -33,5 +31,101 @@
         height: 40px;
         font-size: 1em;
     }
+    .burger-container {
+        display: none;
+    }
+    @media screen and (max-width: 768px) {
+        height: 50px;
+        .burger-container {
+            display: block;
+            position: relative;
+            .burger-sign {
+                cursor: pointer;
+                padding-right: 10px;
+            }
+            .blackscreen {
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                background-color: #00000085;
+                z-index: 9999;
+                top: 0;
+                right: 0;
+            }
+            .float-menu {
+                // width: 100%;
+                height: 100%;
+                background-color: #f6f6f6;
+                position: fixed;
+                right: 0%;
+                top: 50%;
+                z-index: 10000;
+                transform: translate(50%, -50%);
+            }
+            .main-container {
+                grid-template-columns: 0px 1fr 20px;
+                .nav-links {
+                    display: flex;
+                    flex-direction: column;
+                    width: 160px;
+                    justify-content: center;
+                    align-items: center;
+                    .x-btn {
+                        align-self: flex-end;
+                        padding-top: 10px;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+        .nav-links {
+            display: none;
+        }
+    }
 }
 
+.navbar-line-seperator{
+display: flex;
+flex-direction: column;
+
+h2{
+font-size: 1.2rem;
+font-family:sans-serif;
+}
+  
+  h2:before,
+  h2:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+  
+  h2:before {
+    right: 0.3em;
+    margin-left: -50%;
+  }
+  
+  h2:after {
+    left: 0.3em;
+    margin-right: -50%;
+  }
+}
+.close {
+    width: 0%;
+    transition: all 1s;
+}
+.open {
+    transition: all 1s;
+    width: 320px;
+}
+
+.open-blackscreen {
+    display: block;
+}
+.close-blackscreen {
+    display: none;
+}

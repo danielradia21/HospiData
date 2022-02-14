@@ -32,14 +32,19 @@
             font-size: 1em;
         }
     }
+    @media screen and (max-width: 768px) {
+        .main-content {
+            width: 100%;
+        }
+    }
 }
-.hero-modal{
+.hero-modal {
     justify-content: center;
     align-items: center;
-    button{
-        &:first-of-type{
+    button {
+        &:first-of-type {
             margin-top: 10px;
-           margin-bottom: 20px;
+            margin-bottom: 20px;
         }
     }
 }

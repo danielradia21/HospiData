@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { doctorService } from '../../../services/doctor.service';
 import { userService } from '../../../services/user.service';
 import { getLoggedInUser } from '../../../store/actions/user.actions';
+import { Loader } from '../../loader';
 import { PatientPage } from './patientPage';
 export function PateintProfile() {
     const { user } = useSelector((state) => state.userModule);
@@ -16,8 +17,8 @@ export function PateintProfile() {
 
     useEffect(() => {
         getPatinet();
-    }, []);
-    
+    }, [user]);
+
     const getPatinet = async () => {
         let searchParams = new URLSearchParams(window.location.search);
         if (searchParams.has('uid')) {
@@ -43,9 +44,10 @@ export function PateintProfile() {
             await doctorService.getEmptyMeet(user, patient, values);
         }
         await getPatinet();
+        dispatch(getLoggedInUser());
     };
 
-    if (!patient) return <div>loading...</div>;
+    if (!patient) return <Loader />;
 
     return (
         <PatientPage

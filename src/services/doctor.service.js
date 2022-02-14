@@ -3,7 +3,6 @@ import { patientService } from './patient.service';
 import { userService } from './user.service';
 import { utilService } from './util.service';
 
-
 export const doctorService = {
     getDoctors,
     updateDoctor,
@@ -41,7 +40,7 @@ async function getEmptyMeet(user, patient, vals) {
         referrals,
     };
 
-    patient.appointments.push(patMeeting);
+    patient.appointments.unshift(patMeeting);
     const docMeeting = {
         _id: patMeeting._id,
         status: 'arrived',
@@ -54,7 +53,7 @@ async function getEmptyMeet(user, patient, vals) {
         date: patMeeting.date,
     };
 
-    user.meetings.push(docMeeting);
+    user.meetings.unshift(docMeeting);
     patient.inbox.unshift({
         _id: utilService.makeId(),
         appId: patMeeting._id,
@@ -68,7 +67,7 @@ async function getEmptyMeet(user, patient, vals) {
         msg: `Your appointment with me has ended,
          Your's Dr. ${user.fullname}`,
     });
-    await patientService.update(patient);
+    await userService.update(patient);
     await userService.updateLoggedInUser(user);
 }
 
@@ -109,6 +108,7 @@ async function updateMeeting(appId = null, patient, newApp, user) {
 
     const meetIdx = user.meetings.findIndex((meet) => meet._id === appId);
     user.meetings[meetIdx].status = 'arrived';
+    user.meetings[meetIdx].date = appointment.date;
     await userService.updateLoggedInUser(user);
 }
 
@@ -129,9 +129,11 @@ function getEmptyMail(id, { _id, fullname, imgUrl }, stat) {
 
 async function getDoctors() {
     try {
-        const users = await userService.getUsers();
-        const doctors = users.filter((user) => user.type === 'doctor');
-        return doctors;
+        // const users = await userService.getUsers();
+        // const doctors = users.filter((user) => user.type === 'doctor');
+        // return doctors;
+        let filterBy = { type: 'doctor' };
+        return await userService.getUsers(filterBy);
     } catch (err) {
         console.log('cant get doctors', err);
     }
@@ -139,10 +141,8 @@ async function getDoctors() {
 
 async function updateDoctor(user) {
     try {
-        return await storageService.put('user', user);
+        return await userService.update(user);
     } catch (err) {
         console.log(err);
     }
 }
-
-

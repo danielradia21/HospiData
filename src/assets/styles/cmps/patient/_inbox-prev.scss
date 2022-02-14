@@ -6,17 +6,24 @@
   transition:0.4s;
   padding:10px 10px;
 
-//   .prev-container{
-//       position: absolute;
-//       transition: 1s;
-//       z-index:-1;
-//     top:-50px;
+  @keyframes openup {
+    from {opacity: 0;top:-25px}
+    to {opacity: 1;top:0;}
+  }
+  animation-duration: 0.8s;
+  animation-name:openup;
+
+  .prev-container{
+      position: absolute;
+      transition: 1s;
+      z-index:-1;
+    top:-50px;
       
-//       &.open-prev{
-//           position: sticky;
-//           z-index:2;
-//     }
-//   }
+      &.open-prev{
+          position: sticky;
+          z-index:2;
+    }
+  }
 
   span{
     font-weight: 700;

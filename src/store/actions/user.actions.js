@@ -40,13 +40,28 @@ export function onLogin(credentials) {
                 type: 'SET_USER',
                 user,
             });
-            if(user){
-                if(user.type === 'doctor') window.location.href = '/doctor/meetings'
-                else if(user.type === 'patient') window.location.href = '/patient/appointments'
+            if (user) {
+                if (user.type === 'doctor')
+                    window.location.href = '/doctor/meetings';
+                else if (user.type === 'patient')
+                    window.location.href = '/patient/appointments';
             }
         } catch (err) {
             // showErrorMsg('Cannot login');
             console.log('Cannot login', err);
+        }
+    };
+}
+
+export function updateLoggedInUser(user) {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type: 'SET_USER',
+                user,
+            });
+        } catch (err) {
+            console.log(err);
         }
     };
 }
@@ -84,7 +99,6 @@ export function onSignup(credentials) {
 }
 
 export function setNewUser(newUser) {
-
     return (dispatch) => {
         dispatch({
             type: 'SET_USER',

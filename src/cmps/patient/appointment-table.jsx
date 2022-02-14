@@ -385,7 +385,7 @@ export function AppointmentTable({
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rowsPerPage, setRowsPerPage] = useState(3);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -487,7 +487,7 @@ export function AppointmentTable({
           )}
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                            sx={{ maxWidth: 750,minHeight:400,maxHeight:400 }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

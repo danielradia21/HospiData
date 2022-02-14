@@ -39,11 +39,15 @@ export function Meetings() {
         boxShadow: 24,
     };
 
-    useEffect(async () => {
+    useEffect(() => {
+        onStart();
+    }, [user]);
+
+    const onStart = async () => {
         getPendingMeetings();
         const patients = await patientService.query();
         setPatients((prev) => (prev = patients));
-    }, []);
+    };
 
     const filterMeetings = (ev) => {
         const FilteredList = pendingMeetings.filter((meet) =>
@@ -60,7 +64,7 @@ export function Meetings() {
         setPendingMeetings((prev) => (prev = pendings));
     };
     const switchBtns = () => {
-        if (modalQuest === 'Finish')
+        if (modalQuest === 'Approve')
             return (
                 <>
                     <button
@@ -123,7 +127,7 @@ export function Meetings() {
                     onChange={filterMeetings}
                     className="doc-patient-search"
                     type="text"
-                    placeholder="Serach Meetings..."
+                    placeholder="Search Meetings..."
                 />
             </div>
             <div className="doc-meeting-main-content">
