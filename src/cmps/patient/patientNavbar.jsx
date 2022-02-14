@@ -13,7 +13,7 @@ export function PatientNavBar({ user }) {
             ))}
             {user.isAdmin && (
                 <div className="details">
-                    <NavLink to={'/admin'}>
+                    <NavLink to={'/admin/dashboard'}>
                         <p>Admin Panel</p>
                     </NavLink>
                 </div>
