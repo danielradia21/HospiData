@@ -6,11 +6,21 @@ import { History } from '../cmps/doctor/history';
 import { Meetings } from '../cmps/doctor/meetings';
 import { Patients } from '../cmps/doctor/patients';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLoggedInUser, onLogout } from '../store/actions/user.actions';
+import {
+    getLoggedInUser,
+    onLogout,
+    updateLoggedInUser,
+} from '../store/actions/user.actions';
 import { doctorService } from '../services/doctor.service';
 import { PateintProfile } from '../cmps/doctor/visitPage/pateintProfile';
 import { DocCalendar } from '../cmps/doctor/doc-calendar';
-import { socketService,SOCKET_EMIT_USER_WATCH } from '../services/socket.service';
+
+import {
+    socketService,
+    SOCKET_EMIT_USER_WATCH,
+    SOCKET_EVENT_USER_UPDATED,
+} from '../services/socket.service';
+import { Loader } from '../cmps/loader';
 
 const nestedRoutes = [
     {
@@ -41,7 +51,16 @@ export function DoctorPage() {
     const dispatch = useDispatch();
     useEffect(() => {
         if (!user) dispatch(getLoggedInUser());
-        if(user) socketService.emit(SOCKET_EMIT_USER_WATCH,user._id)
+        if (user) {
+            socketService.emit(SOCKET_EMIT_USER_WATCH, user._id);
+            socketService.on('user-updated', (user) => {
+                console.log('file: doctor-page.jsx   line 57   user', user);
+                dispatch(updateLoggedInUser(user));
+            });
+        }
+        return () => {
+            socketService.off(SOCKET_EVENT_USER_UPDATED);
+        };
     }, [user]);
 
     const onLogOut = () => {
@@ -49,23 +68,14 @@ export function DoctorPage() {
         dispatch(onLogout());
     };
 
-    // const test = async () => {
-    //     const doctors = await doctorService.getDoctors();
-    // };
-
-    // test();
-
-    if (!user) return <div>w8</div>;
+    if (!user) return <Loader />;
     return (
         <div className="main-wrapper">
             <div className="main-contents">
                 <div className="profile-section">
                     <div className="main-profile-container">
                         <div className="img-wrapper">
-                            <img
-                                src="https://randomuser.me/api/portraits/women/39.jpg"
-                                alt=""
-                            />
+                            <img src={user.imgUrl} alt="" />
                         </div>
 
                         <div className="name-section">

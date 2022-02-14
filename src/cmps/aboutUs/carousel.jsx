@@ -125,7 +125,7 @@ const teamMembers=[
   <div>
       <Alert severity="success" className='email-card-success-alert' >
         <AlertTitle>Success</AlertTitle>
-        your email was send — <strong>Thenk You!</strong>
+        your email was send — <strong>Thank You!</strong>
       </Alert>
   </div>
   :

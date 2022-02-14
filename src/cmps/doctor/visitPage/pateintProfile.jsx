@@ -17,7 +17,7 @@ export function PateintProfile() {
 
     useEffect(() => {
         getPatinet();
-    }, []);
+    }, [user]);
 
     const getPatinet = async () => {
         let searchParams = new URLSearchParams(window.location.search);

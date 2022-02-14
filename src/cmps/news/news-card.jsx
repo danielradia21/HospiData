@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 export function Card({ item, RandomInt, labels }) {
     function handleClick() {
-        window.location.href = item.web_url;
+        window.open(item.web_url, '_blank').focus();
     }
 
     const chageDate = (date) => {
@@ -33,7 +33,11 @@ export function Card({ item, RandomInt, labels }) {
                             src={`https://randomuser.me/api/portraits/men/${RandomInt}.jpg`}
                         />
                     </div>
-                    <p>{ item.byline.original ? item.byline.original.substring(0,19) : 'by Tino Blome'}</p>
+                    <p>
+                        {item.byline.original
+                            ? item.byline.original.substring(0, 19)
+                            : 'by Tino Blome'}
+                    </p>
                     <div className="flex">
                         <div className="user-icon">
                             <AccessTimeFilledIcon />

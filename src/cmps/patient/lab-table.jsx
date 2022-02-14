@@ -25,13 +25,13 @@
 //     return { date, title, download,id:Math.floor(Math.random()*Date.now()) }
 //   }
 
-  // function getDate(timestamp) {
-  //   let date = new Date(timestamp)
-  //   const day = date.getDate()
-  //   const month = date.getMonth() + 1
-  //   const year = date.getFullYear()
-  //   return `${day}/${month}/${year}`
-  // }
+// function getDate(timestamp) {
+//   let date = new Date(timestamp)
+//   const day = date.getDate()
+//   const month = date.getMonth() + 1
+//   const year = date.getFullYear()
+//   return `${day}/${month}/${year}`
+// }
 
 //   const rows = labRes.map((res) => createData(res.title, +res.date))
 
@@ -72,11 +72,6 @@
 //   )
 // }
 
-
-
-
-
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -91,8 +86,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
-import  {LabToPdf} from './lab-to-pdf'
-
+import { LabToPdf } from './lab-to-pdf';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -123,16 +117,17 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'date', label: 'Date', numeric: false, disablePadding: false },
-  { id: 'title', label: 'Title', numeric: false, disablePadding: false },
-  { id: 'download', label: 'Download', disablePadding: false, numeric: false },
-]
+    { id: 'date', label: 'Date', numeric: false, disablePadding: false },
+    { id: 'title', label: 'Title', numeric: false, disablePadding: false },
+    {
+        id: 'download',
+        label: 'Download',
+        disablePadding: false,
+        numeric: false,
+    },
+];
 function EnhancedTableHead(props) {
-    const {
-        order,
-        orderBy,
-        onRequestSort,
-    } = props;
+    const { order, orderBy, onRequestSort } = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -182,9 +177,7 @@ EnhancedTableHead.propTypes = {
     rowCount: PropTypes.number.isRequired,
 };
 
-export function LabTable({
-  labRes,user
-}) {
+export function LabTable({ labRes, user }) {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
@@ -207,25 +200,27 @@ export function LabTable({
         setSelected([]);
     };
 
-    
     function getDate(timestamp) {
-      let date = new Date(timestamp)
-      const day = date.getDate()
-      const month = date.getMonth() + 1
-      const year = date.getFullYear()
-      return `${day}/${month}/${year}`
+        let date = new Date(timestamp);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
     }
 
- 
-  function createData(title, timestamp,labResult) {
-    const date = getDate(timestamp)
-    const download = (
-     <LabToPdf  key={timestamp} labRes={labResult} user={user}/>
-    
-    )
-    return { date, title, download,id:Math.floor(Math.random()*Date.now()) }
-  }
-  const rows = labRes.map((res) => createData(res.title, +res.date,res))
+    function createData(title, timestamp, labResult) {
+        const date = getDate(timestamp);
+        const download = (
+            <LabToPdf key={timestamp} labRes={labResult} user={user} />
+        );
+        return {
+            date,
+            title,
+            download,
+            id: Math.floor(Math.random() * Date.now()),
+        };
+    }
+    const rows = labRes.map((res) => createData(res.title, +res.date, res));
 
     const handleClick = (event, name) => {
         const selectedIndex = selected.indexOf(name);
@@ -270,10 +265,13 @@ export function LabTable({
         <>
             <Box sx={{ width: '100%' }}>
                 <Paper sx={{ width: '100%', mb: 2 }}>
-     
                     <TableContainer>
                         <Table
-                            sx={{ maxWidth: 750 ,minHeight:400,minWidth:300}}
+                            sx={{
+                                maxWidth: 750,
+                                minHeight: 400,
+                                minWidth: 300,
+                            }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >
@@ -322,8 +320,8 @@ export function LabTable({
                                                 </TableCell>
 
                                                 <TableCell align="center">
-                                                        {row.download}
-                                                    </TableCell>
+                                                    {row.download}
+                                                </TableCell>
                                             </TableRow>
                                         );
                                     })}

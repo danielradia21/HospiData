@@ -46,12 +46,19 @@ export function ViewDetailsModal({ open, handleClose, currApp }) {
         console.log(currApp);
         let size = Object.keys(currApp).length;
         if (!size) return;
-        return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
-            currApp.description
-        } \nDrugs: ${currApp.drugs.map((drug) => drug.title)}\nReferrals: ${
-            currApp.referrals.title
+        if (currApp.drugs.length) {
+            return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
+                currApp.description
+            } 
+            Drugs: ${currApp.drugs.map((drug) => drug.title)}\nReferrals: ${
+                currApp.referrals.title
+            }
+            `;
+        } else {
+            return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
+                currApp.description
+            }\nDrugs: No Drugs to show`;
         }
-        `;
     };
 
     if (!currApp) return;
