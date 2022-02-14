@@ -45,7 +45,7 @@ export function MedicalHistory() {
                 onChange={filterHistory}
                 className="patient-search-input"
                 type="text"
-                placeholder="Serach Meetings..."
+                placeholder="Search Meetings..."
             />
             {history && (
                 <MedicalHistoryTable

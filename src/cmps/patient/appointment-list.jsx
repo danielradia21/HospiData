@@ -153,7 +153,7 @@ export function AppointmentList() {
                         onChange={filterApps}
                         className="patient-search-input"
                         type="text"
-                        placeholder="Serach Appointments..."
+                        placeholder="Search Appointments..."
                     />
                     <AppointmentTable
                         appointments={filteredApps || appointments}
