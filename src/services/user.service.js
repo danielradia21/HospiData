@@ -105,25 +105,12 @@ async function login(userCred) {
 async function signup(userCred) {
     try {
         // Might need to change up the userCred here
-<<<<<<< HEAD
-        const users = await storageService.query(STORAGE_KEY);
-        if (users.find((user) => user.UID === userCred.UID))
-            throw Error('Username already taken');
-        const user = await storageService.post(STORAGE_KEY, userCred);
-        if(user){
-            if(user.type === 'doctor') window.location.href = '/doctor/meetings'
-            else if(user.type === 'patient') window.location.href = '/patient/appointments'
-        }
-        return _saveLocalUser(user);
-        //   const user = await httpService.post('auth/signup', userCred)
-=======
         // const users = await storageService.query(STORAGE_KEY);
         // if (users.find((user) => user.username === userCred.username || user.UID === userCred.UID))
         //     throw Error('Username already taken');
         // const user = await storageService.post(STORAGE_KEY, userCred);
-        return await httpService.post('auth/signup', userCred);
+         await httpService.post('auth/signup', userCred);
         // return _saveLocalUser(user);
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
     } catch (err) {
         console.log('Had error on userService: SIGNUP', err);
     }

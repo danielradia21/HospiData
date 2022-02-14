@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Formik, Field, Form } from 'formik';
 import { userService } from '../services/user.service';
 import { SignIn } from './login';
+import { onLogin } from '../store/actions/user.actions';
+import { useDispatch } from 'react-redux';
 
 const theme = createTheme();
 
@@ -23,6 +25,7 @@ export function SignUp({ onClose, userSatus }) {
     const switchForm = () => {
         setToggleForm((prevVal) => (prevVal = !prevVal));
     };
+    const dispatch = useDispatch();
     const textFieldOutline = (props) => (
         <TextField {...props} required margin="normal" fullWidth />
     );
@@ -69,6 +72,7 @@ export function SignUp({ onClose, userSatus }) {
                                     //     userCred = {...userCred ,meetings: [],patients:[] }
                                     // }
                                     await userService.signup(userCred);
+                                    await dispatch(onLogin(values));
                                     values.fullname = '';
                                     values.username = '';
                                     values.password = '';

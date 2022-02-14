@@ -6,14 +6,9 @@ import Modal from '@mui/material/Modal';
 import { SignIn } from '../../cmps/login';
 import { DelteMassge } from '../delte-massge';
 import SearchIcon from '@mui/icons-material/Search';
-<<<<<<< HEAD
 import { doctorService } from "../../services/doctor.service";
 import {Loader} from '../loader'
-
-=======
-import { doctorService } from '../../services/doctor.service';
 import { userService } from '../../services/user.service';
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
 
 const style = {
     position: 'absolute',
@@ -47,7 +42,6 @@ export function AdminDoctorsList() {
     };
 
     const update = (doctor) => {
-        console.log(doctor);
         setactive((prv) => (prv = 'update'));
         handleOpen();
         // const {fullname,imgUrl,isAdmin} = doctor
@@ -55,27 +49,13 @@ export function AdminDoctorsList() {
         setisAdmin((prev) => (prev = isAdmin));
     };
 
-<<<<<<< HEAD
-  const update = (doctor) =>{
-    setactive(prv=>prv ='update')
-    handleOpen();
-    // const {fullname,imgUrl,isAdmin} = doctor
-    setSelcteDcotor(prev => prev = doctor)
-    setisAdmin(prev => prev = isAdmin)
-}
+
 
 const remove = (doctor) =>{
     setactive(prv=>prv ='delete')
     handleOpen();
     setSelcteDcotor(prev => prev = doctor)
 }
-=======
-    const remove = (doctor) => {
-        setactive((prv) => (prv = 'delete'));
-        handleOpen();
-        setSelcteDcotor((prev) => (prev = doctor));
-    };
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
 
     const handleChange = (ev) => {
         const filed = ev.target.id;
@@ -108,7 +88,6 @@ const remove = (doctor) =>{
         handleClose();
     };
 
-<<<<<<< HEAD
 
   if (!doctors ) return <Loader/>
     return <>
@@ -119,29 +98,6 @@ const remove = (doctor) =>{
         </div>
         <div className="main-table-continer"><Table items={filter || doctors} updateFunc={update} removeFunc={remove}/></div>
         <Modal
-=======
-    if (!doctors) return <div>lodinng...</div>;
-    return (
-        <>
-            <div className="main-content-header">Doctors List</div>
-            <div className="search-input-continer">
-                <input
-                    className="search-input"
-                    type="search"
-                    placeholder="Search..."
-                    onChange={handleSearch}
-                />
-                <SearchIcon className="search-input-icon" />
-            </div>
-            <div className="main-table-continer">
-                <Table
-                    items={filter || doctors}
-                    updateFunc={update}
-                    removeFunc={remove}
-                />
-            </div>
-            <Modal
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
@@ -220,5 +176,5 @@ const remove = (doctor) =>{
                 )}
             </Modal>
         </>
-    );
+    
 }

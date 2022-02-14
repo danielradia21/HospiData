@@ -7,15 +7,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import { SignIn } from './login';
-<<<<<<< HEAD
-import { useSelector } from 'react-redux';
-=======
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { onLogout } from '../store/actions/user.actions';
 import { MenuItem } from '@mui/material';
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
 
 const style = {
     position: 'absolute',
@@ -41,14 +37,12 @@ export function AppHeader() {
         setOpen(true);
     }
     const handleClose = () => setOpen(false);
-<<<<<<< HEAD
     const handleSite = (type) => {
             if(type === 'doctor') window.location.href = '/doctor/meetings'
             else if(type === 'patient') window.location.href = '/patient/appointments'
     }
-    const { user } = useSelector((state) => state.userModule);
 
-=======
+
     const openMenu = () => {
         setMenuOpen((prev) => (prev = true));
     };
@@ -60,7 +54,6 @@ export function AppHeader() {
         window.location.href = '/';
         dispatch(onLogout());
     };
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
     return (
         <header className="app-header">
             <Link className="img-container" to={'/'}>
@@ -71,15 +64,6 @@ export function AppHeader() {
                     <NavLink exact to={'/'}>
                         Home
                     </NavLink>
-<<<<<<< HEAD
-                ))}
-                 <div> 
-                       <button onClick={handleOpen} className="main-btn">
-                            Login
-                   </button>
-                </div>
-            </nav>
-=======
                     {routes.map((route) => (
                         <NavLink exact key={route.path} to={route.path}>
                             {route.label}
@@ -179,7 +163,6 @@ export function AppHeader() {
                         </div>
                     </div>
                 </nav>
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
             </div>
             <Modal
                 open={open}

@@ -81,16 +81,12 @@ export function News() {
         setfilter((prev) => (prev = filterNews));
     };
 
-<<<<<<< HEAD
-  if(!news) return <div className="puklse-con"><div className="pulse"></div> </div>
-=======
     if (!news)
         return (
             <div className="puklse-con">
                 <div class="pulse"></div>{' '}
             </div>
         );
->>>>>>> 2aee1fb9ac4d625255b16882e5cb05f7dfa4033f
     return (
         <section className="about-us-container">
             <Hero />
