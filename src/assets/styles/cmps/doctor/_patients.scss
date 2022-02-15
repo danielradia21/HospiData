@@ -22,12 +22,14 @@
     display: flex;
     width: 100%;
     padding: 15px 25px;
+    justify-content: center;
 }
 
 .doc-patients-main-content {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    justify-content: center;
     width: 100%;
     input {
         padding: 8px;

@@ -90,7 +90,7 @@ export function News() {
     return (
         <section className="about-us-container">
             <Hero />
-            <div className="flex">
+            <div className="flex about-us-main-container">
                 <div className="news-card-list">
                     {currfilter.map((item, idx) => (
                         <Card

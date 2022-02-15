@@ -61,7 +61,16 @@ export function Patients() {
                         placeholder="Search Patients..."
                     />
                 </div>
-                <div className="btns-container">
+            </div>
+            <div className="doc-patient-card-container">
+                {currFilter.map((patient) => {
+                    return (
+                        <PatientPreview key={patient.UID} patient={patient} />
+                    );
+                })}
+            </div>
+            <div className="doc-patient-actions-container">
+            <div className="btns-container">
                     <button className="sub-btn" onClick={() => paging(-1)}>
                         Previous
                     </button>
@@ -70,13 +79,6 @@ export function Patients() {
                         Next
                     </button>
                 </div>
-            </div>
-            <div className="doc-patient-card-container">
-                {currFilter.map((patient) => {
-                    return (
-                        <PatientPreview key={patient.UID} patient={patient} />
-                    );
-                })}
             </div>
         </>
     );
