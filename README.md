@@ -4,7 +4,7 @@ Check here: [https://hospidata.herokuapp.com/](https://hospidata.herokuapp.com/)
 
 ## Description
 
-This app is a Health Center application system , Patients getting treatment from doctors for medical help , This is a **Fullstack app & Responsive** built with React and Node.js
+This app is a Health Center application system , Patients getting treatment from doctors for medical help , This is a `Fullstack app & Responsive` built with React and Node.js
 
 ## Features
 
