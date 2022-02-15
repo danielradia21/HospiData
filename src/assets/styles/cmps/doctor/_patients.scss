@@ -153,6 +153,21 @@
             align-self: flex-end;
             background-color: #33cb74;
             font-size: 1rem;
+            
         }
+        @media screen and (max-width: $normal-breakpoint) {
+            flex-direction: column;
+            padding: 5px;
+            .img-container {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
     }
+    @media screen and (max-width: $normal-breakpoint) {
+        align-items: center;
+    }
+
+
 }

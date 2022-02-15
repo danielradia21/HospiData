@@ -104,7 +104,7 @@ const OnRemovePatient = async () =>{
                     <button onClick={handleClose}>X</button>
                 </div>
                 <div>
-                    <h1>updet Patient</h1>
+                    <h1>Update Patient</h1>
                     <form className="flex column ">
                     <div className="input-continer">
                     <label>full name:</label>

@@ -53,7 +53,7 @@ export function AdminDashBord() {
      if (!doctors || !patience || !appointments) return <Loader/>
      
     return  <>
-    <div className="main-content-header">DashBord</div>
+    <div className="main-content-header">DashBoard</div>
     <div className="dasbord">
          <CardList doctorsSum={doctors.length} patienceSum={patience.length} appointments={appointments}/>
          <div className="flex dasbord-btn-continer ">

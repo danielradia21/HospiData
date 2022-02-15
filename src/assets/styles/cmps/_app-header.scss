@@ -6,13 +6,6 @@
     padding: 10px 0px;
     font-size: 1rem;
     margin: 0 auto;
-    @media screen and (max-width: $normal-breakpoint) {
-        position: sticky;
-        top:0;
-        background-color: white;
-        z-index: 99999;
-        padding:20px 10px;
-     }
 
     .img-container {
         width: 165px;
@@ -41,7 +34,7 @@
     .burger-container {
         display: none;
     }
-    @media screen and (max-width: $normal-breakpoint) {
+    @media screen and (max-width: 768px) {
         height: 50px;
         .burger-container {
             display: block;
@@ -52,7 +45,7 @@
             }
             .blackscreen {
                 position: fixed;
-                height: 100%;
+                height: 100vh;
                 width: 100%;
                 background-color: #00000085;
                 z-index: 9999;
@@ -77,11 +70,11 @@
                     width: 160px;
                     justify-content: center;
                     align-items: center;
+                    font-size: 1rem;
                     .x-btn {
                         align-self: flex-end;
                         padding-top: 10px;
                         padding-right: 5px;
-                        cursor: pointer;
                     }
                 }
             }
@@ -92,35 +85,35 @@
     }
 }
 
-.navbar-line-seperator {
-    display: flex;
-    flex-direction: column;
+.navbar-line-seperator{
+display: flex;
+flex-direction: column;
 
-    h2 {
-        font-size: 1.2rem;
-        font-family: sans-serif;
-    }
-
-    h2:before,
-    h2:after {
-        background-color: #000;
-        content: '';
-        display: inline-block;
-        height: 1px;
-        position: relative;
-        vertical-align: middle;
-        width: 50%;
-    }
-
-    h2:before {
-        right: 0.3em;
-        margin-left: -50%;
-    }
-
-    h2:after {
-        left: 0.3em;
-        margin-right: -50%;
-    }
+h2{
+font-size: 1.2rem;
+font-family:sans-serif;
+}
+  
+  h2:before,
+  h2:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+  
+  h2:before {
+    right: 0.3em;
+    margin-left: -50%;
+  }
+  
+  h2:after {
+    left: 0.3em;
+    margin-right: -50%;
+  }
 }
 .close {
     width: 0%;
@@ -133,12 +126,7 @@
 
 .open-blackscreen {
     display: block;
-//    pointer-events: none;
-$mobile-nav:true;
-overflow: hidden;
-
 }
 .close-blackscreen {
-    $mobile-nav:false;
     display: none;
 }

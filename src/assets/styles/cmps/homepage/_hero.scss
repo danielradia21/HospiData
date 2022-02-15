@@ -32,7 +32,7 @@
             font-size: 1em;
         }
     }
-    @media screen and (max-width: $normal-breakpoint) {
+    @media screen and (max-width: 768px) {
         .main-content {
             width: 100%;
         }

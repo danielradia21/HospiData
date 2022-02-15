@@ -1,7 +1,7 @@
 
 export function CardList ({doctorsSum,patienceSum,appointments}) {
 
-    const cardsInfo = [{num:doctorsSum,text:'Doctors'},{num:patienceSum,text:'Patience'},{num:appointments,text:'Appointments'}]
+    const cardsInfo = [{num:doctorsSum,text:'Doctors'},{num:patienceSum,text:'Patients'},{num:appointments,text:'Appointments'}]
 
     return <div className="card-list flex">
     {cardsInfo.map((card,idx) => 

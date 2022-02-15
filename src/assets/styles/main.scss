@@ -14,15 +14,15 @@
 // Views
 @import 'views/home-page';
 @import 'views/doctor-page';
+@import 'views/admin-page';
 @import 'views/about-us';
 @import 'views/patient-page';
 @import 'views/news';
 
 // Components
 // Main
-
 @import 'cmps/loder';
-
+@import 'cmps/table';
 // Admin
 @import 'cmps/app-header';
 @import 'cmps/app-footer';
@@ -31,7 +31,6 @@
 @import 'cmps/homepage/card-prev';
 @import 'cmps/homepage/health-section';
 @import 'cmps/usersTamplate';
-@import 'views/admin-page';
 
 
 
@@ -63,5 +62,4 @@
 @import 'cmps/doctor/doc-calendar';
 
 
-// Last Scss
-@import 'cmps/table';
+

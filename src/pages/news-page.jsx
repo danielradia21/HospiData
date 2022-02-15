@@ -1,5 +1,8 @@
 import { Hero } from '../cmps/news/hero';
+import { HealthSection } from '../cmps/aboutUs/health-section';
+import { TeamCarousel } from '../cmps/aboutUs/carousel';
 import { Card } from '../cmps/news/news-card';
+import { utilService } from '../services/util.service';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { newsService } from '../services/news.service';
@@ -14,7 +17,7 @@ const labels = [
     'Dental',
     'Cardiology',
 ];
-
+// const labels = ['Covid19' ,'General Health' , 'Science','Food','Dental','Cardiology']
 
 export function News() {
     const [news, setNews] = useState(null);
@@ -33,6 +36,7 @@ export function News() {
     const getNews = async () => {
         const news = await newsService.query();
         setNews((prev) => (prev = news));
+        console.log('hi');
         return news;
     };
 
@@ -80,13 +84,13 @@ export function News() {
     if (!news)
         return (
             <div className="puklse-con">
-                <div className="pulse"></div>{' '}
+                <div class="pulse"></div>{' '}
             </div>
         );
     return (
         <section className="about-us-container">
             <Hero />
-            <div className="about-us-main-container flex">
+            <div className="flex about-us-main-container ">
                 <div className="news-card-list">
                     {currfilter.map((item, idx) => (
                         <Card

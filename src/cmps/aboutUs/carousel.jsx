@@ -133,7 +133,7 @@ const teamMembers=[
     <button onClick={handleClose}>X</button>
   </div>
    <div>
-      <h1>Contect to {member.fullname}</h1>
+      <h1>Contact to {member.fullname}</h1>
       <Formik 
               initialValues={{
                     fullname:'',

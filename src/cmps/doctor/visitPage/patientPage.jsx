@@ -58,7 +58,7 @@ export function PatientPage({ patient, user, makeAppointment }) {
                 <div className="doc-patient-header">
                     {' '}
                     <div>{patient.fullname}</div>
-                    <Link to={`/doctor/patiences/`} className="sub-btn">
+                    <Link to={`/doctor/patients/`} className="sub-btn">
                         Back
                     </Link>
                 </div>

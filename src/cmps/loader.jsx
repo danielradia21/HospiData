@@ -1,4 +1,4 @@
 
 export function Loader(){
-    return <div className="puklse-con"><div className="pulse"></div> </div>
+    return <div class="puklse-con"><div class="pulse"></div> </div>
 }

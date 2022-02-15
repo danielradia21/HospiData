@@ -153,6 +153,7 @@ export function AppointmentList() {
                     </div>
             {openNewApp && (
                 <AppointmentModal
+                className="appointment-modal"
                     handleOpenSnackbar={handleOpenSnackbar}
                     openNewApp={openNewApp}
                     closeNewAppModal={closeNewAppModal}

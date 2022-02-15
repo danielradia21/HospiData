@@ -1,9 +1,8 @@
-.css-1yhpg23-MuiTableCell-root {
-    width: 300px;
-    @media screen and (max-width: $normal-breakpoint) {
-        padding: 8px !important
-    }
+.css-1yhpg23-MuiTableCell-root{
+    width:300px;
 }
+
+
 
 // table {
 //     border: 0;
@@ -44,6 +43,7 @@
 //     }
 //   }
 
+
 //   table td::before {
 //     content: attr(data-label);
 //     float: left;
@@ -58,3 +58,4 @@
 //   .orders-tabs{
 //     display: none;
 //   }
+

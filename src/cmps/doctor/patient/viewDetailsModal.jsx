@@ -25,26 +25,28 @@ export function ViewDetailsModal({ open, handleClose, currApp }) {
     const Year = newTime.getFullYear()
     const Month = newTime.getMonth() + 1
     const Day = newTime.getDate()
+    
     const fullYear = `${Day}/${Month}/${Year}`
     return fullYear
   }
   const currAppInfo = () => {
     let size = Object.keys(currApp).length
 
-    if (!size) return
+    if (!size) return;
     if (currApp.drugs.length) {
-      return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
-        currApp.description
-      } 
-         Drugs: ${currApp.drugs.map((drug) => drug.title)}\nReferrals: ${
-        currApp.referrals ? currApp.referrals.title : 'No referrals'
-      }`
-    } else {
-      return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
-        currApp.description
-      }\nDrugs: No Drugs to show`
-    }
+      return `Date: ${dateConvertion(currApp.date)}
+\nDescription: ${currApp.description}
+\nDrugs: ${currApp.drugs.map((drug) => drug.title)}
+\nReferrals: ${
+    currApp.referrals ? currApp.referrals.title : 'No referrals'
+}`;
+  } else {
+      return `Date: ${dateConvertion(currApp.date)}
+      \nDescription: ${currApp.description}
+      \nDrugs: No Drugs to show`;
   }
+}
+    
 
   if (!currApp) return
   return (

@@ -8,7 +8,7 @@
         display: flex;
         justify-content: center;
     }
-    @media screen and (max-width: $normal-breakpoint) {
+    @media screen and (max-width: 768px) {
         .cards-container {
             flex-direction: column;
             bottom: 0;

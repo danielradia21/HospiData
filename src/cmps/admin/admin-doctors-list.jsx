@@ -106,7 +106,7 @@ const remove = (doctor) =>{
                             <button onClick={handleClose}>X</button>
                         </div>
                         <div>
-                            <h1>updet Doctor</h1>
+                            <h1>Update Doctor</h1>
                             <form className="flex column ">
                                 <div className="input-continer">
                                     <label>full name:</label>

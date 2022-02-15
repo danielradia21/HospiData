@@ -105,6 +105,15 @@ export function PatientModal({ open, handleClose, makeAppointment }) {
         makeAppointment(formRes);
     };
 
+    const dateConvertion = (time) => {
+        const newTime = new Date(time)
+        const Year = newTime.getFullYear()
+        const Month = newTime.getMonth() + 1
+        const Day = newTime.getDate()
+        const fullYear = `${Day}/${Month}/${Year}`
+        return fullYear
+      }
+
     return (
         <>
             <Modal
@@ -116,7 +125,7 @@ export function PatientModal({ open, handleClose, makeAppointment }) {
                 <Box sx={style} className="add-treatment">
                     <div>
                         <div className="modal-header">
-                            <div>{Date.now()}</div>
+                            <div>{dateConvertion(Date.now())}</div>
                             <button onClick={handleClose}>X</button>
                         </div>
                         <div className="modal-info-continer doc-pat flex column justify-center align-center">
