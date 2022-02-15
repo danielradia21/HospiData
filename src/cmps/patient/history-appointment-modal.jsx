@@ -99,7 +99,7 @@ export function HistoryAppointmentModal({
                 <button onClick={closeAppointment}>X</button>
               </div>
               <div className="modal-info-continer flex column justify-center">
-                <Box sx={{ minWidth: 400 }}>
+                <Box sx={{ minWidth: 300}}>
                   <img
                     src={logo}
                     alt="HospiData"
