@@ -18,7 +18,8 @@ This app is a Health Center application system , Patients getting treatment from
 
 ### Doctor
      username: dr@gmail.com,
-     password: 123123123
+     password: 123123123,
+     doctor sigeUp key: az89A, --need only in sigeUp 
 
 ### Patient
     username:  Beku1997@gmail.com,
@@ -28,7 +29,6 @@ This app is a Health Center application system , Patients getting treatment from
     username:  AvishaiE@gmail.com,
     password:  123123123,
 
-
 ## Technologies
 
 1. React js 
@@ -37,7 +37,7 @@ This app is a Health Center application system , Patients getting treatment from
 3. Node.js 
 4. leaflet.js map
 5. React material UI
-6. Working with API: [api.nytimes.com](https://api.nytimes.com)
+6. Working with API: [api.nytimes.com](https://developer.nytimes.com/)
 7. Sass
 8. EmailJS
 9. MongoDB
