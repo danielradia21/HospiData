@@ -8,11 +8,23 @@ This app is a Health Center application system , Patients getting treatment from
 
 ## Features
 
+<<<<<<< HEAD
 1. Patient system that lets you make an appointment in **realtime** to an doctor , with a list   of all the appointments you have made,that you can cancel aslong as you werent giving treatment on that appointment.
 2. Patient has a list of his previous treatment with a downloadable PDF of the treatment, Also has lab results to download as PDF.
 3. Doctors can see appointments that are made for them in **realtime** , Can also see in the calendar all their appointments , Can give treatment to patients that made appointments to them And see the patients previous appointments.
 4. Admins can see stats in their dashboard such as How many patients they have in their system , Chart of how many patients each doctor has And the total amount of appointments
 5. Admins can edit doctors and patients , change their image, fullname and give them admin or disable it, And They can delete doctors if needed.
+=======
+1.Patient system that lets you make an appointment in **realtime** to an doctor , with a list of all  the appointments you have made , that you can cancel aslong as you werent giving treatment on that appointment.
+
+2.Patient has a list of his previous treatment with a downloadable PDF of the treatment, Also has lab results to download as PDF.
+
+3. Doctors can see appointments that are made for them in **realtime** , Can also see in the calendar all their appointments , Can give treatment to patients that made appointments to them And see the patients previous appointments.
+
+4.Admins can see stats in their dashboard such as How many patients they have in their system , Chart of how many patients each doctor has And the total amount of appointments.
+
+5.Admins can edit doctors and patients , change their image, fullname and give them admin or disable it, And They can delete doctors if needed. 
+>>>>>>> 0f343d3465afb3d4ad97be9d2cf68898f9b079f3
 
 ## Demi-Users
 
