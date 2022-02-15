@@ -31,18 +31,18 @@ This app is a Health Center application system , Patients getting treatment from
 
 ## Technologies
 
-1.React js
-2.React Hooks
-3.Redux
-3.Node.js
-4.leaflet.js map
-5.React material UI
-6.Working with API: [api.nytimes.com](https://api.nytimes.com/svc/search/v2/articlesearch.json?q=medical&api-key=G9uYEwGAIAAbvA01jyKSm7MyRp6pM7iV)
-7.Sass
-8.EmailJS
-8.MongoDB
-9.Express
-10.WebSocket
+1. React js 
+2. React Hooks 
+3. Redux 
+3. Node.js 
+4. leaflet.js map
+5. React material UI
+6. Working with API: [api.nytimes.com](https://api.nytimes.com/svc/search/v2/articlesearch.json?q=medical&api-key=G9uYEwGAIAAbvA01jyKSm7MyRp6pM7iV)
+7. Sass
+8. EmailJS
+9. MongoDB
+10. Express
+11. WebSocket
 
 ## Available Scripts
 
