@@ -161,7 +161,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(4);
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
     const [open, setOpen] = React.useState(false);

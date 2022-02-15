@@ -1,5 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
-import { routes ,adminNestedRoutes,patientNestedRoutes,doctorNestedRoutes} from '../routes';
+import {
+    routes,
+    adminNestedRoutes,
+    patientNestedRoutes,
+    doctorNestedRoutes,
+} from '../routes';
 import logo from '../assets/img/logo.png';
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -26,43 +31,37 @@ const style = {
 };
 
 export function AppHeader() {
-    const { user } = useSelector((state) => state.userModule)
+    const { user } = useSelector((state) => state.userModule);
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [open, setOpen] = React.useState(false);
-    const [openProfile,setOpenProfile] = React.useState(true)
-    const [openAdmin,setOpenAdmin] = React.useState(false)
+    const [openProfile, setOpenProfile] = React.useState(true);
+    const [openAdmin, setOpenAdmin] = React.useState(false);
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-
-        const handleOpenType = (type) =>{
-            switch (type) {
-                case 'profile':
-                    setOpenProfile(prevOpen=>prevOpen=true)
-                    setOpenAdmin(prevOpen=>prevOpen=false)
-                    break;
-                    case 'admin':
-                        setOpenProfile(prevOpen=>prevOpen=false)
-                        setOpenAdmin(prevOpen=>prevOpen=true)
-                        break;
-
-               
-            }
-
-        } 
-
-   
+    const handleOpenType = (type) => {
+        switch (type) {
+            case 'profile':
+                setOpenProfile((prevOpen) => (prevOpen = true));
+                setOpenAdmin((prevOpen) => (prevOpen = false));
+                break;
+            case 'admin':
+                setOpenProfile((prevOpen) => (prevOpen = false));
+                setOpenAdmin((prevOpen) => (prevOpen = true));
+                break;
+        }
+    };
 
     const handleOpen = () => {
-        closeMenu()
+        closeMenu();
         setOpen(true);
-    }
+    };
     const handleClose = () => setOpen(false);
     const handleSite = (type) => {
-            if(type === 'doctor') window.location.href = '/doctor/meetings'
-            else if(type === 'patient') window.location.href = '/patient/appointments'
-    }
-
+        if (type === 'doctor') window.location.href = '/doctor/meetings';
+        else if (type === 'patient')
+            window.location.href = '/patient/appointments';
+    };
 
     const openMenu = () => {
         setMenuOpen((prev) => (prev = true));
@@ -99,7 +98,7 @@ export function AppHeader() {
                 <nav className="burger-container">
                     <div>
                         <div className="burger-sign" onClick={openMenu}>
-                            <MenuIcon/>
+                            <MenuIcon />
                         </div>
                     </div>
                     <div
@@ -114,7 +113,7 @@ export function AppHeader() {
                         <div className="main-container">
                             <nav className="nav-links ">
                                 <div className="x-btn" onClick={closeMenu}>
-                                   <CloseIcon/>
+                                    <CloseIcon />
                                 </div>
                                 <NavLink exact to={'/'}>
                                     Home
@@ -128,57 +127,93 @@ export function AppHeader() {
                                         {route.label}
                                     </NavLink>
                                 ))}
-                                {!user&&<div>
-                                    <button
-                                        onClick={handleOpen}
-                                        className="main-btn"
-                                    >
-                                        Login
-                                    </button>
-                                </div>}
-                                {user&&  <div >
-                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
-                                    </div>}
-                               
-                                {user?.type==='patient'&&<>
-                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('profile')}><h2>Profile</h2></div>
-                                    {openProfile&&patientNestedRoutes.map((route) => (
-                                    <NavLink
-                                        exact
-                                        key={route.path}
-                                        to={route.path}
-                                    >
-                                        {route.label}
-                                    </NavLink>
-                                   
-                                ))}
-                               
-                                   </> }
-                                   {user?.type==='doctor'&&<>
-                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('profile')}><h2>Profile</h2></div>
-                                    {openProfile&&doctorNestedRoutes.map((route) => (
-                                    <NavLink
-                                        exact
-                                        key={route.path}
-                                        to={route.path}
-                                    >
-                                        {route.label}
-                                    </NavLink>
-                                ))}
+                                {!user && (
+                                    <div>
+                                        <button
+                                            onClick={handleOpen}
+                                            className="main-btn"
+                                        >
+                                            Login
+                                        </button>
+                                    </div>
+                                )}
+                                {user && (
+                                    <div>
+                                        <button
+                                            className="main-btn"
+                                            onClick={onLogOut}
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
 
-                                   </> }
-                                   {user?.isAdmin&&<>
-                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('admin')}><h2>Admin</h2></div>
-                                    {openAdmin&&adminNestedRoutes.map((route) => (
-                                    <NavLink
-                                        exact
-                                        key={route.path}
-                                        to={route.path}
-                                    >
-                                        {route.label}
-                                    </NavLink>
-                                ))}
-                                   </> }
+                                {user?.type === 'patient' && (
+                                    <>
+                                        <div
+                                            className="navbar-line-seperator"
+                                            onClick={() =>
+                                                handleOpenType('profile')
+                                            }
+                                        >
+                                            <h2>Profile</h2>
+                                        </div>
+                                        {openProfile &&
+                                            patientNestedRoutes.map((route) => (
+                                                <NavLink
+                                                    exact
+                                                    key={route.path}
+                                                    to={route.path}
+                                                >
+                                                    {route.label}
+                                                </NavLink>
+                                            ))}
+                                    </>
+                                )}
+                                {user?.type === 'doctor' && (
+                                    <>
+                                        <div
+                                            className="navbar-line-seperator"
+                                            onClick={() =>
+                                                handleOpenType('profile')
+                                            }
+                                        >
+                                            <h2>Profile</h2>
+                                        </div>
+                                        {openProfile &&
+                                            doctorNestedRoutes.map((route) => (
+                                                <NavLink
+                                                    exact
+                                                    key={route.path}
+                                                    to={route.path}
+                                                >
+                                                    {route.label}
+                                                </NavLink>
+                                            ))}
+                                    </>
+                                )}
+                                {user?.isAdmin && (
+                                    <>
+                                        <div
+                                            className="navbar-line-seperator"
+                                            onClick={() =>
+                                                handleOpenType('admin')
+                                            }
+                                        >
+                                            <h2>Admin</h2>
+                                        </div>
+                                        {openAdmin &&
+                                            adminNestedRoutes.map((route) => (
+                                                <NavLink
+                                                    exact
+                                                    key={route.path}
+                                                    to={route.path}
+                                                >
+                                                    {route.label}
+                                                </NavLink>
+                                            ))}
+                                    </>
+                                )}
                             </nav>
                         </div>
                     </div>

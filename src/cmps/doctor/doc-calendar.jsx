@@ -52,12 +52,8 @@ export function DocCalendar() {
             events={events}
             startAccessor="start"
             endAccessor="end"
-            style={{
-                width: 750,
-                height: 710,
-                margin: '25px 0px',
-                backgroundColor: 'white',
-            }}
+            className='doc-calendar'
+        
             defaultView="day"
             step={6} /// step =  timeslots זמן הרצוי  (לדוגמא 30 דקות) חלקי
             timeslots={5}

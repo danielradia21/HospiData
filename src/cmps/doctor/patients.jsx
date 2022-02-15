@@ -35,17 +35,22 @@ export function Patients() {
     };
 
     const pagination = () => {
-        let count = 6;
+        let count = 2;
         let cards = (filteredPatients || user.patients).slice();
         let cardToRender = pagiCountrer * count;
         if (cards.slice(cardToRender, cardToRender + 7).length === 0)
             setPagiCountrer((prev) => (prev = 0));
         pagiCountrer === 0
             ? setCurrFilter(
-                  (prev) => (prev = cards.slice(cardToRender, cardToRender + 6))
+                  (prev) =>
+                      (prev = cards.slice(cardToRender, cardToRender + count))
               )
             : setCurrFilter(
-                  (prev) => (prev = cards.slice(cardToRender, cardToRender + 7))
+                  (prev) =>
+                      (prev = cards.slice(
+                          cardToRender,
+                          cardToRender + count + 1
+                      ))
               );
     };
 
@@ -70,7 +75,7 @@ export function Patients() {
                 })}
             </div>
             <div className="doc-patient-actions-container">
-            <div className="btns-container">
+                <div className="btns-container">
                     <button className="sub-btn" onClick={() => paging(-1)}>
                         Previous
                     </button>
