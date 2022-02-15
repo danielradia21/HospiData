@@ -6,14 +6,13 @@ export function chat({ user }) {
     useEffect(() => {
         socketService.emit('chat topic', user._id);
         socketService.on('chat addMsg', addMsg);
-        // socketService.on("user isTyping", userTyping);
     }, []);
 
     const addMsg = (msg) => {
         setMsgs((prev) => prev.push(msg));
     };
 
-    // needs to have socketService.off
+
 
     return (
         <div className="chat">

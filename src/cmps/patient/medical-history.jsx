@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { userService } from '../../services/user.service';
 import { Loader } from '../loader';
 import { HistoryAppointmentModal } from './history-appointment-modal';
 import { MedicalHistoryTable } from './medical-history-table';

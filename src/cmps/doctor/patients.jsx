@@ -1,18 +1,10 @@
-import testPic from '../../assets/img/p-imgs/p1.jpg';
+
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import { SignUp } from '../signup';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { userService } from '../../services/user.service';
 import { PatientPreview } from './visitPage/patientPreview';
 
 export function Patients() {
     const { user } = useSelector((state) => state.userModule);
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     const [filteredPatients, setFilteredPatients] = React.useState(null);
     const [pagiCountrer, setPagiCountrer] = React.useState(0);
     const [currFilter, setCurrFilter] = React.useState([]);

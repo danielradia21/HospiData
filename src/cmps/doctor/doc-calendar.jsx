@@ -5,7 +5,6 @@ import parse from 'date-fns/parse';
 import startOfWeek from 'date-fns/startOfWeek';
 import getDay from 'date-fns/getDay';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import ReactDatePicker from 'react-datepicker';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -22,7 +21,6 @@ export function DocCalendar() {
         const events = user.meetings.filter(
             (meet) => meet.status !== 'pending' && meet.status !== 'cancelled'
         );
-        console.log('file: doc-calendar.jsx   line 23   events', events);
         const newEvents = events.map(
             (ev) =>
                 (ev = {
@@ -45,7 +43,6 @@ export function DocCalendar() {
         locales,
     });
 
-    console.log('file: doc-calendar.jsx   line 15   events', events);
     return (
         <Calendar
             localizer={localizer}
@@ -59,7 +56,7 @@ export function DocCalendar() {
                 backgroundColor: 'white',
             }}
             defaultView="day"
-            step={6} /// step =  timeslots זמן הרצוי  (לדוגמא 30 דקות) חלקי
+            step={6} 
             timeslots={5}
             views={['day', 'week', 'month']}
             min={

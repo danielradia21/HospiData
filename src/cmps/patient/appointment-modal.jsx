@@ -41,21 +41,13 @@ export function AppointmentModal({
     top: '35%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    // paddingLeft:2,
-    // paddingRight:2,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     width:400
-    // p: 4,
   }
 
-  //   const handleChangeTreatment = (event) => {
-  //     setTreatmentType(event.target.value)
-  //   }
-  //   const handleChangeDoctor = (event) => {
-  //     setDoctor(event.target.value)
-  //   }
+
   const handleChange = ({ target }) => {
     if (target.name === 'treatment') {
       setTreatmentType(target.value)
@@ -73,7 +65,7 @@ export function AppointmentModal({
     }
   }
 
-  // const docTypeOptions = ['Allergists','Anesthesiologists','Cardiologists','Dermatologists','Endocrinologists','Family Physicians','Gastroenterologists','Hematologists','Internists']
+
   const treatmentOptions = [
     'Allergy and immunology',
     'Anesthesiology',

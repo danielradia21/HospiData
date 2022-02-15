@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { doctorService } from '../../../services/doctor.service';
 import { userService } from '../../../services/user.service';
 import { getLoggedInUser } from '../../../store/actions/user.actions';

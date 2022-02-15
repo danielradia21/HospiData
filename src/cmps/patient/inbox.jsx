@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { patientService } from '../../services/patient.service';
-import { getLoggedInUser } from '../../store/actions/user.actions';
 import { InboxList } from './inbox-list';
 import { InboxPrev } from './inbox-prev';
 import { Loader } from '../loader';
@@ -12,35 +11,8 @@ export function Inbox() {
     const [mailPrev, setMailPrev] = useState(null);
     const [page, setPage] = useState(0);
 
-    const dispatch = useDispatch();
 
     const maxPage = 6;
-
-    // const inbox=[
-    //     {
-    //     "_id":"m21566",
-    //     "appId":"a110",
-    //     "date":"1642508355660",
-    //     "isOpened":false,
-    //     "by":{
-    //         "_id": "u103",
-    //         "fullname": "David Davidov",
-    //         "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
-    //     },
-    //     "msg":"Your appointment got approved, By doctor David Davidov"
-    //     },  {
-    //         "_id":"m21516",
-    //         "appId":"a110",
-    //         "date":"1642508355660",
-    //         "isOpened":false,
-    //         "by":{
-    //             "_id": "u103",
-    //             "fullname": "David Davidov",
-    //             "imgUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"
-    //         },
-    //         "msg":"Your appointment got approved, By doctor David Davidov"
-    //     }
-    // ]
 
     useEffect(() => {
         const userInbox = user.inbox.filter((msg) => msg);
@@ -65,7 +37,6 @@ export function Inbox() {
     };
 
     const openMailPrev = async (mail)=>{
-        console.log(mail)
         setMailPrev((prev)=>prev=mail)
         const updatedUser = {...user}
         const inbox = user.inbox.map(inbox=>{
@@ -73,9 +44,9 @@ export function Inbox() {
               return inbox
           })
           updatedUser.inbox = inbox
-        //   console.log(updatedUser)
+
            await patientService.updateSelfPatient(updatedUser)
-        //    dispatch(getLoggedInUser())
+
         
     }
 

@@ -5,8 +5,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CopyrightIcon from '@mui/icons-material/Copyright';
-import { Link } from 'react-router-dom';
-// import { connect } from 'react-redux'
+
+
 
 export function AppFooter() {
     return (

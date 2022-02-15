@@ -54,7 +54,6 @@ export function Hero() {
                     : modals === 'doctor' ?<SignUp onClose={handleClose} userSatus={modals}/>
                     :<BtnModal handleChangeModel={handleChangeModel}/>
                      }
-                    {/* <SignUp onClose={handleClose} /> */}
                 </Box>
             </Modal>
         </div>

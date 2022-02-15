@@ -1,10 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import * as React from 'react';
 import Modal from '@mui/material/Modal';
 import { MeetingTable } from './meeting-table';
 import { Box } from '@mui/material';
 import { doctorService } from '../../services/doctor.service';
-import { getLoggedInUser, setNewUser } from '../../store/actions/user.actions';
 import { useEffect } from 'react';
 import { patientService } from '../../services/patient.service';
 import { userService } from '../../services/user.service';
@@ -17,7 +16,6 @@ export function Meetings() {
     const [modalQuest, setModalQuest] = React.useState('');
     const [filteredMeetings, setFilteredMeetings] = React.useState(null);
     const [meetingId, setMeetingId] = React.useState('');
-    const [patients, setPatients] = React.useState(null);
     const [pendingMeetings, setPendingMeetings] = React.useState([]);
 
     const toggleModal = (question, id) => {
@@ -26,7 +24,6 @@ export function Meetings() {
         handleOpen();
     };
 
-    const dispatch = useDispatch();
 
     const style = {
         position: 'absolute',
@@ -40,14 +37,10 @@ export function Meetings() {
     };
 
     useEffect(() => {
-        onStart();
+        getPendingMeetings();
     }, [user]);
 
-    const onStart = async () => {
-        getPendingMeetings();
-        const patients = await patientService.query();
-        setPatients((prev) => (prev = patients));
-    };
+    
 
     const filterMeetings = (ev) => {
         const FilteredList = pendingMeetings.filter((meet) =>

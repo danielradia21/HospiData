@@ -1,7 +1,6 @@
-// import logo from '../../assets/img/logo.png';
 import logo from '../../assets/img/labs-logo.png';
-import footXRay from '../../assets/img/foot-x-rays.jpg';
 import { jsPDF } from 'jspdf';
+
 export function LabToPdf({ user, labRes }) {
     const doc = new jsPDF();
     doc.addImage(logo, 'PNG', 40, 20, 60, 13);

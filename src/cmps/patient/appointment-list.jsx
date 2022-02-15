@@ -28,9 +28,8 @@ export function AppointmentList() {
     useEffect(async () => {
         if (!user) {
             dispatch(getLoggedInUser());
-            return;
         }
-        if (user) {
+        else if(user) {
           getAppointments();
           await getDoctors();
         }
@@ -129,10 +128,6 @@ export function AppointmentList() {
                 </Alert>
             </Snackbar>
             {!appointments && <Loader />}
-            {/* {!appointments.length && <div>You have no appointments</div>} */}
-            {/* {cancelAppointmentId&&<CancelAppointment closeCancelModal={closeCancelModal} cancelAppointment={cancelAppointment} open={open}/>} */}
-            {/* {appointments && (
-                <> */}
                     <div className="main-content-header">Appointments</div>
                     {user.appointments.find(app=>app.status==='pending'||app.status==='approved')?<> <input
                         onChange={filterApps}
@@ -156,8 +151,6 @@ export function AppointmentList() {
                             Make an appointment
                         </button>
                     </div>
-                {/* </>
-            )} */}
             {openNewApp && (
                 <AppointmentModal
                     handleOpenSnackbar={handleOpenSnackbar}
@@ -172,8 +165,3 @@ export function AppointmentList() {
     );
 }
 
-{
-    /* {appointments.map((appointment) => (
-  <AppointmentPrev appointment={appointment} key={appointment._id} />
-))} */
-}

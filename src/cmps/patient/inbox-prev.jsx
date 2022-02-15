@@ -1,5 +1,5 @@
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useEffect } from 'react';
+
 export function InboxPrev({ mail, closeMailPrev }) {
     return (
         <div className="prev-inbox-msg-container">

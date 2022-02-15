@@ -1,83 +1,8 @@
-// import {
-//   Paper,
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableContainer,
-//   TableHead,
-//   TableRow,
-// } from '@mui/material'
 
-// export function MedicalHistoryTable({ history }) {
-//   const columns = [
-//     { id: 'date', label: 'Date', minWidth: 100 },
-//     { id: 'time', label: 'Time', minWidth: 100 },
-//     { id: 'title', label: 'Title', minWidth: 100, align: 'center' },
-//     { id: 'viewDetails', label: 'View Details', minWidth: 100, align: 'center' },
-//   ]
-
-// function createData(title, timestamp,id) {
-//   const {date,time} = getDate(timestamp)
-//   const viewDetails = (
-//     <button key={timestamp} className="view-details-btn">
-//       View Details{' '}
-//     </button>
-//   )
-//   return { date,time, title, viewDetails,id }
-// }
-
-//   function getDate(timestamp) {
-//     let date = new Date(timestamp)
-//   const day = date.getDate()
-//   const month = date.getMonth() + 1
-//   const year = date.getFullYear()
-//   const hour = date.getHours() < 10 ? '0' + date.getHours()  : date.getHours()
-//   const minute = date.getMinutes()  < 10 ? '0' + date.getMinutes() : date.getMinutes()
-//   return { date: `${day}/${month}/${year}`, time: `${hour}:${minute}` }
-// }
-
-//   const rows = history.map((res) => createData(res.title, +res.date,res._id))
-
-//   return (
-//     <TableContainer component={Paper}>
-//       <Table sx={{ maxHeight: 440 }} stickyHeader aria-label="sticky table">
-//         <TableHead>
-//           <TableRow>
-//             {columns.map((column) => (
-//               <TableCell
-//                 key={column.label}
-//                 align={column.align}
-//                 style={{ minWidth: column.minWidth }}
-//               >
-//                 {column.label}
-//               </TableCell>
-//             ))}
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {rows.map((row) => {
-//             return (
-//               <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-//                 {columns.map((column) => {
-//                   const value = row[column.id]
-//                   return (
-//                     <TableCell key={column.id} align={column.align}>
-//                       {value}
-//                     </TableCell>
-//                   )
-//                 })}
-//               </TableRow>
-//             )
-//           })}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   )
-// }
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -89,8 +14,7 @@ import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
-import { CancelAppointment } from './cancel-appointment';
-import { HistoryAppointmentModal } from './history-appointment-modal';
+
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -187,8 +111,10 @@ export function MedicalHistoryTable({ history, openAppointment }) {
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
-    const [dense, setDense] = useState(false);
+
     const [rowsPerPage, setRowsPerPage] = useState(4);
+
+    const dense = false
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -266,13 +192,9 @@ export function MedicalHistoryTable({ history, openAppointment }) {
         setPage(0);
     };
 
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked);
-    };
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-    // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
