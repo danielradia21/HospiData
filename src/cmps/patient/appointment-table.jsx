@@ -487,7 +487,7 @@ export function AppointmentTable({
           )}
                     <TableContainer>
                         <Table
-                            sx={{ maxWidth: 750,minHeight:400,maxHeight:400 }}
+                          sx={{minWidth:350,maxHeight:400 }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

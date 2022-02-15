@@ -8,7 +8,6 @@ import Modal from '@mui/material/Modal';
 import { Formik, Field, Form } from 'formik';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
 import emailjs from '@emailjs/browser';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle'
@@ -152,7 +151,6 @@ const teamMembers=[
                 catch(err) {
                   console.log('Had error on email:', err);
               }
-                // alert(JSON.stringify(values,null,2));
               }}
           >
               <Form>

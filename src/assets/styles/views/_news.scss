@@ -1,44 +1,64 @@
-.about-us-main-container {
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-        .news-side-bar {
-            padding: 40px 0;
-            order: -1;
+.about-us-main-container{
+  @media screen and (max-width: 768px) {
+      flex-direction:column;
+      align-items: center;
+      .news-side-bar{
+        order: -1;  padding: 40px 0;
+      }
+      .news-card-list{
+        width: 310px;
+        justify-content: center;
+        padding: 20px 5px;
+      }
+      .side-bar-categories{
+        width: 310px;
+        align-self: center;
+        // padding: 15px 10px;
+        padding: 15px 13px;
+        .label-card{
+          width: 132px;
+          padding: 6px 7px;
+          p{
+            font-size: rem(14px)
+          }
         }
-        .news-card-list {
-            width: 310px;
-            justify-content: center;
-            padding: 20px 5px;
-        }
-        .side-bar-categories {
-            width: 310px;
-            align-self: center;
-            // padding: 15px 10px;
-            padding: 15px 13px;
-            .label-card {
-                width: 132px;
-                padding: 6px 7px;
-                p {
-                    font-size: rem(14px);
-                }
-            }
-        }
-        .news-side-bar-serch {
-            width: 310px;
-            align-self: center;
-            input {
-                font-size: rem(14px);
-            }
-        }
+      }
+      .news-side-bar-serch{
+        width: 310px;
+      align-self: center;
+      input{
+        font-size: rem(14px)
+      }
+      }
     }
-}
+} 
+
 .news-section {
+
     &.main-hero {
         height: 300px;
     }
     .link-chain {
-        text-align: center;
+      text-align: center;
+      display: flex;
+      a {
+        color: #00d9a5;
+        text-decoration: none;
+  
+        &:hover {
+          color: #2a997f;
+        }
+      }
+      p {
+        text-transform: none;
+        font-size: 18px;
+       
+      }
+
+      .news{
+        
+        letter-spacing: 0;
+        margin: 0;
         display: flex;
         a {
             color: #00d9a5;

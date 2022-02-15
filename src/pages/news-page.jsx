@@ -90,7 +90,11 @@ export function News() {
     return (
         <section className="about-us-container">
             <Hero />
+<<<<<<< HEAD
             <div className="flex about-us-main-container">
+=======
+            <div className="about-us-main-container flex">
+>>>>>>> 2108631b4a4675919ce0f86a5d0a73c181861906
                 <div className="news-card-list">
                     {currfilter.map((item, idx) => (
                         <Card

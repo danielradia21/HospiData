@@ -211,7 +211,7 @@ export default function EnhancedTable({items,updateFunc}) {
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableContainer>
           <Table
-            sx={{ minWidth:300,minHeight:400,maxHeight:400 }}
+             sx={{minWidth:350,maxHeight:400 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
           >
@@ -239,7 +239,7 @@ export default function EnhancedTable({items,updateFunc}) {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={index}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">

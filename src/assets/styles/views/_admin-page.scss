@@ -52,13 +52,29 @@
 
 .card-list{
     gap: 20px;
+    justify-content: center;
+    width: 100%;
+    @media screen and (max-width:469px) {
+       gap: 10px;
+       grid-gap:10px;
+     }
 }
 .card{
-    width: 240px;
+    width:33%;
     height: 120px;
     border: 1px solid black;
     font-size: rem(20px);
     background-color: white;
+    text-align: center;
+    padding:8px;
+    flex-direction: column;
+    @media screen and (max-width:$normal-breakpoint) {
+       font-size:16px;
+    }
+    @media screen and (max-width:469px) {
+        width:28%;
+        padding:20px;
+     }
 }
 
 .dashbord-analitics-continer{
@@ -98,6 +114,7 @@
 
 .dasbord-btn-continer{
     padding-top: 20px;
+    width:100%;
     padding-bottom: 20px;
     button{
         flex-grow: 1;
@@ -129,8 +146,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    
+      @media screen and (max-width: 829px) {
+        width:400px !important;
+        height:400px  !important;
+        canvas{
+            width:400px !important;
+        height:400px  !important;
+        }
+      }
+      @media screen and (max-width: 469px) {
+        width:320px !important;
+        height:320px  !important;
+        canvas{
+            width:320px !important;
+        height:320px  !important;
+        }
+      }
 }
 
 .table-pagination{
@@ -153,9 +186,9 @@
 }
 
 .search-input{
-    padding: 12px;
+    padding: 10px;
     padding-left: 40px;
-    width: 300px;
+    width: 260px;
     color: #404145;
 }
 .search-input-icon{

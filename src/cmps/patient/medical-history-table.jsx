@@ -282,11 +282,7 @@ export function MedicalHistoryTable({ history, openAppointment }) {
                 <Paper sx={{ width: '100%', mb: 2 }}>
                     <TableContainer>
                         <Table
-                            sx={{
-                                minWidth: 400,
-                                minHeight: 400,
-                                maxWidth: 750,
-                            }}
+                             sx={{minWidth:350,maxHeight:400 }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >
@@ -318,7 +314,7 @@ export function MedicalHistoryTable({ history, openAppointment }) {
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
                                                 tabIndex={-1}
-                                                key={row.date}
+                                                key={index}
                                                 selected={isItemSelected}
                                             >
                                                 <TableCell padding="checkbox"></TableCell>

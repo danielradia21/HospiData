@@ -95,7 +95,7 @@ export const adminNestedRoutes =[
     label:'Doctors'
   }, 
   {
-    path:'/doctor/patients',
+    path:'/admin/patients',
     component:AdminPatienceList,
     label:'Patients'
   }

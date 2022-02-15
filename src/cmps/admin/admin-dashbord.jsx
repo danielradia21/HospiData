@@ -12,12 +12,10 @@ export function AdminDashBord() {
         const [patience,setPatience] = useState(null)
         const [appointments,setAppointments] = useState(null)
         const [activeCmp,setActiveCmp] = useState('line')
-        const [history,setHistory] = useState([])
 
         useEffect(async() => {
            await getDoctorsData();
            await getPatience();
-        //    getAppointments()
          }, []);
 
         const getDoctorsData = async () =>{
@@ -33,9 +31,6 @@ export function AdminDashBord() {
             setPatience(prevPatience => prevPatience = patience)
         }
 
-        // const getAppointments= async () =>{
-        //      const doctors = await adminService.getDoctors();
-        // }
 
 
         const showCpm = () => {
@@ -57,24 +52,6 @@ export function AdminDashBord() {
 
      if (!doctors || !patience || !appointments) return <Loader/>
      
-    // <div className="dashBord-continer"> 
-
-    // return <> <div className="main-content">
-    //      <CardList doctorsSum={doctors.length} patienceSum={patience.length}/>
-    //     {/* <div className="dashbord-analitics-continer">
-    //      */}
-    //      </div>
-    //       <div className="others-section">
-    //       <div className="first-other">
-    //      <LineChart/>
-    //       </div>
-    //       <div className="sec-other">
-    //      <PieChart/>
-    //       </div>
-    //      {/* <div className="admin-spce"></div> */}
-    //     </div>
-    // {/* </div>; */}
-    // </>
     return  <>
     <div className="main-content-header">DashBord</div>
     <div className="dasbord">

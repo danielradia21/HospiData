@@ -26,7 +26,7 @@ export function InboxList({ mail, openMailPrev }) {
                 <img src={mail.by.imgUrl} />
                 <p className="mail-by">{mail.by.fullname}</p>
             </div>
-            <div className="mail-msg">{mail.msg}</div>
+            <div className="mail-msg">{`${mail.msg.slice(0,40)}`}</div>
             {getDate(+mail.date)}
             {/* <div>Appointment Id {mail.appId}</div> */}
         </div>

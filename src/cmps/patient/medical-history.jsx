@@ -41,18 +41,17 @@ export function MedicalHistory() {
         <div className="medical-referrals-content">
             <div className="main-content-header">Mecial History</div>
             {!user && <Loader />}
-            <input
+           {history?.length ? <> <input
                 onChange={filterHistory}
                 className="patient-search-input"
                 type="text"
-                placeholder="Serach Meetings..."
+                placeholder="Search Meetings..."
             />
-            {history && (
                 <MedicalHistoryTable
                     history={filteredHistory || history}
                     openAppointment={openAppointment}
                 />
-            )}
+            </>: <div className='no-items'>No Medical History</div>}
             {appointment && (
                 <HistoryAppointmentModal
                     appointment={appointment}

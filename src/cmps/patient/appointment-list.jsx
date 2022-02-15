@@ -37,21 +37,9 @@ export function AppointmentList() {
     }, [user]);
 
     function getAppointments() {
-        // if (user.appointments.length) return;
-        // const futureAppointments = user.appointments.filter(
-        //   (app) =>
-        //     app.date > Date.now() && (app.status === 'pending' || app.status === 'approved')
-        // )
-
         const futureAppointments = user.appointments.filter(
             (app) => app.status === 'pending' || app.status === 'approved'
         );
-        // console.log(user.appointments)
-
-        // console.log(futureAppointments)
-        // const futureAppointments = user.appointments.filter(
-        //   (app) => app.date > Date.now()
-        // )
         setAppointments(
             (prevAppointments) => (prevAppointments = futureAppointments)
         );
@@ -98,14 +86,11 @@ export function AppointmentList() {
     }
 
     const makeAppointment = async (doctorId, treatment, date) => {
-        // treatment has no usage for now need to  think about how to add it
         try {
             date = date.getTime();
             if (Date.now() + 10 * 60 * 1000 >= date)
                 throw new Error('Pick another date');
             await patientService.makeAppointment({ doctorId, date, user });
-            // dispatch(getLoggedInUser());
-            // await getDoctors();
             handleOpenSnackbar('success', 'Appointment sent for review');
             closeNewAppModal();
         } catch (err) {
@@ -146,23 +131,23 @@ export function AppointmentList() {
             {!appointments && <Loader />}
             {/* {!appointments.length && <div>You have no appointments</div>} */}
             {/* {cancelAppointmentId&&<CancelAppointment closeCancelModal={closeCancelModal} cancelAppointment={cancelAppointment} open={open}/>} */}
-            {appointments && (
-                <>
+            {/* {appointments && (
+                <> */}
                     <div className="main-content-header">Appointments</div>
-                    <input
+                    {user.appointments.find(app=>app.status==='pending'||app.status==='approved')?<> <input
                         onChange={filterApps}
                         className="patient-search-input"
                         type="text"
-                        placeholder="Serach Appointments..."
+                        placeholder="Search Appointments..."
                     />
-                    <AppointmentTable
+                   <AppointmentTable
                         appointments={filteredApps || appointments}
                         openId={openId}
                         open={open}
                         openCancelModal={openCancelModal}
                         closeCancelModal={closeCancelModal}
                         cancelAppointment={cancelAppointment}
-                    />
+                    /></>:<div className='no-items'>No Appointments</div>}
                     <div className="appointments-btn-container">
                         <button
                             className="new-appointment"
@@ -171,8 +156,8 @@ export function AppointmentList() {
                             Make an appointment
                         </button>
                     </div>
-                </>
-            )}
+                {/* </>
+            )} */}
             {openNewApp && (
                 <AppointmentModal
                     handleOpenSnackbar={handleOpenSnackbar}

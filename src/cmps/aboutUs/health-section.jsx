@@ -1,4 +1,3 @@
-import healthDoctor from '../../assets/img/health-section-doctor.png';
 import maekerIcon from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
 import { MapContainer , TileLayer, Marker, Popup } from 'react-leaflet'

@@ -3,8 +3,6 @@ import { adminService } from '../../services/admin.service';
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { SignIn } from '../../cmps/login';
-import { DelteMassge } from '../delte-massge';
 import SearchIcon from '@mui/icons-material/Search';
 import { doctorService } from "../../services/doctor.service";
 import {Loader} from '../loader'
@@ -19,7 +17,7 @@ const style = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    // p: 4,
+
 };
 
 export function AdminDoctorsList() {
@@ -44,7 +42,6 @@ export function AdminDoctorsList() {
     const update = (doctor) => {
         setactive((prv) => (prv = 'update'));
         handleOpen();
-        // const {fullname,imgUrl,isAdmin} = doctor
         setSelcteDcotor((prev) => (prev = doctor));
         setisAdmin((prev) => (prev = isAdmin));
     };

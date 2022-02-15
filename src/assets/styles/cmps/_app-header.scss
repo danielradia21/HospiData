@@ -6,6 +6,13 @@
     padding: 10px 0px;
     font-size: 1rem;
     margin: 0 auto;
+    @media screen and (max-width: $normal-breakpoint) {
+        position: sticky;
+        top:0;
+        background-color: white;
+        z-index: 99999;
+        padding:20px 10px;
+     }
 
     .img-container {
         width: 165px;
@@ -34,7 +41,7 @@
     .burger-container {
         display: none;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $normal-breakpoint) {
         height: 50px;
         .burger-container {
             display: block;
@@ -126,7 +133,12 @@
 
 .open-blackscreen {
     display: block;
+//    pointer-events: none;
+$mobile-nav:true;
+overflow: hidden;
+
 }
 .close-blackscreen {
+    $mobile-nav:false;
     display: none;
 }

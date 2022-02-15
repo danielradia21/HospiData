@@ -1,8 +1,13 @@
 .patient-search-input{
     padding: 8px;
     margin: 10px 25px;
-    width: 35%;
+    width: 200px;
     &.search {
         margin: 5px 0px;
+    }
+    @media screen and (max-width: $normal-breakpoint) {
+        width:80%;
+        margin:20px 0 ;
+        padding:12px;
     }
 }
