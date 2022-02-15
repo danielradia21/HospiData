@@ -29,7 +29,6 @@ export function ViewDetailsModal({ open, handleClose, currApp }) {
     return fullYear
   }
   const currAppInfo = () => {
-    console.log(currApp)
     let size = Object.keys(currApp).length
 
     if (!size) return
