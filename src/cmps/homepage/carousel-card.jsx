@@ -2,7 +2,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { CardActionArea } from '@mui/material'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import PhoneIcon from '@mui/icons-material/Phone'
 
@@ -41,8 +40,5 @@ export function CarouselCard({ doctor }) {
       </CardContent>
     </Card>
 
-    // <div className="carousel-card">
-    //     <img src={doctor.imgUrl}/>
-    // </div>
   )
 }

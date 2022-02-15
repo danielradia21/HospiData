@@ -1,5 +1,5 @@
 import { Box, Modal } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import logo from '../../assets/img/logo.png'
 import { jsPDF } from 'jspdf'
 import { Loader } from '../loader'
@@ -75,18 +75,12 @@ export function HistoryAppointmentModal({
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    // p: 4,
+ 
   }
 
-  //   const handleChangeTreatment = (event) => {
-  //     setTreatmentType(event.target.value)
-  //   }
-  //   const handleChangeDoctor = (event) => {
-  //     setDoctor(event.target.value)
-  //   }
 
-  function downloadPDF() {}
-  // const docTypeOptions = ['Allergists','Anesthesiologists','Cardiologists','Dermatologists','Endocrinologists','Family Physicians','Gastroenterologists','Hematologists','Internists']
+
+  
 
   return (
     <div className="appointment-modal-container">

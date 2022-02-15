@@ -1,12 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import { Link, NavLink, Route, Switch } from 'react-router-dom'
-// import logo from '../assets/img/logo.png'
-// import someImg from '../assets/img/health-section-doctor.png'
-// import { userService } from '../services/user.service'
-// import loader from '../assets/img/loader.gif'
-// import { AppointmentList } from '../cmps/patient/appointment-list'
-// import { useRouteMatch } from 'react-router-dom'
-// import { Lab } from '../cmps/patient/lab'
+import React, { useEffect } from 'react';
 import { PatientNavBar } from '../cmps/patient/patientNavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -21,8 +13,7 @@ import {
     SOCKET_EMIT_USER_WATCH,
     SOCKET_EVENT_USER_UPDATED,
 } from '../services/socket.service';
-import { userService } from '../services/user.service';
-import { patientService } from '../services/patient.service';
+
 
 export function PatientPage() {
     const { user } = useSelector((state) => state.userModule);
@@ -42,7 +33,6 @@ export function PatientPage() {
             socketService.off(SOCKET_EVENT_USER_UPDATED);
         };
 
-        // userService.getByUID("1233123213")
     }, [user]);
 
     const onLogOut = () => {

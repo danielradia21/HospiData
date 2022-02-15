@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../assets/img/logo.png';
+import {  NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { History } from '../cmps/doctor/history';
 import { Meetings } from '../cmps/doctor/meetings';
@@ -11,7 +10,6 @@ import {
     onLogout,
     updateLoggedInUser,
 } from '../store/actions/user.actions';
-import { doctorService } from '../services/doctor.service';
 import { PateintProfile } from '../cmps/doctor/visitPage/pateintProfile';
 import { DocCalendar } from '../cmps/doctor/doc-calendar';
 
@@ -54,7 +52,6 @@ export function DoctorPage() {
         if (user) {
             socketService.emit(SOCKET_EMIT_USER_WATCH, user._id);
             socketService.on('user-updated', (user) => {
-                console.log('file: doctor-page.jsx   line 57   user', user);
                 dispatch(updateLoggedInUser(user));
             });
         }

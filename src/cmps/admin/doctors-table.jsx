@@ -140,9 +140,11 @@ export default function EnhancedTable({ items, updateFunc, removeFunc }) {
   const [orderBy, setOrderBy] = React.useState('')
   const [selected, setSelected] = React.useState([])
   const [page, setPage] = React.useState(0)
-  const [dense, setDense] = React.useState(false)
   const [rowsPerPage, setRowsPerPage] = React.useState(3)
+  
+  const dense = false
 
+  
   function createData(UID, name, img, isAdmin, item) {
     const update = (
       <button key={UID} className="updateBtn" onClick={() => updateFunc(item)}>
@@ -219,9 +221,7 @@ export default function EnhancedTable({ items, updateFunc, removeFunc }) {
     setPage(0)
   }
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked)
-  }
+
 
   const isSelected = (name) => selected.indexOf(name) !== -1
 
@@ -294,6 +294,7 @@ export default function EnhancedTable({ items, updateFunc, removeFunc }) {
         <TablePagination
           component="div"
           count={rows.length}
+          rowsPerPageOptions={[]}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

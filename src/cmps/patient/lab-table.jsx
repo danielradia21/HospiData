@@ -1,80 +1,6 @@
-// import {
-//   Paper,
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableContainer,
-//   TableHead,
-//   TableRow,
-// } from '@mui/material'
-
-// export function LabTable({ labRes }) {
-//   const columns = [
-//     { id: 'date', label: 'Date', minWidth: 100 },
-//     { id: 'title', label: 'Title', minWidth: 100, align: 'center' },
-//     { id: 'download', label: 'Download', minWidth: 100, align: 'center' },
-//   ]
-
-//   function createData(title, timestamp) {
-//     const date = getDate(timestamp)
-//     const download = (
-//       <button key={timestamp} className="download-btn">
-//         Download{' '}
-//       </button>
-//     )
-//     return { date, title, download,id:Math.floor(Math.random()*Date.now()) }
-//   }
-
-// function getDate(timestamp) {
-//   let date = new Date(timestamp)
-//   const day = date.getDate()
-//   const month = date.getMonth() + 1
-//   const year = date.getFullYear()
-//   return `${day}/${month}/${year}`
-// }
-
-//   const rows = labRes.map((res) => createData(res.title, +res.date))
-
-//   return (
-//     <TableContainer component={Paper}>
-//       <Table sx={{ maxHeight: 440 }} stickyHeader aria-label="sticky table">
-//         <TableHead>
-//           <TableRow>
-//             {columns.map((column) => (
-//               <TableCell
-//                 key={column.id}
-//                 align={column.align}
-//                 style={{ minWidth: column.minWidth }}
-//               >
-//                 {column.label}
-//               </TableCell>
-//             ))}
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {rows.map((row) => {
-//             return (
-//               <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-//                 {columns.map((column) => {
-//                   const value = row[column.id]
-//                   return (
-//                     <TableCell key={column.id} align={column.align}>
-//                       {value}
-//                     </TableCell>
-//                   )
-//                 })}
-//               </TableRow>
-//             )
-//           })}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   )
-// }
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -182,8 +108,9 @@ export function LabTable({ labRes, user }) {
     const [orderBy, setOrderBy] = useState('calories');
     const [selected, setSelected] = useState([]);
     const [page, setPage] = useState(0);
-    const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const dense = false
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -251,13 +178,8 @@ export function LabTable({ labRes, user }) {
         setPage(0);
     };
 
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked);
-    };
-
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-    // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 

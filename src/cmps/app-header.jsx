@@ -12,11 +12,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
 import { SignIn } from './login';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { onLogout } from '../store/actions/user.actions';
-import { MenuItem } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -52,16 +50,22 @@ export function AppHeader() {
         }
     };
 
+    const handleUserType = () => {
+        switch (user.type) {
+            case 'patient':
+                window.location.href = '/patient/appointments';
+                break;
+            case 'doctor':
+                window.location.href = '/doctor/meetings';
+                break;
+        }
+    };
+
     const handleOpen = () => {
         closeMenu();
         setOpen(true);
     };
     const handleClose = () => setOpen(false);
-    const handleSite = (type) => {
-        if (type === 'doctor') window.location.href = '/doctor/meetings';
-        else if (type === 'patient')
-            window.location.href = '/patient/appointments';
-    };
 
     const openMenu = () => {
         setMenuOpen((prev) => (prev = true));
@@ -89,11 +93,23 @@ export function AppHeader() {
                             {route.label}
                         </NavLink>
                     ))}
-                    <div>
-                        <button onClick={handleOpen} className="main-btn">
-                            Login
-                        </button>
-                    </div>
+                    {!user && (
+                        <div>
+                            <button onClick={handleOpen} className="main-btn">
+                                Login
+                            </button>
+                        </div>
+                    )}
+                    {user && (
+                        <div>
+                            <button
+                                onClick={handleUserType}
+                                className="main-btn"
+                            >
+                                Profile
+                            </button>
+                        </div>
+                    )}
                 </nav>
                 <nav className="burger-container">
                     <div>
@@ -123,6 +139,7 @@ export function AppHeader() {
                                         exact
                                         key={route.path}
                                         to={route.path}
+                                        onClick={closeMenu}
                                     >
                                         {route.label}
                                     </NavLink>
@@ -164,6 +181,7 @@ export function AppHeader() {
                                                     exact
                                                     key={route.path}
                                                     to={route.path}
+                                                    onClick={closeMenu}
                                                 >
                                                     {route.label}
                                                 </NavLink>
@@ -186,6 +204,7 @@ export function AppHeader() {
                                                     exact
                                                     key={route.path}
                                                     to={route.path}
+                                                    onClick={closeMenu}
                                                 >
                                                     {route.label}
                                                 </NavLink>
@@ -208,6 +227,7 @@ export function AppHeader() {
                                                     exact
                                                     key={route.path}
                                                     to={route.path}
+                                                    onClick={closeMenu}
                                                 >
                                                     {route.label}
                                                 </NavLink>

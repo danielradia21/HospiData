@@ -1,18 +1,8 @@
 import React from 'react'
 import { Box, Modal } from '@mui/material'
-import Autocomplete from '@mui/material/Autocomplete'
-import TextField from '@mui/material/TextField'
-import { useState } from 'react'
-import { Formik, Field, Form } from 'formik'
-import Button from '@mui/material/Button'
 import { useEffect } from 'react'
 
 export function ViewDetailsModal({ open, handleClose, currApp }) {
-  const [pickedDrugList, setPickedDrugList] = useState('')
-  const textFieldOutline = (props) => (
-    <TextField {...props} margin="normal" fullWidth />
-  )
-
   useEffect(() => {
     dateConvertion()
   }, [])
@@ -28,11 +18,7 @@ export function ViewDetailsModal({ open, handleClose, currApp }) {
     border: '2px solid #000',
     boxShadow: 24,
   }
-  const drugsList = [
-    { title: 'blabla' },
-    { title: 'blibli' },
-    { title: 'blublu' },
-  ]
+  
 
   const dateConvertion = (time) => {
     const newTime = new Date(time)
@@ -43,19 +29,21 @@ export function ViewDetailsModal({ open, handleClose, currApp }) {
     return fullYear
   }
   const currAppInfo = () => {
-    console.log(currApp)
     let size = Object.keys(currApp).length
-    
+
     if (!size) return
     if (currApp.drugs.length) {
       return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
         currApp.description
       } 
-         Drugs: ${currApp.drugs.map((drug) => drug.title)}\nReferrals: ${ currApp.referrals ? currApp.referrals.title : 'No referrals'}`
+         Drugs: ${currApp.drugs.map((drug) => drug.title)}\nReferrals: ${
+        currApp.referrals ? currApp.referrals.title : 'No referrals'
+      }`
     } else {
-      return `Date: ${dateConvertion(currApp.date)}\nDescription: ${currApp.description}\nDrugs: No Drugs to show`
+      return `Date: ${dateConvertion(currApp.date)}\nDescription: ${
+        currApp.description
+      }\nDrugs: No Drugs to show`
     }
- 
   }
 
   if (!currApp) return

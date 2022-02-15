@@ -57,7 +57,7 @@ export function TeamCarousel() {
 const teamMembers=[
     {
         fullname:'Beny Kursalin',
-        imgUrl:'',
+        imgUrl:'https://res.cloudinary.com/beku/image/upload/v1643122299/profile-me-me_v34hvs.jpg',
         prof:'Fullstack developer',
         linkedIn:'https://www.linkedin.com/in/benykursalin/',
         github:'https://github.com/Beku1',
@@ -69,7 +69,7 @@ const teamMembers=[
     },
     {
         fullname:'Daniel Radia',
-        imgUrl:'',
+        imgUrl:'https://cdn.discordapp.com/attachments/931183146349756467/943168519707717712/30605469_217840765615630_1906974820977868800_n.jpg',
         prof:'Fullstack developer',
         linkedIn:'https://www.linkedin.com/in/itsdanielradia/',
         github:'https://github.com/danielradia21',
@@ -80,7 +80,7 @@ const teamMembers=[
     },
     {
         fullname:'Avishai Etach',
-        imgUrl:'',
+        imgUrl:'https://cdn.discordapp.com/attachments/931183146349756467/943143315027668992/pp.jpg',
         prof:'Fullstack developer',
         linkedIn:'https://www.linkedin.com/in/avishaietach/',
         github:'https://github.com/avishaiEtach',

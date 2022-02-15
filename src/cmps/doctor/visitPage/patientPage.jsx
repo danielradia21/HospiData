@@ -1,23 +1,19 @@
-import { Box, Modal } from '@mui/material';
+
 import React from 'react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { doctorService } from '../../../services/doctor.service';
-import { getLoggedInUser } from '../../../store/actions/user.actions';
 import { Loader } from '../../loader';
 import { PatientModal } from '../patient/patientModal';
 import { PatientTable } from '../patients-table';
 
 export function PatientPage({ patient, user, makeAppointment }) {
     const [filteredHistory, setFilteredHistory] = React.useState(null);
-    const [modalQuest, setModalQuest] = React.useState('');
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [open, setOpen] = React.useState(false);
     const [appointmentsList, setAppointmentsList] = React.useState([]);
 
-    const dispatch = useDispatch();
+
 
     useEffect(() => {
         appList();
@@ -30,7 +26,6 @@ export function PatientPage({ patient, user, makeAppointment }) {
         setFilteredHistory((prev) => (prev = FilteredList));
     };
     const toggleModal = (question) => {
-        setModalQuest((prev) => (prev = question));
         handleOpen();
     };
 

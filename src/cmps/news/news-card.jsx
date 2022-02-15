@@ -1,5 +1,5 @@
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import { useHistory } from 'react-router-dom';
+
 
 export function Card({ item, RandomInt, labels }) {
     function handleClick() {
@@ -30,7 +30,7 @@ export function Card({ item, RandomInt, labels }) {
                 <div className="flex card-info-user flex ">
                     <div className="img-continer">
                         <img
-                            src={`https://randomuser.me/api/portraits/men/${RandomInt}.jpg`}
+                            src={`https://randomuser.me/api/portraits/men/${RandomInt}.jpg`} alt='news'
                         />
                     </div>
                     <p>

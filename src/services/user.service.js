@@ -1,9 +1,11 @@
-import { storageService } from './async-storage.service';
+// import { storageService } from './async-storage.service';
+// import defaultUsers from '../assets/data/users.json';
+// import { socketService } from './socket.service';
 import { httpService } from './http.service';
-import defaultUsers from '../assets/data/users.json';
-import { socketService } from './socket.service';
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
-const STORAGE_KEY = 'user';
+
+// const STORAGE_KEY = 'user';
+// const STORAGE_KEY_LOGGEDIN_USER = 'loggedIn';
+
 const doctorsKeys = ['az89A', 'Wn68s', 'Zk56t', 'b79iB'];
 
 export const userService = {
@@ -66,7 +68,7 @@ async function getById(userId) {
 
 async function getByUID(UID) {
     try {
-        const filterBy = { by: 'UID', content: UID };
+        // const filterBy = { by: 'UID', content: UID };
         return await httpService.get(`user/user?type=UID&userId=${UID}`);
         // let users = await storageService.query('user');
         // return users.find((user) => user.UID === UID);
@@ -134,10 +136,10 @@ async function updateLoggedInUser(user) {
     }
 }
 
-function _saveLocalUser(user) {
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
-    return user;
-}
+// function _saveLocalUser(user) {
+//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
+//     return user;
+// }
 
 // function getLoggedinUser() {
 //     return JSON.parse(

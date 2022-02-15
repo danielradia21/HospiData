@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,19 +10,12 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+
 import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import { patientService } from '../../services/patient.service';
 import { ViewDetailsModal } from './patient/viewDetailsModal';
+
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -84,11 +77,8 @@ const headCells = [
 
 function EnhancedTableHead(props) {
     const {
-        onSelectAllClick,
         order,
         orderBy,
-        numSelected,
-        rowCount,
         onRequestSort,
     } = props;
     const createSortHandler = (property) => (event) => {
@@ -160,12 +150,13 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(4);
+    const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const handleClose = () => setOpen(false);
     const handleOpen = () => setOpen(true);
     const [open, setOpen] = React.useState(false);
     const [currApp, setCurrApp] = React.useState({});
+
+    const dense = false
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -276,13 +267,10 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
         setPage(0);
     };
 
-    const handleChangeDense = (event) => {
-        setDense(event.target.checked);
-    };
+  
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-    // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -375,7 +363,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
                     </TableContainer>
                     <TablePagination
                         className="table-pagination"
-                        // rowsPerPageOptions={5}
+                        rowsPerPageOptions={[]}
                         component="div"
                         count={rows.length}
                         rowsPerPage={rowsPerPage}

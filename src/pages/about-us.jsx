@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Hero } from "../cmps/aboutUs/hero";
 import { HealthSection } from "../cmps/aboutUs/health-section";
 import { TeamCarousel } from "../cmps/aboutUs/carousel";

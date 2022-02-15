@@ -1,9 +1,10 @@
-import { storageService } from './async-storage.service';
-import { doctorService } from './doctor.service';
+// import { storageService } from './async-storage.service';
+// import { doctorService } from './doctor.service';
 import { httpService } from './http.service';
 import { userService } from './user.service';
 import { utilService } from './util.service';
-const STORAGE_KEY = 'user';
+
+// const STORAGE_KEY = 'user';
 
 export const patientService = {
     query,

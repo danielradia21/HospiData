@@ -1,11 +1,9 @@
-import { HomePage } from './pages/home-page.jsx'
+
 import { AboutUs } from './pages/about-us.jsx'
-import { PatientPage } from './pages/patient-page.jsx'
 import { Lab } from './cmps/patient/lab.jsx'
 import { AppointmentList } from './cmps/patient/appointment-list.jsx'
-import { DoctorPage } from './pages/doctor-page.jsx'
 import { MedicalHistory } from './cmps/patient/medical-history.jsx'
-import { Inbox, PatientInbox } from './cmps/patient/inbox.jsx'
+import { Inbox } from './cmps/patient/inbox.jsx'
 import {News} from './pages/news-page'
 import { Meetings } from './cmps/doctor/meetings.jsx'
 import { Patients } from './cmps/doctor/patients.jsx'
@@ -15,9 +13,9 @@ import { AdminDashBord } from './cmps/admin/admin-dashbord.jsx'
 import { AdminDoctorsList } from './cmps/admin/admin-doctors-list.jsx'
 import { AdminPatienceList } from './cmps/admin/admin-patience-list.jsx'
 
-// Routes accesible from the main navigation (in AppHeader)
+
 export const routes = [
-  // Routes accesible from the main navigation (in AppHeader)
+
 
   {
     path: '/about',
@@ -29,11 +27,7 @@ export const routes = [
     component: News,
     label: 'News',
   },
-  // {
-  //   path: '/contact',
-  //   component: HomePage,
-  //   label: 'Contact',
-  // },
+
 ]
 
 export const patientNestedRoutes = [

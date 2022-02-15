@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../assets/img/logo.png';
+import {  NavLink } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
 import { History } from '../cmps/doctor/history';
 import { Meetings } from '../cmps/doctor/meetings';
