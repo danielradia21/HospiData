@@ -292,7 +292,7 @@ export function MeetingTable({ items, toggleModal, isHistory }) {
                 <Paper sx={{ width: '100%', mb: 2 }}>
                     <TableContainer>
                         <Table
-                            sx={{ minWidth: 750 }}
+                               sx={{minWidth:350,maxHeight:400 }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

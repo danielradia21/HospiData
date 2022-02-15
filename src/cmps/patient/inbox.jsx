@@ -49,19 +49,19 @@ export function Inbox() {
 
     const paging = (num) => {
         if (page === 0 && num === -1)
-            setPage(Math.floor(user.inbox.length / (maxPage + 1)));
+            setPage(Math.floor((user.inbox.length / (maxPage)))+1);
         setPage((prev) => (prev += num));
         pagination();
     };
 
     const pagination = () => {
         let cards = inbox || user.inbox;
-        let cardToRender = page * maxPage;
-        if (cards.slice(cardToRender, cardToRender + maxPage).length === 0)
+        let cardToRender = page * maxPage ;
+        if (cards.slice(cardToRender, cardToRender + maxPage ).length === 0)
             setPage((prev) => (prev = 0));
         return page === 0
             ? cards.slice(cardToRender, cardToRender + maxPage)
-            : cards.slice(cardToRender, cardToRender + maxPage + 1);
+            : cards.slice(cardToRender, cardToRender + maxPage+1 );
     };
 
     const openMailPrev = async (mail)=>{

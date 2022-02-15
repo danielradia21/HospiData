@@ -267,11 +267,7 @@ export function LabTable({ labRes, user }) {
                 <Paper sx={{ width: '100%', mb: 2 }}>
                     <TableContainer>
                         <Table
-                            sx={{
-                                maxWidth: 750,
-                                minHeight: 400,
-                                minWidth: 300,
-                            }}
+                         sx={{minWidth:350,maxHeight:400 }}
                             aria-labelledby="tableTitle"
                             size={dense ? 'small' : 'medium'}
                         >

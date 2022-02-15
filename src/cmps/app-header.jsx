@@ -29,8 +29,29 @@ export function AppHeader() {
     const { user } = useSelector((state) => state.userModule)
     const [menuOpen, setMenuOpen] = React.useState(false);
     const [open, setOpen] = React.useState(false);
+    const [openProfile,setOpenProfile] = React.useState(true)
+    const [openAdmin,setOpenAdmin] = React.useState(false)
 
     const dispatch = useDispatch()
+
+
+        const handleOpenType = (type) =>{
+            switch (type) {
+                case 'profile':
+                    setOpenProfile(prevOpen=>prevOpen=true)
+                    setOpenAdmin(prevOpen=>prevOpen=false)
+                    break;
+                    case 'admin':
+                        setOpenProfile(prevOpen=>prevOpen=false)
+                        setOpenAdmin(prevOpen=>prevOpen=true)
+                        break;
+
+               
+            }
+
+        } 
+
+   
 
     const handleOpen = () => {
         closeMenu()
@@ -115,10 +136,13 @@ export function AppHeader() {
                                         Login
                                     </button>
                                 </div>}
+                                {user&&  <div >
+                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
+                                    </div>}
                                
                                 {user?.type==='patient'&&<>
-                                    <div className='navbar-line-seperator'><h2>Profile</h2></div>
-                                    {patientNestedRoutes.map((route) => (
+                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('profile')}><h2>Profile</h2></div>
+                                    {openProfile&&patientNestedRoutes.map((route) => (
                                     <NavLink
                                         exact
                                         key={route.path}
@@ -128,13 +152,11 @@ export function AppHeader() {
                                     </NavLink>
                                    
                                 ))}
-                                 <div >
-                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
-                                    </div>
+                               
                                    </> }
                                    {user?.type==='doctor'&&<>
-                                    <div className='navbar-line-seperator'><h2>Profile</h2></div>
-                                    {doctorNestedRoutes.map((route) => (
+                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('profile')}><h2>Profile</h2></div>
+                                    {openProfile&&doctorNestedRoutes.map((route) => (
                                     <NavLink
                                         exact
                                         key={route.path}
@@ -143,13 +165,11 @@ export function AppHeader() {
                                         {route.label}
                                     </NavLink>
                                 ))}
-                                 <div >
-                                    <button className="main-btn" onClick={onLogOut}>Logout</button>
-                                    </div>
+
                                    </> }
                                    {user?.isAdmin&&<>
-                                    <div className='navbar-line-seperator'><h2>Admin</h2></div>
-                                    {adminNestedRoutes.map((route) => (
+                                    <div className='navbar-line-seperator' onClick={()=>handleOpenType('admin')}><h2>Admin</h2></div>
+                                    {openAdmin&&adminNestedRoutes.map((route) => (
                                     <NavLink
                                         exact
                                         key={route.path}

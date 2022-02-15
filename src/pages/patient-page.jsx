@@ -75,11 +75,11 @@ export function PatientPage() {
                             <PatientNavBar user={user} />
                         </div>
                     </div>
-                    <div>
+                   
                         <div className="main-content-section">
                             <PatientMainContent />
                         </div>
-                    </div>
+                
                 </div>
             )}
         </div>

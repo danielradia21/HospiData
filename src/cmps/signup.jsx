@@ -27,7 +27,7 @@ export function SignUp({ onClose, userSatus }) {
     };
     const dispatch = useDispatch();
     const textFieldOutline = (props) => (
-        <TextField {...props} required margin="normal" fullWidth />
+        <TextField {...props}  margin="normal" fullWidth />
     );
 
     return (
@@ -58,12 +58,15 @@ export function SignUp({ onClose, userSatus }) {
                                     username: '',
                                     password: '',
                                     UID: '',
+                                    imgUrl:''
+                                    
                                 }}
                                 onSubmit={async (values) => {
                                     onClose();
+                                   
                                     let userCred = {
                                         ...values,
-                                        imgUrl: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
+                                        imgUrl: values.imgUrl!==''? values.imgUrl : 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
                                         type: userSatus,
                                     };
                                     // if(userSatus === 'patient'){
@@ -77,10 +80,12 @@ export function SignUp({ onClose, userSatus }) {
                                     values.username = '';
                                     values.password = '';
                                     values.UID = '';
+                                    values.imgUrl='';
                                 }}
                             >
                                 <Form>
                                     <Field
+                                    required
                                         as={textFieldOutline}
                                         label="UID"
                                         type="text"
@@ -90,6 +95,7 @@ export function SignUp({ onClose, userSatus }) {
                                         autoFocus
                                     />
                                     <Field
+                                    required
                                         as={textFieldOutline}
                                         label="Full Name"
                                         id="fullname"
@@ -98,6 +104,7 @@ export function SignUp({ onClose, userSatus }) {
                                     />
 
                                     <Field
+                                    required
                                         as={textFieldOutline}
                                         label="Email"
                                         id="username"
@@ -107,12 +114,22 @@ export function SignUp({ onClose, userSatus }) {
                                     />
 
                                     <Field
+                                    required
                                         as={textFieldOutline}
                                         label="Password"
                                         type="password"
                                         id="password"
                                         name="password"
                                         placeholder="Doe"
+                                    />
+                                     <Field
+                                     
+                                        as={textFieldOutline}
+                                        label="Url"
+                                        id="imgUrl"
+                                        name="imgUrl"
+                                        placeholder="Img URL"
+                                        type="url"
                                     />
                                     <Button
                                         type="submit"

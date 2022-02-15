@@ -2,21 +2,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailIcon from '@mui/icons-material/Email';
-import { Link } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import { useEffect, useState } from 'react';
-import { Formik, Field, Form } from 'formik';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import emailjs from '@emailjs/browser';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
+
 
 export function CarouselCard({ member, handleOpen, getMember }) {
     const openModel = () => {

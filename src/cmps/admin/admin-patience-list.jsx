@@ -5,7 +5,6 @@ import { adminService } from "../../services/admin.service";
 import Table from "./patience-table"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { DelteMassge } from "../delte-massge";
 import SearchIcon from '@mui/icons-material/Search';
 import { patientService } from "../../services/patient.service";
 import {Loader} from '../loader'
@@ -19,7 +18,6 @@ const style = {
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    // p: 4,
 };
 
 
@@ -52,7 +50,7 @@ export function AdminPatienceList() {
     const update = (patient) =>{
     setactive(prv=>prv ='update')
     handleOpen();
-    const {fullname,imgUrl,isAdmin} = patient
+    const {isAdmin} = patient
     setSelctePatient(prev => prev = patient)
     setisAdmin(prev => prev = isAdmin)
 }

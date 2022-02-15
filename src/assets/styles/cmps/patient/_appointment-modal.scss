@@ -1,10 +1,29 @@
 .type-of-treatment-selector {
   padding-top: 20px;
+  width:300px;
+  @media screen and (max-width: $normal-breakpoint) {
+  width:220px;
+ }
+}
+.MuiBox-root .css-1fpwgg0{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.css-lmu1if{
+  @media screen and (max-width: $normal-breakpoint) {
+   width:360px;
+   }
 }
 
 .to-doctor-selector {
   margin-top: 20px;
   margin-bottom: 10px;
+  width:300px;
+  @media screen and (max-width: $normal-breakpoint) {
+    width:220px;
+   }
 }
 
 .date-time-selector {

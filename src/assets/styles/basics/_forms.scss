@@ -10,7 +10,7 @@ button {
         border: 0;
         width: 500px;
         height: 557px;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: $normal-breakpoint) {
             width: 90%;
         }
     }
