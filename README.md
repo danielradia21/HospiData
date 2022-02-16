@@ -19,7 +19,7 @@ This app is a Health Center application system , Patients getting treatment from
 ### Doctor
      username: dr@gmail.com,
      password: 123123123,
-     doctor sign-Up key: az89A, --need only in sigeUp 
+     doctor Sign-Up key: az89A, --need only in Sign-Up 
 
 ### Patient
     username:  Beku1997@gmail.com,
